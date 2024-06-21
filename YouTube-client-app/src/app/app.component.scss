@@ -2,18 +2,6 @@ $hot-red: oklch(61.42% 0.238 15.34);
 $vivid-pink: oklch(69.02% 0.277 332.77);
 $electric-violet: oklch(53.18% 0.28 296.97);
 
-html {
-  width: 100vw;
-  height: 100%;
-  font-size: 20px;
-}
-
-body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 h1 {
   font-size: 3rem;
   color: var(--gray-900);
@@ -29,6 +17,10 @@ h1 {
 p {
   margin: 0;
   color: var(--gray-700);
+}
+
+a {
+  text-decoration: none;
 }
 
 main {
@@ -73,9 +65,10 @@ main {
 }
 
 .title {
-    background: -webkit-linear-gradient($hot-red, $vivid-pink, $electric-violet);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient($hot-red, $vivid-pink, $electric-violet);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .content {
@@ -166,9 +159,37 @@ main {
 
 .footer {
   height: 200px;
-  background-color: red;
   flex-shrink: 0;
   padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &_logo {
+    width: 4rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: linear-gradient($hot-red, $vivid-pink, $electric-violet);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: oklch(100% 0 0);
+  }
+
+  &_lyutails {
+    background: -webkit-linear-gradient(
+      $hot-red,
+      $vivid-pink,
+      $electric-violet
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
 }
 
 @media screen and (max-width: 650px) {
