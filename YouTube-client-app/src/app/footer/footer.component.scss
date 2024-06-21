@@ -1,0 +1,64 @@
+@import '../../variables.scss';
+
+.footer {
+  width: 100vw;
+  flex-shrink: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  &_wrapper {
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_logo {
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: linear-gradient($hot-red, $vivid-pink, $electric-violet);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: oklch(100% 0 0);
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30%;
+      height: 100%;
+      background: oklch(100% 0 0 / 40%);
+      transform: skewX(-45deg) translateX(-3rem);
+      transition: 0.5s;
+    }
+
+    &:hover::before {
+      transform: skewX(-45deg) translateX(6rem);
+    }
+  }
+
+  &_lyutails {
+    background: -webkit-linear-gradient(
+      $hot-red,
+      $vivid-pink,
+      $electric-violet
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
+}
