@@ -1,17 +1,41 @@
-.header_search-input {
-  width: 200px;
-  height: 32px;
-  border-radius: 5px;
-  border: solid 1px;
-  outline: none;
-  padding-left: 10px;
-  font-size: 1rem;
+@import "../../variables.scss";
 
-  &::placeholder {
+.header-input {
+  display: flex;
+  align-items: center;
+
+  &_search-input {
+    width: 280px;
+    height: 32px;
+    border-radius: 5px 0px 0px 5px;
+    border: solid 1px;
+    outline: none;
     font-size: 1rem;
+    padding-left: 10px;
+
+    &::placeholder {
+      font-size: 1rem;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
   }
 
-  &:focus::placeholder {
-    color: transparent;
+  &_search-button {
+    width: 32px;
+    height: 32px;
+    background-color: oklch(100% 0 0);
+    border-radius: 0px 5px 5px 0px;
+    border: solid 1px;
+    border-left: none;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $electric-violet;
+      color: oklch(100% 0 0);
+      border-color: oklch(0% 0 0);
+    }
   }
 }

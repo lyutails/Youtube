@@ -61,5 +61,11 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
   }
 }

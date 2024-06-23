@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 h1 {
   font-size: 2rem;
@@ -23,24 +23,25 @@ a {
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  &_login-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 2.2rem;
+  &_wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_settings {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &_settings-toggle {
     font-size: 20px;
   }
-}
-
-.header_wrapper {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 
   &_youtube-logo {
     display: inline-block;
@@ -83,5 +84,45 @@ a {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    user-select: none;
+  }
+
+  &_login {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
+
+  &_login-button {
+    font-size: 1rem;
+    border: none;
+    background: linear-gradient($hot-red, $vivid-pink, $electric-violet);
+    color: oklch(100% 0 0);
+    padding: 5px 10px;
+    font-weight: 600;
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &_login-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 2.2rem;
+    display: inline-block;
+    color: $electric-violet;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
