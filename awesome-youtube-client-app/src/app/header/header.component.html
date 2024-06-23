@@ -1,9 +1,12 @@
 <header class="header">
-  <div class="left-side">
-    <div class="left-side_youtube-logo"></div>
-    <h1 class="left-side_title">{{ title }}</h1>
+  <div class="header_wrapper">
+    <div class="header_wrapper_youtube-logo"></div>
+    <h1 class="header_wrapper_title">{{ title }}</h1>
+    <mat-slide-toggle></mat-slide-toggle>
+    <div class="header_settings-toggle">Settings</div>
+    <div class="header_login-text">Login</div>
+    <mat-icon aria-label="Example home icon" class="header_login-icon">person</mat-icon>
   </div>
-  <mat-slide-toggle>Toggle me!</mat-slide-toggle>
   <!-- <div class="right-side">
       <div class="pill-group">
         @for (item of [ { title: 'Explore the Docs', link: 'https://angular.dev'
