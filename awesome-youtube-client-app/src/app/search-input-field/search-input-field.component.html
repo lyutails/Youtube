@@ -4,7 +4,11 @@
     class="header-input_search-input"
     placeholder="Search..."
   />
-  <button class="header-input_search-button">
+  <button
+    class="header-input_search-button"
+    (click)="recolour()"
+    [@changeBackgroundColour]="isBackgroundRecoloured ? 'initial' : 'clicked'"
+  >
     <mat-icon class="header-input_search-icon">search</mat-icon>
   </button>
 </div>

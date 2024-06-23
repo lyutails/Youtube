@@ -14,6 +14,6 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     SearchResultsComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {}
