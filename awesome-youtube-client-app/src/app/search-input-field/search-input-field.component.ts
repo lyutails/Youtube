@@ -19,17 +19,19 @@ import {
       state(
         'initial',
         style({
-          backgroundColor: 'pink',
+          backgroundColor: 'white',
         }),
       ),
       state(
         'clicked',
         style({
-          backgroundColor: 'white',
+          backgroundColor: 'pink',
+          color: 'oklch(100% 0 0)',
+          'border-color': 'oklch(0% 0 0)',
         }),
       ),
-      transition('initial => clicked', [animate('1s')]),
-      transition('clicked => initial', [animate('1s')]),
+      transition('initial => clicked', [animate('0.5s')]),
+      transition('clicked => initial', [animate('0.5s')]),
     ]),
   ],
 })
