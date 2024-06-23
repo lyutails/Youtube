@@ -1,0 +1,17 @@
+.header_search-input {
+  width: 200px;
+  height: 32px;
+  border-radius: 5px;
+  border: solid 1px;
+  outline: none;
+  padding-left: 10px;
+  font-size: 1rem;
+
+  &::placeholder {
+    font-size: 1rem;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
