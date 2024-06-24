@@ -14,6 +14,12 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     SearchResultsComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  /* animations: [
+    trigger('routeAnimations', [transition('homePage => profilePage'), [
+      query(':enter', []),
+      query(':leave', [])
+    ]]),
+  ], */
 })
 export class AppComponent {}

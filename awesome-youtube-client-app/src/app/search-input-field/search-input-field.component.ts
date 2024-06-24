@@ -23,15 +23,15 @@ import {
         }),
       ),
       state(
-        'clicked',
+        'coloured',
         style({
-          backgroundColor: 'pink',
+          backgroundColor: '#ff79e9',
           color: 'oklch(100% 0 0)',
           'border-color': 'oklch(0% 0 0)',
         }),
       ),
-      transition('initial => clicked', [animate('0.5s')]),
-      transition('clicked => initial', [animate('0.5s')]),
+      transition('initial => coloured', [animate('0.4s')]),
+      transition('coloured => initial', [animate('0.4s')]),
     ]),
   ],
 })
