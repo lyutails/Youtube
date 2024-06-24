@@ -9,7 +9,7 @@
   }
 
   &_pic {
-    width: 90%;
+    width: 100%;
     aspect-ratio: 1 / 0.6;
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,5 +25,15 @@
 
   &_stat {
     width: 18%;
+    font-size: 0.6rem;
+  }
+
+  &_title {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  &_id {
+    font-size: 0.6rem;
   }
 }
