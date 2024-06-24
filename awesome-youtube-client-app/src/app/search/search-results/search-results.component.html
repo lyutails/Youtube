@@ -1,0 +1,17 @@
+@for (card of responseCards; track card) {
+  <div class="card_wrapper">
+    <div class="card_id">
+      {{ card.id }}
+    </div>
+    <div class="card_pic">{{ card.snippet.thumbnails.high }}</div>
+    <div class="card_stats">
+      <div class="card_stat view">{{ card.statistics.viewCount }}</div>
+      <div class="card_stat like">{{ card.statistics.likeCount }}</div>
+      <div class="card_stat dislike">{{ card.statistics.dislikeCount }}</div>
+      <div class="card_stat favourite">{{ card.statistics.favoriteCount }}</div>
+      <div class="card_stat comments">{{ card.statistics.commentCount }}</div>
+    </div>
+    <div class="card_title">{{ card.snippet.localized.title }}</div>
+    <button class="card_button">more...</button>
+  </div>
+}

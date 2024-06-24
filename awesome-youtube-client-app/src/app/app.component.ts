@@ -24,4 +24,5 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     ]]),
   ], */
 })
-export class AppComponent {}
+export class AppComponent {
+}
