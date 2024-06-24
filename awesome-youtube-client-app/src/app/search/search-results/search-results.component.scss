@@ -1,6 +1,24 @@
 .card {
-    &_wrapper {
-        width: 30%;
-        height: 200px;
-    }
+  &_wrapper {
+    width: 30%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_pic {
+    width: 90%;
+    aspect-ratio: 1 / 0.6;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &_stats {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

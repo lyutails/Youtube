@@ -3,7 +3,12 @@
     <div class="card_id">
       {{ card.id }}
     </div>
-    <div class="card_pic">{{ card.snippet.thumbnails.high }}</div>
+    <div
+      class="card_pic"
+      [ngStyle]="{
+        'background-image': 'url(' + card.snippet.thumbnails.high.url + ')',
+      }"
+    ></div>
     <div class="card_stats">
       <div class="card_stat view">{{ card.statistics.viewCount }}</div>
       <div class="card_stat like">{{ card.statistics.likeCount }}</div>
