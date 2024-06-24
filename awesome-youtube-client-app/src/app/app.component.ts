@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     HeaderComponent,
     FooterComponent,
     SearchResultsComponent,
+    // BrowserAnimationsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
