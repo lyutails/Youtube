@@ -32,15 +32,16 @@ a {
     justify-content: space-between;
   }
 
-  &_settings {
-    width: 150px;
+  &_filters {
+    width: 130px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    pointer-events: none;
   }
 
   &_settings-toggle {
-    font-size: 20px;
+    font-size: 1rem;
   }
 
   &_youtube-logo {

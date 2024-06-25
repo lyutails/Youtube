@@ -1,8 +1,6 @@
 @for (card of responseCards; track card) {
   <div class="card_wrapper">
-    <div class="card_id">
-      id: {{ card.id }}
-    </div>
+    <div class="card_id">id: {{ card.id }}</div>
     <div
       class="card_pic"
       [ngStyle]="{
@@ -10,11 +8,28 @@
       }"
     ></div>
     <div class="card_stats">
-      <div class="card_stat view">{{ card.statistics.viewCount }}</div>
-      <div class="card_stat like">{{ card.statistics.likeCount }}</div>
-      <div class="card_stat dislike">{{ card.statistics.dislikeCount }}</div>
-      <div class="card_stat favourite">{{ card.statistics.favoriteCount }}</div>
-      <div class="card_stat comments">{{ card.statistics.commentCount }}</div>
+      <div class="card_stat view">
+        {{ card.statistics.viewCount }}
+        <mat-icon class="header_icon">emoji_people</mat-icon>
+      </div>
+      <div class="card_stat like">
+        {{ card.statistics.likeCount }}
+        <mat-icon class="header_icon">thumb_up</mat-icon>
+      </div>
+      <div class="card_stat dislike">
+        {{ card.statistics.dislikeCount }}
+        <mat-icon class="header_icon">thumb_down</mat-icon>
+      </div>
+      <div class="card_stat favourite">
+        {{ card.statistics.favoriteCount }}
+        <mat-icon class="header_icon">favorite</mat-icon>
+        <!-- <mat-icon class="header_icon">heart_broken</mat-icon> -->
+        <!-- <mat-icon class="header_icon">person_add</mat-icon> -->
+      </div>
+      <div class="card_stat comments">
+        {{ card.statistics.commentCount }}
+        <mat-icon class="header_icon">comment</mat-icon>
+      </div>
     </div>
     <div class="card_title">{{ card.snippet.title }}</div>
     <button class="card_button"><ng-content>more...</ng-content></button>
