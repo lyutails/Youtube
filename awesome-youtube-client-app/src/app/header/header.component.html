@@ -4,8 +4,8 @@
     <h1 class="header_title">{{ title }}</h1>
     <app-search-input-field></app-search-input-field>
     <div class="header_settings">
-      <mat-slide-toggle></mat-slide-toggle>
       <div class="header_settings-toggle">Settings</div>
+      <mat-slide-toggle (click)="toggleFilters()"></mat-slide-toggle>
     </div>
     <div class="header_login">
       <button class="header_login-button">Login</button>

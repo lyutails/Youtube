@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-filters></app-filters>
+<app-header (settingsToggle)="closeOpenFilters($event)"></app-header>
+<app-filters [showHideFilters]='isOpenClose'></app-filters>
 <app-search-results class="search_results"></app-search-results>
 <app-footer></app-footer>
 

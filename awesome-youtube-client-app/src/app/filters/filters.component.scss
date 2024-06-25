@@ -3,7 +3,7 @@
 
 .filters {
   &_wrapper {
-    width: 90%;
+    width: 60%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -34,9 +34,9 @@
 
   &_item.button {
     font-size: 0.8rem;
-    padding: 2px 5px;
-    border-radius: 5px;
-    border: solid 1px;
+    // padding: 2px 5px;
+    // border-radius: 5px;
+    // border: solid 1px;
     // background-color: mat-color($_palettes, P70);
 
     &:hover {
@@ -48,6 +48,7 @@
 @media screen and (max-width: 1200px) and (min-width: 650px) {
   .filters_wrapper {
     font-size: 0.8rem;
+    width: 90%;
   }
 }
 
@@ -58,5 +59,6 @@
     row-gap: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
+    width: 90%;
   }
 }

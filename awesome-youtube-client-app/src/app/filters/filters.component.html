@@ -1,6 +1,13 @@
-<div class="filters_wrapper">
+<div
+  class="filters_wrapper"
+  [ngStyle]="{
+    visibility: showHideFilters === true ? 'hidden' : 'visible',
+  }"
+>
   <div class="filters_item title">Sorting by:</div>
-  <button mat-button matTooltip="date sort" class="filters_item button">date</button>
+  <button mat-button matTooltip="date sort" class="filters_item button">
+    date
+  </button>
   <button mat-button class="filters_item button">views' count</button>
   <div class="filters_item">
     by word or sentence

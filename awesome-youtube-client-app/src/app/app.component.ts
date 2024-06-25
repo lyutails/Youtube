@@ -14,7 +14,7 @@ import { FiltersComponent } from './filters/filters.component';
     HeaderComponent,
     FooterComponent,
     SearchResultsComponent,
-    FiltersComponent
+    FiltersComponent,
     // BrowserAnimationsModule,
   ],
   templateUrl: './app.component.html',
@@ -27,4 +27,10 @@ import { FiltersComponent } from './filters/filters.component';
   ], */
 })
 export class AppComponent {
+  isOpenClose = true;
+
+  public closeOpenFilters(value: boolean) {
+    this.isOpenClose = value;
+    return value;
+  }
 }
