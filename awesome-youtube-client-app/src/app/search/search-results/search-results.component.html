@@ -17,6 +17,6 @@
       <div class="card_stat comments">{{ card.statistics.commentCount }}</div>
     </div>
     <div class="card_title">{{ card.snippet.localized.title }}</div>
-    <button class="card_button">more...</button>
+    <button class="card_button"><ng-content>more...</ng-content></button>
   </div>
 }

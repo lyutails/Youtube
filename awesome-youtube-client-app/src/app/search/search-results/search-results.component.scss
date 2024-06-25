@@ -31,9 +31,15 @@
   &_title {
     text-align: center;
     padding-bottom: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
 
   &_id {
     font-size: 0.6rem;
+  }
+
+  &_button {
+    font-size: 0.8rem;
   }
 }

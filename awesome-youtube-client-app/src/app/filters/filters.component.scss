@@ -1,0 +1,60 @@
+@import '../../../m3-theme.scss';
+
+.filters {
+  &_wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_input {
+    font-size: 0.8rem;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 5px;
+    border: solid 1px;
+
+    &::placeholder {
+      font-size: 0.8rem;
+    }
+
+    &:focus::placeholder {
+      outline: none;
+      color: transparent;
+    }
+  }
+
+  &_item.title {
+    pointer-events: none;
+  }
+
+  &_item.button {
+    font-size: 0.8rem;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: solid 1px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 650px) {
+  .filters_wrapper {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 320px) {
+  .filters_wrapper {
+    flex-direction: column;
+    font-size: 0.8rem;
+    row-gap: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
