@@ -38,10 +38,7 @@
     // border-radius: 5px;
     // border: solid 1px;
     // background-color: mat-color($_palettes, P70);
-
-    &:hover {
-      cursor: pointer;
-    }
+    transition: all 0.4s ease-in-out;
   }
 }
 

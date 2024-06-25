@@ -4,7 +4,7 @@
     <div
       class="card_pic"
       [ngStyle]="{
-        'background-image': 'url(' + card.snippet.thumbnails.high.url + ')',
+        'background-image': 'url(' + card.snippet.thumbnails.maxres.url + ')',
       }"
     ></div>
     <div class="card_stats">
@@ -20,12 +20,18 @@
         {{ card.statistics.dislikeCount }}
         <mat-icon class="header_icon">thumb_down</mat-icon>
       </div>
-      <div class="card_stat favourite">
+      <button
+        (click)="loveUnlove()"
+        class="card_stat favourite"
+        [ngStyle]="{
+          color: isFavourite === true ? '#be003d' : '#000000',
+        }"
+      >
         {{ card.statistics.favoriteCount }}
         <mat-icon class="header_icon">favorite</mat-icon>
         <!-- <mat-icon class="header_icon">heart_broken</mat-icon> -->
         <!-- <mat-icon class="header_icon">person_add</mat-icon> -->
-      </div>
+      </button>
       <div class="card_stat comments">
         {{ card.statistics.commentCount }}
         <mat-icon class="header_icon">comment</mat-icon>

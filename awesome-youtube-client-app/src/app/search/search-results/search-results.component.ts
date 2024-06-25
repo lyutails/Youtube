@@ -12,4 +12,10 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class SearchResultsComponent {
   responseCards = cards.items;
+
+  isFavourite = false;
+
+  loveUnlove() {
+    this.isFavourite = !this.isFavourite;
+  }
 }
