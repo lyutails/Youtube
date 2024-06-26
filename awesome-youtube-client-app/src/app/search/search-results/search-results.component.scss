@@ -1,6 +1,7 @@
 .card {
   &_wrapper {
     width: 30%;
+    max-height: 18rem;
     // height: 200px;
     display: flex;
     flex-direction: column;

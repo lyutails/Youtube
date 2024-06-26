@@ -17,7 +17,6 @@ export class WordsPipePipe implements PipeTransform {
       const filteredCards = this.responseCards.filter((item) =>
         item.snippet.title.toLowerCase().includes(inputValue),
       );
-      console.log(filteredCards);
       return filteredCards;
     }
   }

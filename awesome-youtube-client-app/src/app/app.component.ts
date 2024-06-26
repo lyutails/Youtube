@@ -37,7 +37,6 @@ export class AppComponent {
 
   public gotFilterByWordValue(value: string) {
     this.filterValue = value;
-    console.log(value);
     return value;
   }
 }
