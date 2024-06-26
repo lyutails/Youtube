@@ -28,9 +28,16 @@ import { FiltersComponent } from './filters/filters.component';
 })
 export class AppComponent {
   isOpenClose = true;
+  filterValue = '';
 
   public closeOpenFilters(value: boolean) {
     this.isOpenClose = value;
+    return value;
+  }
+
+  public gotFilterByWordValue(value: string) {
+    this.filterValue = value;
+    console.log(value);
     return value;
   }
 }

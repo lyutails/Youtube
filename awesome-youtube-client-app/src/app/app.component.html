@@ -1,6 +1,9 @@
 <app-header (settingsToggle)="closeOpenFilters($event)"></app-header>
-<app-filters [showHideFilters]='isOpenClose'></app-filters>
-<app-search-results class="search_results"></app-search-results>
+<app-filters [showHideFilters]='isOpenClose'
+(filterByWordValue)="gotFilterByWordValue($event)"></app-filters>
+<app-search-results class="search_results"
+[filterValueDownFromApp]="filterValue"
+></app-search-results>
 <app-footer></app-footer>
 
 <router-outlet />

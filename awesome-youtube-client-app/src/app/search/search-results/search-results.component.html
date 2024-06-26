@@ -1,3 +1,9 @@
-@for (responseCard of responseCards; track responseCard.id) {
-  <app-search-item class="card_wrapper" [card]=responseCard></app-search-item>
+@for (
+  responseCard of (responseCards | wordsPipe: filterValueDownFromApp);
+  track responseCard.id
+) {
+  <app-search-item
+    class="card_wrapper"
+    [card]="responseCard"
+  ></app-search-item>
 }

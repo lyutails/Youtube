@@ -1,18 +1,21 @@
 import { Component, Input } from '@angular/core';
 import { SearchItem } from '../search-item.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
+import { WordsPipePipe } from '../../words-pipe.pipe';
 
 @Component({
   selector: 'app-search-item',
   standalone: true,
-  imports: [CommonModule, MatIcon],
+  imports: [CommonModule, MatIcon, UpperCasePipe, WordsPipePipe],
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
 })
 export class SearchItemComponent {
   @Input() card!: SearchItem;
   protected isFavourite = false;
+  buttonName = 'more...';
+  @Input() filterByWordSearchResults = '';
 
   countFavourites() {
     /* const heart = event?.currentTarget as HTMLButtonElement;
