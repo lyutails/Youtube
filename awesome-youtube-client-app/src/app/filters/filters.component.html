@@ -16,7 +16,8 @@
       class="filters_input"
       type="text"
       placeholder="what you're looking for..."
-      (keyup)="getInputValue($event)"
+      [(ngModel)]="inputValue"
+      (input)="onSearch(inputValue)"
     />
   </div>
 </div>
