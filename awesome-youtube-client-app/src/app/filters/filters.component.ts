@@ -36,7 +36,6 @@ export class FiltersComponent implements OnInit, OnDestroy {
   getInputValue(inputValue: string) {
     // const inputTarget = event.target as HTMLInputElement;
     // this.inputValue = inputTarget?.value;
-    console.log(inputValue);
     this.filterByWordValue.emit(inputValue);
     return this.inputValue;
   }
