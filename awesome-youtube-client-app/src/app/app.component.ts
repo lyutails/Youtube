@@ -43,7 +43,6 @@ export class AppComponent {
 
   public gotFakeSearch(value: string) {
     this.fakeSearchValue = value;
-    console.log(value);
     return value;
   }
 }

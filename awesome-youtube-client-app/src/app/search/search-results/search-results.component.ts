@@ -22,13 +22,11 @@ export class SearchResultsComponent {
   responseCardsOnRequest: SearchItem[] = [];
 
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
-    console.log(this.getFakeSearchValue);
     this.getFakeSearchValue = value;
     return this.responseCards.filter(
       (item) =>
         item.snippet.title.toLowerCase().includes(value) &&
         this.responseCardsOnRequest.push(item),
-      console.log(this.responseCardsOnRequest),
     );
     // console.log(this.responseCardsOnRequest)
     // return this.responseCardsOnRequest;

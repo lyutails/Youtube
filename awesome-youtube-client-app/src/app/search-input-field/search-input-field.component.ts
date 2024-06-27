@@ -48,13 +48,11 @@ export class SearchInputFieldComponent {
   inputSearch(value: string) {
     // const inputTarget = event.target as HTMLInputElement;
     this.inputValue = value;
-    console.log(this.inputValue);
     return this.inputValue;
   }
 
   startSearch(value: string) {
     this.inputValue = value;
-    console.log(value);
     this.fakeSearch.emit(this.inputValue);
   }
 }

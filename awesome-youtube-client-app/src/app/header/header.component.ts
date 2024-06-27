@@ -31,7 +31,6 @@ export class HeaderComponent {
   @Output() fakeSearchHeader = new EventEmitter<string>();
 
   public fakeSearchToApp(value: string) {
-    console.log(value);
     this.fakeSearchHeader.emit(value);
   }
 }
