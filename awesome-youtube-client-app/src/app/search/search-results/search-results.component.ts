@@ -3,7 +3,7 @@ import * as cards from '../../../../response.json';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
-import { WordsPipePipe } from '../../words-pipe.pipe';
+import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { SearchItem } from '../search-item.model';
 
 @Component({

@@ -1,8 +1,10 @@
-<header class="header">
+<header class="header" appColouredByDateBorder>
   <div class="header_wrapper">
     <div class="header_youtube-logo"></div>
     <h1 class="header_title">{{ title }}</h1>
-    <app-search-input-field (fakeSearch)="fakeSearchToApp($event)"></app-search-input-field>
+    <app-search-input-field
+      (fakeSearch)="fakeSearchToApp($event)"
+    ></app-search-input-field>
     <div class="header_filters">
       <div class="header_filters-toggle">Filters</div>
       <mat-slide-toggle (click)="toggleFilters()"></mat-slide-toggle>

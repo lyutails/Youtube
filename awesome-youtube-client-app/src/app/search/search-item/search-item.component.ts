@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { WordsPipePipe } from '../../words-pipe.pipe';
+import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 
 @Component({
   selector: 'app-search-item',
