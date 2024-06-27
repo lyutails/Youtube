@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import {
   trigger,
@@ -7,11 +7,12 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-input-field',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, FormsModule],
   templateUrl: './search-input-field.component.html',
   styleUrl: './search-input-field.component.scss',
   animations: [
@@ -30,14 +31,30 @@ import {
           'border-color': 'oklch(0% 0 0)',
         }),
       ),
-      transition('initial => coloured', [animate('0.4s')]),
-      transition('coloured => initial', [animate('0.4s')]),
+      transition('initial => coloured', [animate('0.2s')]),
+      transition('coloured => initial', [animate('0.2s')]),
     ]),
   ],
 })
 export class SearchInputFieldComponent {
   isBackgroundRecoloured = true;
+  inputValue = '';
+  @Output() fakeSearch = new EventEmitter<string>();
+
   recolour() {
     this.isBackgroundRecoloured = !this.isBackgroundRecoloured;
+  }
+
+  inputSearch(value: string) {
+    // const inputTarget = event.target as HTMLInputElement;
+    this.inputValue = value;
+    console.log(this.inputValue);
+    return this.inputValue;
+  }
+
+  startSearch(value: string) {
+    this.inputValue = value;
+    console.log(value);
+    this.fakeSearch.emit(this.inputValue);
   }
 }

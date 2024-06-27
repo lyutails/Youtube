@@ -16,4 +16,5 @@ export class SearchResultsComponent {
   responseCards = cards.items;
   @Input() filterValueDownFromApp = '';
   gotFilterValue = '';
+  @Input() fakeSearchDownFromApp = '';
 }

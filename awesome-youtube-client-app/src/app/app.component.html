@@ -1,8 +1,15 @@
-<app-header (settingsToggle)="closeOpenFilters($event)"></app-header>
-<app-filters [showHideFilters]='isOpenClose'
-(filterByWordValue)="gotFilterByWordValue($event)"></app-filters>
-<app-search-results class="search_results"
-[filterValueDownFromApp]="filterValue"
+<app-header
+  (settingsToggle)="closeOpenFilters($event)"
+  (fakeSearchHeader)="gotFakeSearch($event)"
+></app-header>
+<app-filters
+  [showHideFilters]="isOpenClose"
+  (filterByWordValue)="gotFilterByWordValue($event)"
+></app-filters>
+<app-search-results
+  class="search_results"
+  [filterValueDownFromApp]="filterValue"
+  [fakeSearchDownFromApp]="fakeSearchValue"
 ></app-search-results>
 <app-footer></app-footer>
 

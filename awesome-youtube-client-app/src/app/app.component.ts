@@ -29,6 +29,7 @@ import { FiltersComponent } from './filters/filters.component';
 export class AppComponent {
   isOpenClose = true;
   filterValue = '';
+  fakeSearchValue = '';
 
   public closeOpenFilters(value: boolean) {
     this.isOpenClose = value;
@@ -37,6 +38,12 @@ export class AppComponent {
 
   public gotFilterByWordValue(value: string) {
     this.filterValue = value;
+    return value;
+  }
+
+  public gotFakeSearch(value: string) {
+    this.fakeSearchValue = value;
+    console.log(value);
     return value;
   }
 }

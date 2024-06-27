@@ -13,11 +13,25 @@ import { SearchInputFieldComponent } from '../search-input-field/search-input-fi
 export class HeaderComponent {
   title = 'YouTube-client-app';
   state = true;
+  fakeSearchValue = '';
 
   @Output() settingsToggle = new EventEmitter<boolean>();
 
   public toggleFilters() {
     this.state = !this.state;
     this.settingsToggle.emit(this.state);
+  }
+
+  public gotFakeSearchHeader(value: string) {
+    this.fakeSearchValue = value;
+    console.log(value);
+    return value;
+  }
+
+  @Output() fakeSearchHeader = new EventEmitter<string>();
+
+  public fakeSearchToApp(value: string) {
+    console.log(value);
+    this.fakeSearchHeader.emit(value);
   }
 }
