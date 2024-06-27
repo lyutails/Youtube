@@ -54,6 +54,7 @@ a {
     background-size: contain;
     position: relative;
     margin-right: 30px;
+    overflow: hidden;
 
     &:hover {
       cursor: pointer;

@@ -1,6 +1,30 @@
-<footer class="footer">
+<footer
+  [ngStyle]="{
+    'background-color': isDay
+      ? 'oklch(99.13% 0.0085 205.9)'
+      : 'oklch(14.09% 0.024 205.29)',
+  }"
+  class="footer"
+>
   <div class="footer_wrapper">
     <a class="footer_logo" href="https://app.rs.school/registry/student">RS</a>
+    <button
+      (click)="changeTheme()"
+      class="footer_theme"
+      [ngStyle]="{
+        border: isDay
+          ? '1px solid oklch(14.09% 0.024 205.29)'
+          : '1px solid oklch(99.13% 0.0085 205.9)',
+      }"
+    >
+      <mat-icon
+        [ngStyle]="{
+          color: isDay ? 'oklch(0% 0 0)' : 'oklch(100% 0 0)',
+        }"
+        class="footer_theme-icon"
+        >{{ isDay ? isLight : isDark }}</mat-icon
+      >
+    </button>
     <a class="footer_lyutails" href="https://github.com/lyutails">{{
       author
     }}</a>

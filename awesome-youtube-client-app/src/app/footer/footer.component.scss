@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 .footer {
   width: 100%;
@@ -29,6 +29,7 @@
     color: oklch(100% 0 0);
     position: relative;
     text-decoration: none;
+    overflow: hidden;
 
     &:hover {
       cursor: pointer;
@@ -67,5 +68,22 @@
       cursor: pointer;
       opacity: 0.5;
     }
+  }
+
+  &_theme {
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 50%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &_theme-icon {
+    font-size: 1.2rem;
+    color: oklch(100% 0 0);
   }
 }
