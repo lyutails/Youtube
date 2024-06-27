@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
 import { WordsPipePipe } from '../../words-pipe.pipe';
+import { SearchItem } from '../search-item.model';
 
 @Component({
   selector: 'app-search-results',
@@ -17,4 +18,19 @@ export class SearchResultsComponent {
   @Input() filterValueDownFromApp = '';
   gotFilterValue = '';
   @Input() fakeSearchDownFromApp = '';
+  @Input() getFakeSearchValue = '';
+  responseCardsOnRequest: SearchItem[] = [];
+
+  getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
+    console.log(this.getFakeSearchValue);
+    this.getFakeSearchValue = value;
+    return this.responseCards.filter(
+      (item) =>
+        item.snippet.title.toLowerCase().includes(value) &&
+        this.responseCardsOnRequest.push(item),
+      console.log(this.responseCardsOnRequest),
+    );
+    // console.log(this.responseCardsOnRequest)
+    // return this.responseCardsOnRequest;
+  }
 }
