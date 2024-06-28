@@ -4,7 +4,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
 import { FiltersComponent } from './filters/filters.component';
-import { ColouredByDateBorderDirective } from './directives/coloured-by-date-border.directive';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
@@ -16,7 +15,6 @@ import { ColouredByDateBorderDirective } from './directives/coloured-by-date-bor
     FooterComponent,
     SearchResultsComponent,
     FiltersComponent,
-    ColouredByDateBorderDirective,
     // BrowserAnimationsModule,
   ],
   templateUrl: './app.component.html',

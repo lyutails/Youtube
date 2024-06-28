@@ -5,11 +5,18 @@ import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
 import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { SearchItem } from '../search-item.model';
+import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
 
 @Component({
   selector: 'app-search-results',
   standalone: true,
-  imports: [CommonModule, MatIcon, SearchItemComponent, WordsPipePipe],
+  imports: [
+    CommonModule,
+    MatIcon,
+    SearchItemComponent,
+    WordsPipePipe,
+    ColouredByDateBorderDirective,
+  ],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
@@ -24,9 +31,9 @@ export class SearchResultsComponent {
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
     this.getFakeSearchValue = value;
     return this.responseCards.filter(
-      (item) =>
+      item =>
         item.snippet.title.toLowerCase().includes(value) &&
-        this.responseCardsOnRequest.push(item),
+        this.responseCardsOnRequest.push(item)
     );
     // console.log(this.responseCardsOnRequest)
     // return this.responseCardsOnRequest;

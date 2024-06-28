@@ -6,6 +6,6 @@ import { Directive, ElementRef } from '@angular/core';
 })
 export class ColouredByDateBorderDirective {
   constructor(public elem: ElementRef) {
-    this.elem.nativeElement.style.backgroundColor = '#000000';
+    this.elem.nativeElement.style.borderBottom = '10px solid oklch(0% 0 0)';
   }
 }
