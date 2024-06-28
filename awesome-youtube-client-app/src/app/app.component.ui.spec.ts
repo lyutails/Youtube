@@ -9,6 +9,6 @@ describe('AppComponent', () => {
 
   it('should render Settings', async () => {
     await render(AppComponent);
-    await screen.getByText('Settings');
+    await screen.getByText('Filters');
   });
 });
