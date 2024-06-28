@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
         'initial',
         style({
           backgroundColor: 'white',
-        }),
+        })
       ),
       state(
         'coloured',
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
           backgroundColor: '#ff79e9',
           color: 'oklch(100% 0 0)',
           'border-color': 'oklch(0% 0 0)',
-        }),
+        })
       ),
       transition('initial => coloured', [animate('0.4s')]),
       transition('coloured => initial', [animate('0.4s')]),

@@ -30,12 +30,12 @@ export class SearchResultsComponent {
 
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
     this.getFakeSearchValue = value;
-    return this.responseCards.filter(
-      item =>
-        item.snippet.title.toLowerCase().includes(value) &&
-        this.responseCardsOnRequest.push(item)
-    );
-    // console.log(this.responseCardsOnRequest)
-    // return this.responseCardsOnRequest;
+    return this.getFakeSearchValue === ''
+      ? []
+      : this.responseCards.filter(
+          item =>
+            item.snippet.title.toLowerCase().includes(value) &&
+            this.responseCardsOnRequest.push(item)
+        );
   }
 }
