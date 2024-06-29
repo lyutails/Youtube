@@ -9,6 +9,10 @@ export class ColouredByDateBorderDirective implements OnInit {
   @Input() appColouredByDateBorder = '';
 
   borderStyleParams = '10px solid ';
+  colourForMoreThanSixMonths = 'red';
+  colourForMoreThanThirtyDays = 'yellow';
+  colourForMoreThanSevenDays = 'green';
+  colourForLessThanSevenDays = 'blue';
 
   constructor(public elem: ElementRef) {}
 
@@ -24,15 +28,15 @@ export class ColouredByDateBorderDirective implements OnInit {
       this.appColouredByDateBorder
     );
     if (timeDifference >= 180) {
-      return `${this.borderStyleParams + 'red'}`;
+      return `${this.borderStyleParams + this.colourForMoreThanSixMonths}`;
     }
     if (timeDifference >= 30) {
-      return `${this.borderStyleParams + 'yellow'}`;
+      return `${this.borderStyleParams + this.colourForMoreThanThirtyDays}`;
     }
     if (timeDifference >= 7) {
-      return `${this.borderStyleParams + 'green'}`;
+      return `${this.borderStyleParams + this.colourForMoreThanSevenDays}`;
     }
-    return `${this.borderStyleParams + 'blue'}`;
+    return `${this.borderStyleParams + this.colourForLessThanSevenDays}`;
   }
 
   ngOnInit(): string {
