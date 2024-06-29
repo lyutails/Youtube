@@ -6,6 +6,6 @@
   <app-search-item
     class="card_wrapper"
     [card]="responseCard"
-    appColouredByDateBorder
+    [appColouredByDateBorder]="responseCard.snippet.publishedAt"
     [ngStyle]="{ display: 'block' }"></app-search-item>
 }

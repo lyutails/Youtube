@@ -3,11 +3,18 @@ import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
+import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
 
 @Component({
   selector: 'app-search-item',
   standalone: true,
-  imports: [CommonModule, MatIcon, UpperCasePipe, WordsPipePipe],
+  imports: [
+    CommonModule,
+    MatIcon,
+    UpperCasePipe,
+    WordsPipePipe,
+    ColouredByDateBorderDirective,
+  ],
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
 })
