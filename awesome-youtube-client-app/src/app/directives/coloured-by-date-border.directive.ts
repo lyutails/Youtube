@@ -8,6 +8,8 @@ export class ColouredByDateBorderDirective implements OnInit {
   today = new Date();
   @Input() appColouredByDateBorder = '';
 
+  borderStyleParams = '10px solid ';
+
   constructor(public elem: ElementRef) {}
 
   getDifferenceInTime(dateOne: Date, dateTwo: string) {
@@ -22,15 +24,15 @@ export class ColouredByDateBorderDirective implements OnInit {
       this.appColouredByDateBorder
     );
     if (timeDifference >= 180) {
-      return '10px solid red';
+      return `${this.borderStyleParams + 'red'}`;
     }
     if (timeDifference >= 30) {
-      return '10px solid yellow';
+      return `${this.borderStyleParams + 'yellow'}`;
     }
     if (timeDifference >= 7) {
-      return '10px solid green';
+      return `${this.borderStyleParams + 'green'}`;
     }
-    return '10px solid blue';
+    return `${this.borderStyleParams + 'blue'}`;
   }
 
   ngOnInit(): string {
