@@ -16,20 +16,24 @@ export class ColouredByDateBorderDirective implements OnInit {
     );
   }
 
-  ngOnInit(): string {
+  getColor(): string {
     const timeDifference = this.getDifferenceInTime(
       this.today,
       this.appColouredByDateBorder
     );
     if (timeDifference >= 180) {
-      return (this.elem.nativeElement.style.borderBottom = '10px solid red');
+      return '10px solid red';
     }
     if (timeDifference >= 30) {
-      return (this.elem.nativeElement.style.borderBottom = '10px solid yellow');
+      return '10px solid yellow';
     }
     if (timeDifference >= 7) {
-      return (this.elem.nativeElement.style.borderBottom = '10px solid green');
+      return '10px solid green';
     }
-    return (this.elem.nativeElement.style.borderBottom = '10px solid blue');
+    return '10px solid blue';
+  }
+
+  ngOnInit(): string {
+    return (this.elem.nativeElement.style.borderBottom = this.getColor());
   }
 }
