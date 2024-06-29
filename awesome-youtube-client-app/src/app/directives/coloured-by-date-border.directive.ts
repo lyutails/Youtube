@@ -16,30 +16,20 @@ export class ColouredByDateBorderDirective implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    if (
-      this.getDifferenceInTime(this.today, this.appColouredByDateBorder) >= 180
-    ) {
-      this.elem.nativeElement.style.borderBottom = '10px solid red';
+  ngOnInit(): string {
+    const timeDifference = this.getDifferenceInTime(
+      this.today,
+      this.appColouredByDateBorder
+    );
+    if (timeDifference >= 180) {
+      return (this.elem.nativeElement.style.borderBottom = '10px solid red');
     }
-    if (
-      this.getDifferenceInTime(this.today, this.appColouredByDateBorder) >= 30 &&
-      this.getDifferenceInTime(this.today, this.appColouredByDateBorder) <= 179
-    ) {
-      this.elem.nativeElement.style.borderBottom = '10px solid yellow';
+    if (timeDifference >= 30) {
+      return (this.elem.nativeElement.style.borderBottom = '10px solid yellow');
     }
-    if (
-      this.getDifferenceInTime(this.today, this.appColouredByDateBorder) >= 7 &&
-      this.getDifferenceInTime(this.today, this.appColouredByDateBorder) <= 29
-    ) {
-      this.elem.nativeElement.style.borderBottom = '10px solid green';
+    if (timeDifference >= 7) {
+      return (this.elem.nativeElement.style.borderBottom = '10px solid green');
     }
-    if (
-      this.getDifferenceInTime(this.today, this.appColouredByDateBorder) > 0 &&
-      this.getDifferenceInTime(this.today, this.appColouredByDateBorder) <=
-        6
-    ) {
-      this.elem.nativeElement.style.borderBottom = '10px solid blue';
-    }
+    return (this.elem.nativeElement.style.borderBottom = '10px solid blue');
   }
 }
