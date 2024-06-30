@@ -10,16 +10,11 @@ export class DatePipe implements PipeTransform {
   responseCards = cards.items;
 
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
-    if (responseCards !== undefined) {
-      return responseCards?.sort((a, b) => {
-        if (value) {
-          return +a.statistics.viewCount - +b.statistics.viewCount;
-        }
-        if (!value) {
-          return +b.statistics.viewCount - +a.statistics.viewCount;
-        }
-      });
-    }
+    return responseCards?.sort((a, b) => {
+      if (value) {
+        return +a.statistics.viewCount - +b.statistics.viewCount;
+      } else return +b.statistics.viewCount - +a.statistics.viewCount;
+    });
   }
 }
  */

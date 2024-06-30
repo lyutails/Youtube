@@ -45,6 +45,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
   viewsSortOrder() {
     this.isViewsCoundAsc = !this.isViewsCoundAsc;
     console.log(this.isViewsCoundAsc);
+    this.viewsCountAsc.emit(this.isViewsCoundAsc);
   }
 
   ngOnDestroy() {

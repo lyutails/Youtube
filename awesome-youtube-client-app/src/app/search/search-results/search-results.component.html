@@ -1,6 +1,7 @@
 @for (
-  responseCard of getCardsBasedOnHeaderInputValue(getFakeSearchValue)
-    | wordsPipe: filterValueDownFromApp;
+  responseCard of (getCardsBasedOnHeaderInputValue(getFakeSearchValue)
+    | wordsPipe: filterValueDownFromApp
+    | viewsCountAsc: gotViewsCountAcsOrder);
   track responseCard.id
 ) {
   <app-search-item
@@ -9,4 +10,3 @@
     [appColouredByDateBorder]="responseCard.snippet.publishedAt"
     [ngStyle]="{ display: 'block' }"></app-search-item>
 }
-<!-- | date: gotViewsCountAcsOrder -->

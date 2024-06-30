@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import * as cards from '../../../../response.json';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
 import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { SearchItem } from '../search-item.model';
 import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
+import { ViewsCountAscPipe } from '../../pipes/views-count-asc.pipe';
 
 @Component({
   selector: 'app-search-results',
@@ -16,7 +17,7 @@ import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date
     SearchItemComponent,
     WordsPipePipe,
     ColouredByDateBorderDirective,
-    DatePipe
+    ViewsCountAscPipe,
   ],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
