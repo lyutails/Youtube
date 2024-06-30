@@ -2,13 +2,22 @@
   class="filters_wrapper"
   [ngStyle]="{
     visibility: showHideFilters === true ? 'hidden' : 'visible',
-  }"
->
+  }">
   <div class="filters_item title">Sorting by:</div>
   <button mat-button matTooltip="date sort" class="filters_item button">
     date
   </button>
-  <button mat-button class="filters_item button" (click)="viewsSortOrder()">views' count ASC</button>
+  <button
+    mat-button
+    class="filters_item button"
+    (click)="viewsSortOrder()"
+    [ngStyle]="{
+      background: !isViewsCoundAsc
+        ? 'oklch(75.93% 0.15 14.33 / 10%)'
+        : 'transparent',
+    }">
+    views' count ASC
+  </button>
   <button mat-button class="filters_item button">favourite</button>
   <div class="filters_item">
     by word or sentence
@@ -17,7 +26,6 @@
       type="text"
       placeholder="what you're looking for..."
       [(ngModel)]="inputValue"
-      (input)="onSearch(inputValue)"
-    />
+      (input)="onSearch(inputValue)" />
   </div>
 </div>

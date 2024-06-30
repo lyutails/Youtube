@@ -10,7 +10,7 @@ export class ViewsCountAscPipe implements PipeTransform {
   responseCards = cards.items;
 
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] | undefined {
-    if (value === true) {
+    if (value === false) {
       return responseCards?.sort((a, b) => {
         return +a.statistics.viewCount - +b.statistics.viewCount;
       });
