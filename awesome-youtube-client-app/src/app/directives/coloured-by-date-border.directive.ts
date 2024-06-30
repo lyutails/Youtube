@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Colour } from './dateColoursEnum.model';
 
 @Directive({
   selector: '[appColouredByDateBorder]',
@@ -9,10 +10,6 @@ export class ColouredByDateBorderDirective implements OnInit {
   @Input() appColouredByDateBorder = '';
 
   borderStyleParams = '10px solid ';
-  colourForMoreThanSixMonths = 'red';
-  colourForMoreThanThirtyDays = 'yellow';
-  colourForMoreThanSevenDays = 'green';
-  colourForLessThanSevenDays = 'blue';
 
   constructor(public elem: ElementRef) {}
 
@@ -28,18 +25,18 @@ export class ColouredByDateBorderDirective implements OnInit {
       this.appColouredByDateBorder
     );
     if (timeDifference >= 180) {
-      return `${this.borderStyleParams + this.colourForMoreThanSixMonths}`;
+      return Colour.RED;
     }
     if (timeDifference >= 30) {
-      return `${this.borderStyleParams + this.colourForMoreThanThirtyDays}`;
+      return Colour.YELLOW;
     }
     if (timeDifference >= 7) {
-      return `${this.borderStyleParams + this.colourForMoreThanSevenDays}`;
+      return Colour.GREEN;
     }
-    return `${this.borderStyleParams + this.colourForLessThanSevenDays}`;
+    return Colour.BLUE;
   }
 
   ngOnInit(): string {
-    return (this.elem.nativeElement.style.borderBottom = this.getColor());
+    return this.elem.nativeElement.style.borderBottom = `${this.borderStyleParams + this.getColor()}`;
   }
 }

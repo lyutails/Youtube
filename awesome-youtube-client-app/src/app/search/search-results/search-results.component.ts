@@ -16,7 +16,7 @@ import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date
     SearchItemComponent,
     WordsPipePipe,
     ColouredByDateBorderDirective,
-    DatePipe,
+    DatePipe
   ],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
@@ -28,6 +28,7 @@ export class SearchResultsComponent {
   @Input() fakeSearchDownFromApp = '';
   @Input() getFakeSearchValue = '';
   responseCardsOnRequest: SearchItem[] = [];
+  @Input() gotViewsCountAcsOrder = true;
 
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
     this.getFakeSearchValue = value;

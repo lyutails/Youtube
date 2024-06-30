@@ -20,6 +20,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   inputValue = '';
   private SearchSubject = new Subject<string>();
   private readonly debounceTimeMs = 500;
+  isViewsCoundAsc = true;
+  @Output() viewsCountAsc = new EventEmitter<boolean>();
 
   ngOnInit() {
     this.SearchSubject.pipe(
@@ -38,6 +40,11 @@ export class FiltersComponent implements OnInit, OnDestroy {
     // this.inputValue = inputTarget?.value;
     this.filterByWordValue.emit(inputValue);
     return this.inputValue;
+  }
+
+  viewsSortOrder() {
+    this.isViewsCoundAsc = !this.isViewsCoundAsc;
+    console.log(this.isViewsCoundAsc);
   }
 
   ngOnDestroy() {

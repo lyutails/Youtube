@@ -9,8 +9,17 @@ import { SearchItem } from '../search/search-item.model';
 export class DatePipe implements PipeTransform {
   responseCards = cards.items;
 
-  transform(responseCards: SearchItem[], inputValue: string): SearchItem[] {
-    return responseCards.map((item) => item.snippet.publishedAt)
+  transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
+    if (responseCards !== undefined) {
+      return responseCards?.sort((a, b) => {
+        if (value) {
+          return +a.statistics.viewCount - +b.statistics.viewCount;
+        }
+        if (!value) {
+          return +b.statistics.viewCount - +a.statistics.viewCount;
+        }
+      });
+    }
   }
 }
  */

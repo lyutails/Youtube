@@ -1,16 +1,15 @@
 <app-header
   (settingsToggle)="closeOpenFilters($event)"
-  (fakeSearchHeader)="gotFakeSearch($event)"
-></app-header>
+  (fakeSearchHeader)="gotFakeSearch($event)"></app-header>
 <app-filters
   [showHideFilters]="isOpenClose"
   (filterByWordValue)="gotFilterByWordValue($event)"
-></app-filters>
+  (viewsCountAsc)="sortViewsAsc($event)"></app-filters>
 <app-search-results
   class="search_results"
   [filterValueDownFromApp]="filterValue"
   [getFakeSearchValue]="fakeSearchValue"
-></app-search-results>
+  [gotViewsCountAcsOrder]="viewsAscSort"></app-search-results>
 <app-footer></app-footer>
 
 <router-outlet />

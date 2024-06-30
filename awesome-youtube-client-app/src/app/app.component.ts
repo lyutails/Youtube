@@ -30,6 +30,7 @@ export class AppComponent {
   isOpenClose = true;
   filterValue = '';
   fakeSearchValue = '';
+  viewsAscSort = true;
 
   public closeOpenFilters(value: boolean) {
     this.isOpenClose = value;
@@ -43,6 +44,11 @@ export class AppComponent {
 
   public gotFakeSearch(value: string) {
     this.fakeSearchValue = value;
+    return value;
+  }
+
+  public sortViewsAsc(value: boolean) {
+    this.viewsAscSort = value;
     return value;
   }
 }
