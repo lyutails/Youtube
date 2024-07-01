@@ -22,6 +22,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   private readonly debounceTimeMs = 500;
   isViewsCoundAsc = true;
   @Output() viewsCountAsc = new EventEmitter<boolean>();
+  isViewsCoundDesc = true;
+  @Output() viewsCountDesc = new EventEmitter<boolean>();
 
   ngOnInit() {
     this.SearchSubject.pipe(
@@ -42,9 +44,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
     return this.inputValue;
   }
 
-  viewsSortOrder() {
+  viewsSortOrderAsc() {
     this.isViewsCoundAsc = !this.isViewsCoundAsc;
     this.viewsCountAsc.emit(this.isViewsCoundAsc);
+  }
+
+  viewsSortOrderDesc() {
+    this.isViewsCoundDesc = !this.isViewsCoundDesc;
+    this.viewsCountDesc.emit(this.isViewsCoundDesc);
   }
 
   ngOnDestroy() {

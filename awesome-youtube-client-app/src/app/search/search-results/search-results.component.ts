@@ -7,6 +7,7 @@ import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { SearchItem } from '../search-item.model';
 import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
 import { ViewsCountAscPipe } from '../../pipes/views-count-asc.pipe';
+import { ViewsCountDescPipe } from '../../pipes/views-count-desc.pipe';
 
 @Component({
   selector: 'app-search-results',
@@ -18,6 +19,7 @@ import { ViewsCountAscPipe } from '../../pipes/views-count-asc.pipe';
     WordsPipePipe,
     ColouredByDateBorderDirective,
     ViewsCountAscPipe,
+    ViewsCountDescPipe
   ],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
@@ -30,6 +32,7 @@ export class SearchResultsComponent {
   @Input() getFakeSearchValue = '';
   responseCardsOnRequest: SearchItem[] = [];
   @Input() gotViewsCountAcsOrder = true;
+  @Input() gotViewsCountDescOrder = true;
 
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
     this.getFakeSearchValue = value;

@@ -10,13 +10,26 @@
   <button
     mat-button
     class="filters_item button"
-    (click)="viewsSortOrder()"
+    (click)="viewsSortOrderAsc()"
+    [disabled]="!isViewsCoundDesc"
     [ngStyle]="{
       background: !isViewsCoundAsc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
         : 'transparent',
     }">
     views' count ASC
+  </button>
+  <button
+    mat-button
+    class="filters_item button"
+    (click)="viewsSortOrderDesc()"
+    [disabled]="!isViewsCoundAsc"
+    [ngStyle]="{
+      background: !isViewsCoundDesc
+        ? 'oklch(75.93% 0.15 14.33 / 10%)'
+        : 'transparent',
+    }">
+    views' count DESC
   </button>
   <button mat-button class="filters_item button">favourite</button>
   <div class="filters_item">

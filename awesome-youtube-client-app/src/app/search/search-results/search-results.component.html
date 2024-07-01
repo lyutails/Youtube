@@ -1,7 +1,8 @@
 @for (
   responseCard of (getCardsBasedOnHeaderInputValue(getFakeSearchValue)
     | wordsPipe: filterValueDownFromApp
-    | viewsCountAsc: gotViewsCountAcsOrder);
+    | viewsCountAsc: gotViewsCountAcsOrder
+    | viewsCountDesc: gotViewsCountDescOrder);
   track responseCard.id
 ) {
   <app-search-item
