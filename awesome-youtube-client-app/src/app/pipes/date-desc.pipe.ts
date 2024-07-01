@@ -10,7 +10,6 @@ export class DateDescPipe implements PipeTransform {
   responseCards = cards.items;
 
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
-    console.log(value);
     if (value === false) {
       return responseCards?.sort((a, b) => {
         return (
