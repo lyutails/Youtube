@@ -5,7 +5,10 @@
   }">
   <div class="filters_item title">Sorting by:</div>
   <button mat-button matTooltip="date sort" class="filters_item button">
-    date
+    date ASC
+  </button>
+  <button mat-button matTooltip="date sort" class="filters_item button">
+    date DESC
   </button>
   <button
     mat-button
@@ -31,7 +34,9 @@
     }">
     views' count DESC
   </button>
-  <button mat-button class="filters_item button">favourite</button>
+  <button mat-button class="filters_item button" [disabled]="true">
+    favourite
+  </button>
   <div class="filters_item">
     by word or sentence
     <input

@@ -9,7 +9,7 @@ import { SearchItem } from '../search/search-item.model';
 export class ViewsCountDescPipe implements PipeTransform {
   responseCards = cards.items;
 
-  transform(responseCards: SearchItem[], value: boolean): SearchItem[] | undefined {
+  transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
     if (value === false) {
       return responseCards?.sort((a, b) => {
         return +b.statistics.viewCount - +a.statistics.viewCount;

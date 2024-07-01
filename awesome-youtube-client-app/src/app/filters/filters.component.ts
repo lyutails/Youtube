@@ -24,6 +24,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   @Output() viewsCountAsc = new EventEmitter<boolean>();
   isViewsCoundDesc = true;
   @Output() viewsCountDesc = new EventEmitter<boolean>();
+  isDateAsc = true;
+  @Output() dateAsc = new EventEmitter<boolean>();
 
   ngOnInit() {
     this.SearchSubject.pipe(
@@ -52,6 +54,11 @@ export class FiltersComponent implements OnInit, OnDestroy {
   viewsSortOrderDesc() {
     this.isViewsCoundDesc = !this.isViewsCoundDesc;
     this.viewsCountDesc.emit(this.isViewsCoundDesc);
+  }
+
+  dateSortAsc() {
+    this.isDateAsc = !this.isDateAsc;
+    this.viewsCountAsc.emit(this.isDateAsc);
   }
 
   ngOnDestroy() {
