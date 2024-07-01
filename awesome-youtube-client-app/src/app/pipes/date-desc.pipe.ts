@@ -3,10 +3,10 @@ import * as cards from '../../../response.json';
 import { SearchItem } from '../search/search-item.model';
 
 @Pipe({
-  name: 'dateAsc',
+  name: 'dateDesc',
   standalone: true,
 })
-export class DateAscPipe implements PipeTransform {
+export class DateDescPipe implements PipeTransform {
   responseCards = cards.items;
 
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
@@ -14,8 +14,8 @@ export class DateAscPipe implements PipeTransform {
     if (value === false) {
       return responseCards?.sort((a, b) => {
         return (
-          new Date(b.snippet.publishedAt).getTime() -
-          new Date(a.snippet.publishedAt).getTime()
+          new Date(a.snippet.publishedAt).getTime() -
+          new Date(b.snippet.publishedAt).getTime()
         );
       });
     }

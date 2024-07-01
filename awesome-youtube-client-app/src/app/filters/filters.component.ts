@@ -20,12 +20,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
   inputValue = '';
   private SearchSubject = new Subject<string>();
   private readonly debounceTimeMs = 500;
-  isViewsCoundAsc = true;
+  isViewsCountAsc = true;
   @Output() viewsCountAsc = new EventEmitter<boolean>();
-  isViewsCoundDesc = true;
+  isViewsCountDesc = true;
   @Output() viewsCountDesc = new EventEmitter<boolean>();
   isDateAsc = true;
   @Output() dateAsc = new EventEmitter<boolean>();
+  isDateDesc = true;
+  @Output() dateDesc = new EventEmitter<boolean>();
 
   ngOnInit() {
     this.SearchSubject.pipe(
@@ -47,18 +49,23 @@ export class FiltersComponent implements OnInit, OnDestroy {
   }
 
   viewsSortOrderAsc() {
-    this.isViewsCoundAsc = !this.isViewsCoundAsc;
-    this.viewsCountAsc.emit(this.isViewsCoundAsc);
+    this.isViewsCountAsc = !this.isViewsCountAsc;
+    this.viewsCountAsc.emit(this.isViewsCountAsc);
   }
 
   viewsSortOrderDesc() {
-    this.isViewsCoundDesc = !this.isViewsCoundDesc;
-    this.viewsCountDesc.emit(this.isViewsCoundDesc);
+    this.isViewsCountDesc = !this.isViewsCountDesc;
+    this.viewsCountDesc.emit(this.isViewsCountDesc);
   }
 
   dateSortAsc() {
     this.isDateAsc = !this.isDateAsc;
-    this.viewsCountAsc.emit(this.isDateAsc);
+    this.dateAsc.emit(this.isDateAsc);
+  }
+
+  dateSortDesc() {
+    this.isDateDesc = !this.isDateDesc;
+    this.dateDesc.emit(this.isDateDesc);
   }
 
   ngOnDestroy() {

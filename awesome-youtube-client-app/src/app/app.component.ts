@@ -32,6 +32,8 @@ export class AppComponent {
   fakeSearchValue = '';
   viewsAscSort = true;
   viewsDescSort = true;
+  dateAscSort = true;
+  dateDescSort = true;
 
   public closeOpenFilters(value: boolean) {
     this.isOpenClose = value;
@@ -55,6 +57,16 @@ export class AppComponent {
 
   public sortViewsDesc(value: boolean) {
     this.viewsDescSort = value;
+    return value;
+  }
+
+  public sortDateAsc(value: boolean) {
+    this.dateAscSort = value;
+    return value;
+  }
+
+  public sortDateDesc(value: boolean) {
+    this.dateDescSort = value;
     return value;
   }
 }

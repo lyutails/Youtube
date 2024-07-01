@@ -24,7 +24,6 @@ export class HeaderComponent {
 
   public gotFakeSearchHeader(value: string) {
     this.fakeSearchValue = value;
-    console.log(value);
     return value;
   }
 

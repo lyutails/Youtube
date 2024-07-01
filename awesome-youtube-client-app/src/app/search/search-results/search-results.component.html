@@ -2,7 +2,9 @@
   responseCard of (getCardsBasedOnHeaderInputValue(getFakeSearchValue)
     | wordsPipe: filterValueDownFromApp
     | viewsCountAsc: gotViewsCountAcsOrder
-    | viewsCountDesc: gotViewsCountDescOrder);
+    | viewsCountDesc: gotViewsCountDescOrder
+    | dateAsc: gotDateAsc
+    | dateDesc: gotDateDesc);
   track responseCard.id
 ) {
   <app-search-item

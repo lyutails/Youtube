@@ -5,13 +5,17 @@
   [showHideFilters]="isOpenClose"
   (filterByWordValue)="gotFilterByWordValue($event)"
   (viewsCountAsc)="sortViewsAsc($event)"
-  (viewsCountDesc)="sortViewsDesc($event)"></app-filters>
+  (viewsCountDesc)="sortViewsDesc($event)"
+  (dateAsc)="sortDateAsc($event)"
+  (dateDesc)="sortDateDesc($event)"></app-filters>
 <app-search-results
   class="search_results"
   [filterValueDownFromApp]="filterValue"
   [getFakeSearchValue]="fakeSearchValue"
   [gotViewsCountAcsOrder]="viewsAscSort"
-  [gotViewsCountDescOrder]="viewsDescSort"></app-search-results>
+  [gotViewsCountDescOrder]="viewsDescSort"
+  [gotDateAsc]="dateAscSort"
+  [gotDateDesc]="dateDescSort"></app-search-results>
 <app-footer></app-footer>
 
 <router-outlet />

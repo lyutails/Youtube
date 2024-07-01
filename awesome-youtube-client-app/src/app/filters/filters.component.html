@@ -4,19 +4,37 @@
     visibility: showHideFilters === true ? 'hidden' : 'visible',
   }">
   <div class="filters_item title">Sorting by:</div>
-  <button mat-button matTooltip="date sort" class="filters_item button">
+  <button
+    mat-button
+    matTooltip="date sort"
+    class="filters_item button"
+    (click)="dateSortAsc()"
+    [disabled]="!isDateDesc"
+    [ngStyle]="{
+      background: !isDateAsc ? 'oklch(75.93% 0.15 14.33 / 10%)' : 'transparent',
+    }">
     date ASC
   </button>
-  <button mat-button matTooltip="date sort" class="filters_item button">
+  <button
+    mat-button
+    matTooltip="date sort"
+    class="filters_item button"
+    (click)="dateSortDesc()"
+    [disabled]="!isDateAsc"
+    [ngStyle]="{
+      background: !isDateDesc
+        ? 'oklch(75.93% 0.15 14.33 / 10%)'
+        : 'transparent',
+    }">
     date DESC
   </button>
   <button
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderAsc()"
-    [disabled]="!isViewsCoundDesc"
+    [disabled]="!isViewsCountDesc"
     [ngStyle]="{
-      background: !isViewsCoundAsc
+      background: !isViewsCountAsc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
         : 'transparent',
     }">
@@ -26,9 +44,9 @@
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderDesc()"
-    [disabled]="!isViewsCoundAsc"
+    [disabled]="!isViewsCountAsc"
     [ngStyle]="{
-      background: !isViewsCoundDesc
+      background: !isViewsCountDesc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
         : 'transparent',
     }">
