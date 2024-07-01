@@ -1,0 +1,9 @@
+.card_app-custom-button {
+  &_button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: red;
+    border: none;
+    background-color: oklch(91.96% 0.041 16.08);
+  }
+}

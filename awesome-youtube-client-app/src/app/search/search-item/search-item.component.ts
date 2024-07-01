@@ -4,6 +4,7 @@ import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
+import { CustomButtonComponent } from '../../custom-button/custom-button.component';
 
 @Component({
   selector: 'app-search-item',
@@ -14,6 +15,7 @@ import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date
     UpperCasePipe,
     WordsPipePipe,
     ColouredByDateBorderDirective,
+    CustomButtonComponent
   ],
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
