@@ -9,7 +9,7 @@
     matTooltip="date sort"
     class="filters_item button"
     (click)="dateSortAsc()"
-    [disabled]="!isDateDesc"
+    [disabled]="!isDateDesc || !isViewsCountAsc || !isViewsCountDesc"
     [ngStyle]="{
       background: !isDateAsc ? 'oklch(75.93% 0.15 14.33 / 10%)' : 'transparent',
     }">
@@ -20,7 +20,7 @@
     matTooltip="date sort"
     class="filters_item button"
     (click)="dateSortDesc()"
-    [disabled]="!isDateAsc"
+    [disabled]="!isDateAsc || !isViewsCountDesc || !isViewsCountAsc"
     [ngStyle]="{
       background: !isDateDesc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
@@ -32,7 +32,7 @@
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderAsc()"
-    [disabled]="!isViewsCountDesc"
+    [disabled]="!isViewsCountDesc || !isDateAsc || !isDateDesc"
     [ngStyle]="{
       background: !isViewsCountAsc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
@@ -44,7 +44,7 @@
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderDesc()"
-    [disabled]="!isViewsCountAsc"
+    [disabled]="!isViewsCountAsc || !isDateAsc || !isDateDesc"
     [ngStyle]="{
       background: !isViewsCountDesc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
