@@ -5,9 +5,9 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SearchResultsComponent } from './youtube/search/search-results/search-results.component';
 
 export const routes: Routes = [
-  { component: SearchResultsComponent, path: '', title: 'main' },
   { component: LoginComponent, path: 'login', title: 'login' },
-  { component: CardDetailsComponent, path: 'card', title: 'card' },
-  //{ component: CardDetailsComponent, path: 'card/:id', title: 'card' },
+  { component: SearchResultsComponent, path: 'main', title: 'main' },
+  { component: CardDetailsComponent, path: 'card/:id', title: 'card' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { component: NotFoundComponent, path: '**', title: '404' }
 ];

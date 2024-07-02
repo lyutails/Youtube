@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { YoutubeService } from '../youtube.service';
+import { SearchItem } from '../search/search-item.model';
 
 @Component({
   selector: 'app-card-details',
@@ -8,5 +10,14 @@ import { Component } from '@angular/core';
   styleUrl: './card-details.component.scss'
 })
 export class CardDetailsComponent {
+  @Input()
+  card!: SearchItem;
+
+  constructor(private youtubeService: YoutubeService) {
+  }
+
+  set id(cardId: number) {
+    this.card = this.youtubeService.getCard(cardId);
+  }
 
 }
