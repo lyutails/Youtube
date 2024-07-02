@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './core/footer/footer.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
 import { FiltersComponent } from './filters/filters.component';
@@ -11,6 +11,7 @@ import { HeaderComponent } from './core/header/header.component';
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterLink,
     HeaderComponent,
     FooterComponent,
     SearchResultsComponent,

@@ -3,8 +3,7 @@
   class="card_pic"
   [ngStyle]="{
     'background-image': 'url(' + card.snippet.thumbnails.maxres.url + ')',
-  }"
-></div>
+  }"></div>
 <div class="card_stats">
   <div class="card_stat view">
     {{ card.statistics.viewCount }}
@@ -28,8 +27,7 @@
     class="card_stat favourite"
     [ngStyle]="{
       color: isFavourite ? '#be003d' : '#000000',
-    }"
-  >
+    }">
     <mat-icon class="header_icon">favorite</mat-icon>
     <!-- <mat-icon class="header_icon">heart_broken</mat-icon> -->
     <!-- <mat-icon class="header_icon">person_add</mat-icon> -->
@@ -38,6 +36,8 @@
 <div class="card_title">
   {{ card.snippet.title }}
 </div>
-<app-custom-button class="card_app-custom-button">
-  {{ buttonName | uppercase }}
-</app-custom-button>
+<a routerLink="/card">{{ locationID }}
+  <app-custom-button class="card_app-custom-button">
+    {{ buttonName | uppercase }}
+  </app-custom-button></a
+>

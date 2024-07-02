@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-search-item',
@@ -15,7 +16,9 @@ import { CustomButtonComponent } from '../../custom-button/custom-button.compone
     UpperCasePipe,
     WordsPipePipe,
     ColouredByDateBorderDirective,
-    CustomButtonComponent
+    CustomButtonComponent,
+    RouterLink,
+    RouterOutlet
   ],
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
@@ -25,6 +28,14 @@ export class SearchItemComponent {
   protected isFavourite = false;
   buttonName = 'more...';
   @Input() filterByWordSearchResults = '';
+
+  route: ActivatedRoute = inject(ActivatedRoute);
+  locationID = 0;
+
+  constructor() {
+    this.locationID = Number(this.route.snapshot.paramMap.get('id'));
+    // this.locationID = Number(this.route.snapshot.params['id']);
+  }
 
   countFavourites() {
     /* const heart = event?.currentTarget as HTMLButtonElement;
