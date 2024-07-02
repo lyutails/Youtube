@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { CardDetailsComponent } from './youtube/card-details/card-details.component';
 
 export const routes: Routes = [
   {
