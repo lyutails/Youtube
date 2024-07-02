@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
-import { SearchInputFieldComponent } from '../../search-input-field/search-input-field.component';
+import { SearchInputFieldComponent } from '../search-input-field/search-input-field.component';
 
 @Component({
   selector: 'app-header',

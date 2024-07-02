@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { CardDetailsComponent } from './card-details/card-details.component';
-import { SearchResultsComponent } from './search/search-results/search-results.component';
-import { LoginComponent } from './login/login.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { CardDetailsComponent } from './youtube/card-details/card-details.component';
+import { LoginComponent } from './auth/login/login.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
+import { SearchResultsComponent } from './youtube/search/search-results/search-results.component';
 
 export const routes: Routes = [
   { component: SearchResultsComponent, path: '', title: 'main' },

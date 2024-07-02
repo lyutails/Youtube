@@ -1,15 +1,15 @@
 import { Component, Input } from '@angular/core';
-import * as cards from '../../../../response.json';
+import * as cards from '../../../../../response.json';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
-import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { SearchItem } from '../search-item.model';
-import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
-import { ViewsCountAscPipe } from '../../pipes/views-count-asc.pipe';
-import { ViewsCountDescPipe } from '../../pipes/views-count-desc.pipe';
-import { DateAscPipe } from '../../pipes/date-asc.pipe';
-import { DateDescPipe } from '../../pipes/date-desc.pipe';
+import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
+import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
+import { ViewsCountAscPipe } from '../../../pipes/views-count-asc.pipe';
+import { ViewsCountDescPipe } from '../../../pipes/views-count-desc.pipe';
+import { DateAscPipe } from '../../../pipes/date-asc.pipe';
+import { DateDescPipe } from '../../../pipes/date-desc.pipe';
 
 @Component({
   selector: 'app-search-results',
