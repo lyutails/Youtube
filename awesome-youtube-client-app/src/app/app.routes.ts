@@ -16,7 +16,14 @@ export const routes: Routes = [
         m => m.SearchResultsComponent
       ),
   },
-  { component: CardDetailsComponent, path: 'card/:id', title: 'card' },
+  {
+    path: 'card/:id',
+    title: 'card',
+    loadComponent: () =>
+      import('./youtube/card-details/card-details.component').then(
+        m => m.CardDetailsComponent
+      ),
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: '**',
