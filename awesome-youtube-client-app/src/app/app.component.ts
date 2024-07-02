@@ -4,7 +4,6 @@ import { FooterComponent } from './core/footer/footer.component';
 import { FiltersComponent } from './core/filters/filters.component';
 import { HeaderComponent } from './core/header/header.component';
 import { SearchResultsComponent } from './youtube/search/search-results/search-results.component';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +15,9 @@ import { SearchResultsComponent } from './youtube/search/search-results/search-r
     FooterComponent,
     SearchResultsComponent,
     FiltersComponent,
-    // BrowserAnimationsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  /* animations: [
-    trigger('routeAnimations', [transition('homePage => profilePage'), [
-      query(':enter', []),
-      query(':leave', [])
-    ]]),
-  ], */
 })
 export class AppComponent {
   isOpenClose = true;

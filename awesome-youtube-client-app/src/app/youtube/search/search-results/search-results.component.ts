@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import * as cards from '../../../../../response.json';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
@@ -10,6 +9,7 @@ import { ViewsCountAscPipe } from '../../../pipes/views-count-asc.pipe';
 import { ViewsCountDescPipe } from '../../../pipes/views-count-desc.pipe';
 import { DateAscPipe } from '../../../pipes/date-asc.pipe';
 import { DateDescPipe } from '../../../pipes/date-desc.pipe';
+import { YoutubeService } from '../../youtube.service';
 
 @Component({
   selector: 'app-search-results',
@@ -29,7 +29,6 @@ import { DateDescPipe } from '../../../pipes/date-desc.pipe';
   styleUrl: './search-results.component.scss',
 })
 export class SearchResultsComponent {
-  responseCards = cards.items;
   @Input() filterValueDownFromApp = '';
   gotFilterValue = '';
   @Input() fakeSearchDownFromApp = '';
@@ -39,12 +38,18 @@ export class SearchResultsComponent {
   @Input() gotViewsCountDescOrder = true;
   @Input() gotDateAsc = true;
   @Input() gotDateDesc = true;
+  youtubeFakeCards: SearchItem[];
+
+  constructor(private youtubeService: YoutubeService) {
+    this.youtubeFakeCards = this.youtubeService.getCards();
+    console.log(this.youtubeFakeCards);
+  }
 
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
     this.getFakeSearchValue = value;
     return this.getFakeSearchValue === ''
       ? []
-      : this.responseCards.filter(
+      : this.youtubeFakeCards.filter(
           item =>
             item.snippet.title.toLowerCase().includes(value) &&
             this.responseCardsOnRequest.push(item)

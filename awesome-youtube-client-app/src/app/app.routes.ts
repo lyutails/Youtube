@@ -9,5 +9,5 @@ export const routes: Routes = [
   { component: LoginComponent, path: 'login', title: 'login' },
   { component: CardDetailsComponent, path: 'card', title: 'card' },
   //{ component: CardDetailsComponent, path: 'card/:id', title: 'card' },
-  { component: NotFoundComponent, path: '404', title: '404' }
+  { component: NotFoundComponent, path: '**', title: '404' }
 ];
