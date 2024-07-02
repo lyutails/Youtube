@@ -6,8 +6,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   /* { component: HomePage, path: '', data: {animation: 'HomePage'} } */
-  { path: '', component: SearchResultsComponent, title: 'main' },
-  { path: '', component: LoginComponent, title: 'login' },
-  { path: '', component: CardDetailsComponent, title: 'card' },
-  { path: '', component: NotFoundComponent, title: '404' }
+  { component: SearchResultsComponent, path: '', title: 'main' },
+  { component: LoginComponent, path: 'login', title: 'login' },
+  { component: CardDetailsComponent, path: 'card/:id', title: 'card' },
+  { component: NotFoundComponent, path: '404', title: '404' }
 ];

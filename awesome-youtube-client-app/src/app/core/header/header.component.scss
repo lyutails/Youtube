@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@import "../../../variables.scss";
 
 h1 {
   font-size: 2rem;
@@ -48,7 +48,7 @@ a {
     display: inline-block;
     width: 80px;
     aspect-ratio: 1 / 0.68;
-    background-image: url("../../../public/favicon_youtube_angular_colours.svg");
+    background-image: url("../../../../public/favicon_youtube_angular_colours.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
