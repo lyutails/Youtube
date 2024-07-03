@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 export interface Credentials {
-  login: string | null | undefined;
-  password: string | null | undefined;
+  login: string;
+  password: string;
 }
 
 @Injectable({

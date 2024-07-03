@@ -23,6 +23,11 @@ export class LoginComponent {
 
   onSubmit() {
     const data = this.loginForm.value as Credentials;
-    return this.loginService.saveFakeAuthToken(data);
+    if (
+      this.loginForm.value.login?.trim() &&
+      this.loginForm.value.password?.trim()
+    ) {
+      return this.loginService.saveFakeAuthToken(data);
+    }
   }
 }
