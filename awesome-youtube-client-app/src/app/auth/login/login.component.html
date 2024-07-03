@@ -1,13 +1,13 @@
 <div class="login">
   <p class="login_text">🔥 login works! 🌀</p>
-  <form class="login_form">
+  <form [formGroup]="loginForm" class="login_form" (ngSubmit)="onSubmit()">
     <div class="login_item">
       <label class="login_label" for="login">Login</label>
       <input
         class="login_input"
         id="login"
         type="text"
-        [formControl]="login"
+        formControlName="login"
         placeholder="your login name..." />
     </div>
     <div class="login_item">
@@ -16,8 +16,11 @@
         class="login_input"
         id="password"
         type="text"
-        [formControl]="password"
+        formControlName="password"
         placeholder="your password..." />
     </div>
+    <button class="login_button" type="submit" [disabled]="!loginForm.valid">
+      {{ buttonName | uppercase }}
+    </button>
   </form>
 </div>

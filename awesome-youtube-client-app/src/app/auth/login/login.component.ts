@@ -1,14 +1,23 @@
+import { UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, UpperCasePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  login = new FormControl('');
-  password = new FormControl('');
+  buttonName = 'Submit';
+
+  loginForm = new FormGroup({
+    login: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  onSubmit() {
+    console.log(this.loginForm.value);
+  }
 }
