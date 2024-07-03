@@ -10,8 +10,24 @@ export interface Credentials {
 })
 export class LoginService {
   data!: Credentials;
+  isAuth = false;
 
-  saveFakeAuthToken(data: Credentials) {
+  generateToken() {
+    const fakeAuthToken = Math.random().toString(36).substring(2);
+    return fakeAuthToken;
+  }
+
+  isLoggedIn() {
+    console.log(this.isAuth);
+    return (this.isAuth = !this.isAuth);
+  }
+
+  saveCredentials(data: Credentials) {
+    localStorage.setItem('token', this.generateToken());
     return localStorage.setItem('credentials', JSON.stringify(data));
+  }
+
+  removeCredentials() {
+    return localStorage.clear();
   }
 }

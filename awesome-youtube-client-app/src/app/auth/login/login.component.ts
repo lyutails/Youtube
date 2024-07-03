@@ -2,6 +2,7 @@ import { UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Credentials, LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,10 @@ export class LoginComponent {
   buttonName = 'Submit';
   loginData!: Credentials;
 
-  constructor(private loginService: LoginService) {}
-
-  generateToken() {
-    const fakeAuthToken = Math.random().toString(36).substring(2);
-    return fakeAuthToken;
-  }
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
   loginForm = new FormGroup({
     login: new FormControl(''),
@@ -32,8 +31,9 @@ export class LoginComponent {
       this.loginForm.value.login?.trim() &&
       this.loginForm.value.password?.trim()
     ) {
-      localStorage.setItem('token', this.generateToken());
-      return this.loginService.saveFakeAuthToken(data);
+      this.loginService.isLoggedIn();
+      this.loginService.saveCredentials(data);
+      this.router.navigate(['/main']);
     }
   }
 }

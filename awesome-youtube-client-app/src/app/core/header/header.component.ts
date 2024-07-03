@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchInputFieldComponent } from '../search-input-field/search-input-field.component';
+import { LoginService } from '../../auth/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +19,11 @@ export class HeaderComponent {
 
   @Output() settingsToggle = new EventEmitter<boolean>();
 
+  constructor(
+    public loginService: LoginService,
+    private router: Router
+  ) {}
+
   public toggleFilters() {
     this.state = !this.state;
     this.settingsToggle.emit(this.state);
@@ -31,5 +38,14 @@ export class HeaderComponent {
 
   public fakeSearchToApp(value: string) {
     this.fakeSearchHeader.emit(value);
+  }
+
+  public toggleIsAuth() {
+    this.loginService.isLoggedIn();
+
+    if (!this.loginService.isAuth) {
+      this.router.navigate(['/login']);
+      return this.loginService.removeCredentials();
+    }
   }
 }
