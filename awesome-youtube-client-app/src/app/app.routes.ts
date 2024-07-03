@@ -6,8 +6,6 @@ export const loginGuard: CanActivateFn = (): boolean | UrlTree => {
   const router = inject(Router);
   const service = inject(LoginService);
 
-  console.log(service.isAuth);
-
   if (service.isAuth) {
     return true;
   }

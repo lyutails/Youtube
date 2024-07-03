@@ -42,7 +42,6 @@ export class SearchResultsComponent {
 
   constructor(private youtubeService: YoutubeService) {
     this.youtubeFakeCards = this.youtubeService.getCards();
-    console.log(this.youtubeFakeCards);
   }
 
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {

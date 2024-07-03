@@ -18,7 +18,6 @@ export class LoginService {
   }
 
   isLoggedIn() {
-    console.log(this.isAuth);
     return (this.isAuth = !this.isAuth);
   }
 
