@@ -16,6 +16,11 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService) {}
 
+  generateToken() {
+    const fakeAuthToken = Math.random().toString(36).substring(2);
+    return fakeAuthToken;
+  }
+
   loginForm = new FormGroup({
     login: new FormControl(''),
     password: new FormControl(''),
@@ -27,6 +32,7 @@ export class LoginComponent {
       this.loginForm.value.login?.trim() &&
       this.loginForm.value.password?.trim()
     ) {
+      localStorage.setItem('token', this.generateToken());
       return this.loginService.saveFakeAuthToken(data);
     }
   }
