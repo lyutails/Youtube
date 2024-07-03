@@ -1,19 +1,38 @@
 .login {
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  &_form {
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid oklch(0% 0 0 / 50);
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
 
   &_text {
     font-size: 2rem;
+    text-align: center;
   }
 
   &_item {
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  &_input {
+    outline: none;
+
+    &:focus::placeholder {
+      color: transparent;
+    }
   }
 }

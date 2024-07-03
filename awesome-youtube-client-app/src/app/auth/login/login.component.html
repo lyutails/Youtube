@@ -1,11 +1,23 @@
 <div class="login">
   <p class="login_text">🔥 login works! 🌀</p>
-  <div class="login_item">
-    <label for="login">Login</label>
-    <input id="login" type="text" [formControl]="login" />
-  </div>
-  <div class="login_item">
-    <label for="password">Password</label>
-    <input id="password" type="text" [formControl]="password" />
-  </div>
+  <form class="login_form">
+    <div class="login_item">
+      <label class="login_label" for="login">Login</label>
+      <input
+        class="login_input"
+        id="login"
+        type="text"
+        [formControl]="login"
+        placeholder="your login name..." />
+    </div>
+    <div class="login_item">
+      <label class="login_label" for="password">Password</label>
+      <input
+        class="login_input"
+        id="password"
+        type="text"
+        [formControl]="password"
+        placeholder="your password..." />
+    </div>
+  </form>
 </div>
