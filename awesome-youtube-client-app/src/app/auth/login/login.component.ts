@@ -1,6 +1,7 @@
 import { UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Credentials, LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   buttonName = 'Submit';
+  loginData!: Credentials;
+
+  constructor(private loginService: LoginService) {}
 
   loginForm = new FormGroup({
     login: new FormControl(''),
@@ -18,6 +22,7 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    const data = this.loginForm.value as Credentials;
+    return this.loginService.saveFakeAuthToken(data);
   }
 }
