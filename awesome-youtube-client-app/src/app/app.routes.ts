@@ -30,7 +30,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'card/:id',
+    path: 'card',
     title: 'card',
     canActivate: [loginGuard],
     loadComponent: () =>

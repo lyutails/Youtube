@@ -12,7 +12,9 @@ export class YoutubeService {
     return this.responseCards;
   }
 
-  getCard(id: number): SearchItem {
-    return this.responseCards[id];
+  getCard(cardId: string): SearchItem {
+    return this.getCards().find(elem => {
+      return elem.id === cardId;
+    }) as SearchItem;
   }
 }

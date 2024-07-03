@@ -1,11 +1,18 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
+import { YoutubeService } from '../../youtube.service';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-item',
@@ -18,23 +25,35 @@ import { CustomButtonComponent } from '../../custom-button/custom-button.compone
     ColouredByDateBorderDirective,
     CustomButtonComponent,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
   ],
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
 })
-export class SearchItemComponent {
+export class SearchItemComponent implements OnInit {
   @Input() card!: SearchItem;
   protected isFavourite = false;
   buttonName = 'more...';
   @Input() filterByWordSearchResults = '';
+  // route: ActivatedRoute = inject(ActivatedRoute);
+  youtubeCard!: SearchItem;
 
-  route: ActivatedRoute = inject(ActivatedRoute);
-  locationID = 0;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: YoutubeService
+  ) {}
 
-  constructor() {
-    this.locationID = Number(this.route.snapshot.paramMap.get('id'));
-    // this.locationID = Number(this.route.snapshot.params['id']);
+  ngOnInit() {
+    const cardId = this.route.snapshot.paramMap.get('id');
+    if (cardId !== null) {
+      this.youtubeCard = this.service.getCard(cardId);
+    }
+  }
+
+  goToCard(card: SearchItem) {
+    const cardId = card ? card.id : null;
+    this.router.navigate(['/card', { id: cardId }]);
   }
 
   countFavourites() {

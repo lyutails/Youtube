@@ -36,8 +36,8 @@
 <div class="card_title">
   {{ card.snippet.title }}
 </div>
-<a routerLink="/card">{{ locationID }}
+<button (click)="goToCard(card)">
   <app-custom-button class="card_app-custom-button">
     {{ buttonName | uppercase }}
-  </app-custom-button></a
->
+  </app-custom-button>
+</button>
