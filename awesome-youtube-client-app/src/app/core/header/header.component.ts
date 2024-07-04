@@ -43,7 +43,7 @@ export class HeaderComponent {
   public toggleIsAuth() {
     this.loginService.isLoggedIn();
 
-    if (!this.loginService.isAuth) {
+    if (this.loginService.getToken() !== null) {
       this.router.navigate(['/login']);
       return this.loginService.removeCredentials();
     }

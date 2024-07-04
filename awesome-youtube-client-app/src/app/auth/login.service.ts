@@ -18,7 +18,6 @@ export class LoginService {
   }
 
   isLoggedIn() {
-    console.log(this.isAuth);
     return (this.isAuth = !this.isAuth);
   }
 
@@ -29,5 +28,10 @@ export class LoginService {
 
   removeCredentials() {
     return localStorage.clear();
+  }
+
+  getToken() {
+    const token = localStorage.getItem('token');
+    return token;
   }
 }

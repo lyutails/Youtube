@@ -9,8 +9,11 @@
       <mat-slide-toggle (click)="toggleFilters()"></mat-slide-toggle>
     </div>
     <div class="header_login">
-      <button (click)="toggleIsAuth()" class="header_login-button" [disabled]="!this.loginService.isAuth">
-        {{ this.loginService.isAuth ? 'Logout' : 'Login' }}
+      <button
+        (click)="toggleIsAuth()"
+        class="header_login-button"
+        [disabled]="!this.loginService.isAuth">
+        {{ this.loginService.getToken() === null ? 'Login' : 'Logout' }}
       </button>
       <mat-icon class="header_login-icon">person</mat-icon>
     </div>
