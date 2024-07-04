@@ -35,4 +35,4 @@
 <div class="card_title">
   {{ card?.snippet?.title }}
 </div>
-<div class="card_public-date">{{ card?.snippet?.publishedAt }}</div>
+<div class="card_public-date">{{ card?.snippet?.publishedAt | cutDate }}</div>

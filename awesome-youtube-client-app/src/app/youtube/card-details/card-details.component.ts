@@ -7,6 +7,7 @@ import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CutDatePipe } from '../../pipes/cut-date.pipe';
 
 @Component({
   selector: 'app-card-details',
@@ -18,6 +19,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     WordsPipePipe,
     ColouredByDateBorderDirective,
     CustomButtonComponent,
+    CutDatePipe
   ],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.scss',
@@ -35,7 +37,6 @@ export class CardDetailsComponent implements OnInit {
 
   ngOnInit() {
     const cardId = this.route.snapshot.paramMap.get('id');
-    console.log(cardId);
     if (cardId !== null) {
       this.card = this.youtubeService.getCard(cardId);
     }
