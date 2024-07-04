@@ -3,7 +3,6 @@ import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import {
-  ActivatedRoute,
   Router,
   RouterLink,
   RouterOutlet,
@@ -11,7 +10,6 @@ import {
 import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
-import { YoutubeService } from '../../youtube.service';
 // import { Observable } from 'rxjs';
 
 @Component({
@@ -39,9 +37,7 @@ export class SearchItemComponent {
   youtubeCard!: SearchItem;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private service: YoutubeService
   ) {}
 
   goToCard(card: SearchItem) {

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './auth.guard';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -30,7 +30,6 @@ export const routes: Routes = [
   {
     path: '**',
     title: '404',
-    canActivate: [authGuard],
     loadComponent: () =>
       import('./core/not-found/not-found.component').then(
         m => m.NotFoundComponent
