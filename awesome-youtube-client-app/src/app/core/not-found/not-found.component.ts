@@ -16,8 +16,7 @@ export class NotFoundComponent {
   constructor(private loginService: LoginService) {}
 
   goHome() {
-    if (this.loginService.isLoggedIn() === true) {
-      this.router.navigate(['/main']);
-    } else this.router.navigate(['login']);
+    const route = this.loginService.isLoggedIn() ? '/main' : '/login';
+    return this.router.navigate([route]);
   }
 }
