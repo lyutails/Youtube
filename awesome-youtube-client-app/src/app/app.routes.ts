@@ -30,6 +30,7 @@ export const routes: Routes = [
   {
     path: '**',
     title: '404',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./core/not-found/not-found.component').then(
         m => m.NotFoundComponent
