@@ -5,23 +5,23 @@
   }"></div>
 <div class="card_stats">
   <div class="card_stat view">
-    {{ card?.statistics?.viewCount! }}
+    {{ card?.statistics?.viewCount }}
     <mat-icon class="header_icon">visibility</mat-icon>
   </div>
   <div class="card_stat like">
-    {{ card?.statistics?.likeCount! }}
+    {{ card?.statistics?.likeCount }}
     <mat-icon class="header_icon">thumb_up</mat-icon>
   </div>
   <div class="card_stat dislike">
-    {{ card?.statistics?.dislikeCount! }}
+    {{ card?.statistics?.dislikeCount }}
     <mat-icon class="header_icon">thumb_down</mat-icon>
   </div>
   <div class="card_stat comments">
-    {{ card?.statistics?.commentCount! }}
+    {{ card?.statistics?.commentCount }}
     <mat-icon class="header_icon">comment</mat-icon>
   </div>
   <button
-    id="{{ card?.id! }}"
+    id="{{ card?.id }}"
     class="card_stat favourite"
     [ngStyle]="{
       color: isFavourite ? '#be003d' : '#000000',
@@ -32,5 +32,5 @@
   </button>
 </div>
 <div class="card_title">
-  {{ card?.snippet?.title! }}
+  {{ card?.snippet?.title }}
 </div>

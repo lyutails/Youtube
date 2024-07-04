@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
@@ -30,7 +30,7 @@ import { YoutubeService } from '../../youtube.service';
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
 })
-export class SearchItemComponent implements OnInit {
+export class SearchItemComponent {
   @Input() card!: SearchItem;
   protected isFavourite = false;
   buttonName = 'more...';
@@ -44,16 +44,9 @@ export class SearchItemComponent implements OnInit {
     private service: YoutubeService
   ) {}
 
-  ngOnInit() {
-    const cardId = this.route.snapshot.paramMap.get('id');
-    if (cardId !== null) {
-      this.youtubeCard = this.service.getCard(cardId);
-    }
-  }
-
   goToCard(card: SearchItem) {
     const cardId = card ? card.id : null;
-    this.router.navigate(['/card', { id: cardId }]);
+    this.router.navigate(['/card', cardId]);
   }
 
   countFavourites() {

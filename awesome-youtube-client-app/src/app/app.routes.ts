@@ -1,17 +1,5 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router, Routes, UrlTree } from '@angular/router';
-import { LoginService } from './auth/login.service';
-
-export const loginGuard: CanActivateFn = (): boolean | UrlTree => {
-  const router = inject(Router);
-  const service = inject(LoginService);
-
-  if (service.isAuth) {
-    return true;
-  }
-
-  return router.createUrlTree(['/login']);
-};
+import { Routes } from '@angular/router';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -23,16 +11,16 @@ export const routes: Routes = [
   {
     path: 'main',
     title: 'main',
-    canActivate: [loginGuard],
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./youtube/search/search-results/search-results.component').then(
         m => m.SearchResultsComponent
       ),
   },
   {
-    path: 'card',
+    path: 'card/:id',
     title: 'card',
-    canActivate: [loginGuard],
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./youtube/card-details/card-details.component').then(
         m => m.CardDetailsComponent
@@ -42,6 +30,7 @@ export const routes: Routes = [
   {
     path: '**',
     title: '404',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./core/not-found/not-found.component').then(
         m => m.NotFoundComponent

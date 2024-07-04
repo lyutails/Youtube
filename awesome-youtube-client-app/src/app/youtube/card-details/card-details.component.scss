@@ -1,11 +1,12 @@
 .card {
   &_pic {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1 / 0.6;
     background-repeat: no-repeat;
     background-size: contain;
     margin-bottom: 10px;
     background-position: center center;
+    margin: 0 auto;
   }
 
   &_stats {
