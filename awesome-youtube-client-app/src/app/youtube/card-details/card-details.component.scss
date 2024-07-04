@@ -48,7 +48,7 @@
   &_title {
     text-align: center;
     padding-bottom: 10px;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
@@ -58,6 +58,18 @@
 
   &_button {
     font-size: 0.8rem;
+  }
+
+  &_description {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &_public-date {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 

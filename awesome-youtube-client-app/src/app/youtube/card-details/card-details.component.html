@@ -3,6 +3,7 @@
   [ngStyle]="{
     'background-image': 'url(' + card?.snippet?.thumbnails?.maxres?.url + ')',
   }"></div>
+<div class="card_description">Description: {{ card?.snippet?.description }}</div>
 <div class="card_stats">
   <div class="card_stat view">
     {{ card?.statistics?.viewCount }}
@@ -34,3 +35,4 @@
 <div class="card_title">
   {{ card?.snippet?.title }}
 </div>
+<div class="card_public-date">{{ card?.snippet?.publishedAt }}</div>
