@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  OnDestroy,
+} from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
@@ -6,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
+import { YoutubeService } from '../../youtube/youtube.service';
 
 @Component({
   selector: 'app-filters',
@@ -15,7 +22,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './filters.component.scss',
 })
 export class FiltersComponent implements OnInit, OnDestroy {
-  @Input() showHideFilters = true;
+  showHideFilters = true;
   @Output() filterByWordValue = new EventEmitter<string>();
   inputValue = '';
   private SearchSubject = new Subject<string>();
@@ -29,12 +36,15 @@ export class FiltersComponent implements OnInit, OnDestroy {
   isDateDesc = true;
   @Output() dateDesc = new EventEmitter<boolean>();
 
+  constructor(public youtubeService: YoutubeService) {
+  }
+
   ngOnInit() {
-    this.SearchSubject.pipe(
-      debounceTime(this.debounceTimeMs)
-    ).subscribe((inputValue) => {
-      this.getInputValue(inputValue);
-    })
+    this.SearchSubject.pipe(debounceTime(this.debounceTimeMs)).subscribe(
+      inputValue => {
+        this.getInputValue(inputValue);
+      }
+    );
   }
 
   onSearch(inputValue: string) {
@@ -71,4 +81,4 @@ export class FiltersComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.SearchSubject.complete();
   }
- }
+}

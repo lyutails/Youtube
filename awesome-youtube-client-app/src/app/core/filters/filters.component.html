@@ -1,7 +1,7 @@
 <div
   class="filters_wrapper"
   [ngStyle]="{
-    visibility: showHideFilters === true ? 'hidden' : 'visible',
+    visibility: youtubeService.isFiltersVisible === true ? 'hidden' : 'visible',
   }">
   <div class="filters_item title">Sorting by:</div>
   <button

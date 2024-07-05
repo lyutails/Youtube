@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SearchInputFieldComponent } from '../search-input-field/search-input-field.component';
 import { LoginService } from '../../auth/login.service';
 import { Router } from '@angular/router';
+import { YoutubeService } from '../../youtube/youtube.service';
 
 @Component({
   selector: 'app-header',
@@ -21,12 +22,14 @@ export class HeaderComponent {
 
   constructor(
     public loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private youtubeService: YoutubeService
   ) {}
 
   public toggleFilters() {
     this.state = !this.state;
-    this.settingsToggle.emit(this.state);
+    // this.settingsToggle.emit(this.state);
+    this.youtubeService.filtersToggle(this.state);
   }
 
   public gotFakeSearchHeader(value: string) {

@@ -7,6 +7,7 @@ import * as cards from '../../../response.json';
 })
 export class YoutubeService {
   responseCards = cards.items;
+  isFiltersVisible = true;
 
   getCards(): SearchItem[] {
     return this.responseCards;
@@ -16,5 +17,11 @@ export class YoutubeService {
     return this.getCards().find(elem => {
       return elem.id === cardId;
     })
+  }
+
+  filtersToggle(toggleValue: boolean) {
+    console.log(toggleValue);
+    this.isFiltersVisible = toggleValue;
+    return this.isFiltersVisible;
   }
 }
