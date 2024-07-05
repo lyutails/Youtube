@@ -2,7 +2,7 @@
   responseCard of getCardsBasedOnHeaderInputValue(
     youtubeService.headerSearchInputValue
   )
-    | wordsPipe: filterValueDownFromApp
+    | wordsPipe: youtubeService.filterSearchInputValue
     | viewsCountAsc: gotViewsCountAcsOrder
     | viewsCountDesc: gotViewsCountDescOrder
     | dateAsc: gotDateAsc

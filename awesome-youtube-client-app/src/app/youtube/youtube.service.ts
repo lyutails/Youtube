@@ -9,6 +9,7 @@ export class YoutubeService {
   responseCards = cards.items;
   isFiltersVisible = true;
   headerSearchInputValue = '';
+  filterSearchInputValue = '';
 
   getCards(): SearchItem[] {
     return this.responseCards;
@@ -26,6 +27,10 @@ export class YoutubeService {
 
   catchHeaderInputSearchValue(value: string) {
     this.headerSearchInputValue = value;
-    console.log(this.headerSearchInputValue);
+  }
+
+  catchFilterInputSearchValue(value: string) {
+    this.filterSearchInputValue = value;
+    console.log(this.filterSearchInputValue);
   }
 }

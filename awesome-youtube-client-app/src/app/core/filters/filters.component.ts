@@ -36,8 +36,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
   isDateDesc = true;
   @Output() dateDesc = new EventEmitter<boolean>();
 
-  constructor(public youtubeService: YoutubeService) {
-  }
+  constructor(public youtubeService: YoutubeService) {}
 
   ngOnInit() {
     this.SearchSubject.pipe(debounceTime(this.debounceTimeMs)).subscribe(
@@ -54,8 +53,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   getInputValue(inputValue: string) {
     // const inputTarget = event.target as HTMLInputElement;
     // this.inputValue = inputTarget?.value;
-    this.filterByWordValue.emit(inputValue);
-    return this.inputValue;
+    // this.filterByWordValue.emit(inputValue);
+    return this.youtubeService.catchFilterInputSearchValue(inputValue);
   }
 
   viewsSortOrderAsc() {

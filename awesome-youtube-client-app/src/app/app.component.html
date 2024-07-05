@@ -1,14 +1,10 @@
 <app-header></app-header>
 <app-filters
-  (filterByWordValue)="gotFilterByWordValue($event)"
   (viewsCountAsc)="sortViewsAsc($event)"
   (viewsCountDesc)="sortViewsDesc($event)"
   (dateAsc)="sortDateAsc($event)"
   (dateDesc)="sortDateDesc($event)"></app-filters>
-<app-search-results
-  class="search_results"
-  [filterValueDownFromApp]="filterValue"
-  [getFakeSearchValue]="fakeSearchValue"
+<app-search-results class="search_results"
   [gotViewsCountAcsOrder]="viewsAscSort"
   [gotViewsCountDescOrder]="viewsDescSort"
   [gotDateAsc]="dateAscSort"

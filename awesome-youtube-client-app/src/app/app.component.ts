@@ -20,18 +20,12 @@ import { SearchResultsComponent } from './youtube/search/search-results/search-r
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  isOpenClose = true;
   filterValue = '';
   fakeSearchValue = '';
   viewsAscSort = true;
   viewsDescSort = true;
   dateAscSort = true;
   dateDescSort = true;
-
-  public closeOpenFilters(value: boolean) {
-    this.isOpenClose = value;
-    return value;
-  }
 
   public gotFilterByWordValue(value: string) {
     this.filterValue = value;
