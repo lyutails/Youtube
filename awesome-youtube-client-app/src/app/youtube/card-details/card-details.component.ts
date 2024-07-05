@@ -28,6 +28,7 @@ export class CardDetailsComponent implements OnInit {
   protected isFavourite = false;
   buttonName = 'more...';
   card: SearchItem | undefined;
+  returnBackButtonName = 'back';
 
   constructor(
     private route: ActivatedRoute,
@@ -43,5 +44,9 @@ export class CardDetailsComponent implements OnInit {
     if (!cardId || !this.card) {
       this.router.navigate(['/404']);
     }
+  }
+
+  navigateToMain() {
+    this.router.navigate(['/main']);
   }
 }

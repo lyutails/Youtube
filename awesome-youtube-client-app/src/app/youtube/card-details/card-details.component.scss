@@ -73,6 +73,22 @@
     margin: 0 auto;
     text-align: center;
   }
+
+  &_come-back {
+    padding: 10px 20px;
+    background-color: oklch(75.93% 0.15 14.33);
+    border-radius: 10px;
+    border: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+    margin: 0 auto;
+    display: block;
+
+    &:hover {
+      cursor: pointer;
+      background-color: oklch(75.93% 0.15 14.33 / 50%);
+    }
+  }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 650px) {

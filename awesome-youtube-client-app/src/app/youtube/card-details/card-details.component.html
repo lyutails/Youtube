@@ -36,3 +36,4 @@
   {{ card?.snippet?.title }}
 </div>
 <div class="card_public-date">{{ card?.snippet?.publishedAt | cutDate }}</div>
+<button (click)="navigateToMain()" class="card_come-back">{{ returnBackButtonName | uppercase }}</button>
