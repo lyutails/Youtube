@@ -39,7 +39,6 @@ export class YoutubeService {
 
   public sortViewsAsc(value: boolean) {
     this.viewsAscSort = value;
-    console.log(value);
     return value;
   }
 

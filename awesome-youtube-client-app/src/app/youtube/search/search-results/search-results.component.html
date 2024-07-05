@@ -3,10 +3,10 @@
     youtubeService.headerSearchInputValue
   )
     | wordsPipe: youtubeService.filterSearchInputValue
-    | viewsCountAsc: gotViewsCountAcsOrder
-    | viewsCountDesc: gotViewsCountDescOrder
-    | dateAsc: youtubeService.viewsAscSort
-    | dateDesc: youtubeService.viewsDescSort;
+    | viewsCountAsc: youtubeService.viewsAscSort
+    | viewsCountDesc: youtubeService.viewsDescSort
+    | dateAsc: youtubeService.dateAscSort
+    | dateDesc: youtubeService.dateDescSort;
   track responseCard.id
 ) {
   <app-search-item
