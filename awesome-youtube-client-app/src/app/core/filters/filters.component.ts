@@ -4,6 +4,7 @@ import {
   OnInit,
   Output,
   OnDestroy,
+  HostListener,
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +36,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   @Output() dateAsc = new EventEmitter<boolean>();
   isDateDesc = true;
   @Output() dateDesc = new EventEmitter<boolean>();
+  public screenWidth!: number;
+  public screenHeight!: number;
 
   constructor(public youtubeService: YoutubeService) {}
 
@@ -44,6 +47,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
         this.getInputValue(inputValue);
       }
     );
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
   }
 
   onSearch(inputValue: string) {
@@ -83,5 +94,9 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.SearchSubject.complete();
+  }
+
+  isFiltersPanelPresent() {
+    return this.screenWidth > 1000 || this.youtubeService.isFiltersVisible;
   }
 }

@@ -14,7 +14,7 @@ import { SearchResultsComponent } from './youtube/search/search-results/search-r
     HeaderComponent,
     FooterComponent,
     SearchResultsComponent,
-    FiltersComponent
+    FiltersComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

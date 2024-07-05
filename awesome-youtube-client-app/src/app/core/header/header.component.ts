@@ -7,6 +7,7 @@ import { Router, RouterModule } from '@angular/router';
 import { YoutubeService } from '../../youtube/youtube.service';
 import { ThemeService } from '../../theme.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
     SearchInputFieldComponent,
     RouterModule,
     CommonModule,
+    FormsModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -30,7 +32,7 @@ export class HeaderComponent {
   constructor(
     public loginService: LoginService,
     private router: Router,
-    private youtubeService: YoutubeService,
+    public youtubeService: YoutubeService,
     public themeService: ThemeService
   ) {}
 

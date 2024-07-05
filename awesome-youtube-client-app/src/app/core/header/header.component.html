@@ -12,8 +12,16 @@
     <h1 class="header_title">{{ title }}</h1>
     <app-search-input-field></app-search-input-field>
     <div class="header_filters">
-      <div class="header_filters-toggle">Filters</div>
-      <mat-slide-toggle (click)="toggleFilters()"></mat-slide-toggle>
+      <div
+        class="header_filters-toggle"
+        [ngStyle]="{
+          color: themeService.isLightTheme
+            ? 'oklch(14.09% 0.024 205.29)'
+            : 'oklch(99.13% 0.0085 205.9)',
+        }">
+        Filters
+      </div>
+      <mat-slide-toggle [(ngModel)]="youtubeService.isFiltersVisible"></mat-slide-toggle>
     </div>
     <div class="header_login">
       <button

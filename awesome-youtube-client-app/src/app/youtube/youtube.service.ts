@@ -7,7 +7,7 @@ import * as cards from '../../../response.json';
 })
 export class YoutubeService {
   responseCards = cards.items;
-  isFiltersVisible = true;
+  isFiltersVisible = false;
   headerSearchInputValue = '';
   filterSearchInputValue = '';
   viewsAscSort = true;
