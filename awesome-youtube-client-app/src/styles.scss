@@ -1,7 +1,7 @@
-@use "../m3-theme.scss";
-@use "@angular/material" as mat;
+@use '../m3-theme.scss';
+@use '@angular/material' as mat;
 @include mat.core();
-@import "./variables.scss";
+@import './variables.scss';
 
 :host {
   --bright-blue: oklch(51.01% 0.274 263.83);
@@ -55,7 +55,7 @@ body {
 body {
   width: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -79,6 +79,22 @@ body::-webkit-scrollbar-thumb {
   min-height: 100%;
 }
 
+app-search-results,
+app-login,
+app-card-details,
+app-not-found {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 50px;
+  position: relative;
+  flex: 1 0 auto;
+  padding: 20px 0px;
+}
+
 @media screen and (min-width: 650px) and (max-width: 1310px) {
   html {
     font-size: 18px;
@@ -90,4 +106,3 @@ body::-webkit-scrollbar-thumb {
     font-size: 16px;
   }
 }
-

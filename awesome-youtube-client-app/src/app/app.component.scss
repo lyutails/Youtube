@@ -18,19 +18,6 @@ a {
   text-decoration: none;
 }
 
-.search_results {
-  width: 90vw;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  row-gap: 50px;
-  position: relative;
-  flex: 1 0 auto;
-  padding: 20px 0px;
-}
-
 @media screen and (min-width: 320px) and (max-width: 649.99px) {
   .content {
     flex-direction: column;
