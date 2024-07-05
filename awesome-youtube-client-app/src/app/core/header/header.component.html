@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header_wrapper">
-    <div class="header_youtube-logo"></div>
+    <a [routerLink]="['/main']" class="header_navigate"><div class="header_youtube-logo"></div></a>
     <h1 class="header_title">{{ title }}</h1>
     <app-search-input-field></app-search-input-field>
     <div class="header_filters">
@@ -12,11 +12,7 @@
         (click)="toggleIsAuth()"
         class="header_login-button"
         [disabled]="this.loginService.getToken() === null">
-        {{
-          this.loginService.getToken() !== null
-            ? 'Logout'
-            : 'Login'
-        }}
+        {{ this.loginService.getToken() !== null ? 'Logout' : 'Login' }}
       </button>
       <mat-icon class="header_login-icon">person</mat-icon>
     </div>

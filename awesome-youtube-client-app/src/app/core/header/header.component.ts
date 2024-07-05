@@ -3,13 +3,18 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchInputFieldComponent } from '../search-input-field/search-input-field.component';
 import { LoginService } from '../../auth/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { YoutubeService } from '../../youtube/youtube.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatSlideToggleModule, MatIconModule, SearchInputFieldComponent],
+  imports: [
+    MatSlideToggleModule,
+    MatIconModule,
+    SearchInputFieldComponent,
+    RouterModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
