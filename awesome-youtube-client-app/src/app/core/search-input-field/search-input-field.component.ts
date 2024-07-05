@@ -8,6 +8,7 @@ import {
   transition,
 } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
+import { YoutubeService } from '../../youtube/youtube.service';
 
 @Component({
   selector: 'app-search-input-field',
@@ -41,6 +42,8 @@ export class SearchInputFieldComponent {
   inputValue = '';
   @Output() fakeSearch = new EventEmitter<string>();
 
+  constructor(private youtubeService: YoutubeService) {}
+
   recolour() {
     this.isBackgroundRecoloured = !this.isBackgroundRecoloured;
   }
@@ -53,6 +56,7 @@ export class SearchInputFieldComponent {
 
   startSearch(value: string) {
     this.inputValue = value;
-    this.fakeSearch.emit(this.inputValue);
+    // this.fakeSearch.emit(this.inputValue);
+    this.youtubeService.catchHeaderInputSearchValue(value);
   }
 }

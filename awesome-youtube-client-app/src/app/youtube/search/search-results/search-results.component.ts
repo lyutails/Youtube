@@ -40,13 +40,12 @@ export class SearchResultsComponent {
   @Input() gotDateDesc = true;
   youtubeFakeCards: SearchItem[];
 
-  constructor(private youtubeService: YoutubeService) {
+  constructor(public youtubeService: YoutubeService) {
     this.youtubeFakeCards = this.youtubeService.getCards();
   }
 
   getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
-    this.getFakeSearchValue = value;
-    return this.getFakeSearchValue === ''
+    return value === ''
       ? []
       : this.youtubeFakeCards.filter(
           item =>

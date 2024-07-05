@@ -34,11 +34,11 @@ export class HeaderComponent {
     return value;
   }
 
-  @Output() fakeSearchHeader = new EventEmitter<string>();
+  /* @Output() fakeSearchHeader = new EventEmitter<string>();
 
   public fakeSearchToApp(value: string) {
     this.fakeSearchHeader.emit(value);
-  }
+  } */
 
   public toggleIsAuth() {
     this.loginService.isLoggedIn();

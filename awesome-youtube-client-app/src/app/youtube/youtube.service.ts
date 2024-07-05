@@ -8,6 +8,7 @@ import * as cards from '../../../response.json';
 export class YoutubeService {
   responseCards = cards.items;
   isFiltersVisible = true;
+  headerSearchInputValue = '';
 
   getCards(): SearchItem[] {
     return this.responseCards;
@@ -16,10 +17,15 @@ export class YoutubeService {
   getCard(cardId: string): SearchItem | undefined {
     return this.getCards().find(elem => {
       return elem.id === cardId;
-    })
+    });
   }
 
   toggleFilters(): void {
     this.isFiltersVisible = !this.isFiltersVisible;
+  }
+
+  catchHeaderInputSearchValue(value: string) {
+    this.headerSearchInputValue = value;
+    console.log(this.headerSearchInputValue);
   }
 }

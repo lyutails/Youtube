@@ -1,10 +1,12 @@
 @for (
-  responseCard of (getCardsBasedOnHeaderInputValue(getFakeSearchValue)
+  responseCard of getCardsBasedOnHeaderInputValue(
+    youtubeService.headerSearchInputValue
+  )
     | wordsPipe: filterValueDownFromApp
     | viewsCountAsc: gotViewsCountAcsOrder
     | viewsCountDesc: gotViewsCountDescOrder
     | dateAsc: gotDateAsc
-    | dateDesc: gotDateDesc);
+    | dateDesc: gotDateDesc;
   track responseCard.id
 ) {
   <app-search-item
