@@ -8,6 +8,5 @@ export class ThemeService {
 
   switchTheme() {
     this.isLightTheme = !this.isLightTheme;
-    console.log(this.isLightTheme);
   }
 }
