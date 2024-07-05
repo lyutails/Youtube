@@ -1,6 +1,14 @@
-<header class="header">
+<header
+  class="header"
+  [ngStyle]="{
+    'background-color': themeService.isLightTheme
+      ? 'oklch(99.13% 0.0085 205.9)'
+      : 'oklch(14.09% 0.024 205.29)',
+  }">
   <div class="header_wrapper">
-    <a [routerLink]="['/main']" class="header_navigate"><div class="header_youtube-logo"></div></a>
+    <a [routerLink]="['/main']" class="header_navigate"
+      ><div class="header_youtube-logo"></div
+    ></a>
     <h1 class="header_title">{{ title }}</h1>
     <app-search-input-field></app-search-input-field>
     <div class="header_filters">

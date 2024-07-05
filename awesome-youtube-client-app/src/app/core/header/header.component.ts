@@ -5,6 +5,8 @@ import { SearchInputFieldComponent } from '../search-input-field/search-input-fi
 import { LoginService } from '../../auth/login.service';
 import { Router, RouterModule } from '@angular/router';
 import { YoutubeService } from '../../youtube/youtube.service';
+import { ThemeService } from '../../theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +16,7 @@ import { YoutubeService } from '../../youtube/youtube.service';
     MatIconModule,
     SearchInputFieldComponent,
     RouterModule,
+    CommonModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -27,7 +30,8 @@ export class HeaderComponent {
   constructor(
     public loginService: LoginService,
     private router: Router,
-    private youtubeService: YoutubeService
+    private youtubeService: YoutubeService,
+    public themeService: ThemeService
   ) {}
 
   public toggleFilters() {
@@ -54,5 +58,9 @@ export class HeaderComponent {
       this.router.navigate(['/login']);
       return this.loginService.removeCredentials();
     }
+  }
+
+  changeTheme() {
+    this.themeService.switchTheme();
   }
 }
