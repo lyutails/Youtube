@@ -15,7 +15,6 @@ import { YoutubeService } from '../../youtube/youtube.service';
 })
 export class HeaderComponent {
   title = 'YouTube-client-app';
-  state = true;
   fakeSearchValue = '';
 
   @Output() settingsToggle = new EventEmitter<boolean>();
@@ -27,9 +26,7 @@ export class HeaderComponent {
   ) {}
 
   public toggleFilters() {
-    this.state = !this.state;
-    // this.settingsToggle.emit(this.state);
-    this.youtubeService.filtersToggle(this.state);
+    this.youtubeService.toggleFilters();
   }
 
   public gotFakeSearchHeader(value: string) {

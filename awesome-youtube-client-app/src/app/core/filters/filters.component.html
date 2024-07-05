@@ -1,8 +1,7 @@
 <div
   class="filters_wrapper"
-  [ngStyle]="{
-    visibility: youtubeService.isFiltersVisible === true ? 'hidden' : 'visible',
-  }">
+  *ngIf="!youtubeService.isFiltersVisible"
+  >
   <div class="filters_item title">Sorting by:</div>
   <button
     mat-button

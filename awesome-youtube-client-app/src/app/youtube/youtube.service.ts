@@ -19,9 +19,7 @@ export class YoutubeService {
     })
   }
 
-  filtersToggle(toggleValue: boolean) {
-    console.log(toggleValue);
-    this.isFiltersVisible = toggleValue;
-    return this.isFiltersVisible;
+  toggleFilters(): void {
+    this.isFiltersVisible = !this.isFiltersVisible;
   }
 }

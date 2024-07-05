@@ -41,7 +41,7 @@ export class CardDetailsComponent implements OnInit {
       this.card = this.youtubeService.getCard(cardId);
     }
     if (!cardId || !this.card) {
-      this.router.navigate(['/**']);
+      this.router.navigate(['/404']);
     }
   }
 }
