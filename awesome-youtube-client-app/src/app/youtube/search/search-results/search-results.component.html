@@ -5,8 +5,8 @@
     | wordsPipe: youtubeService.filterSearchInputValue
     | viewsCountAsc: gotViewsCountAcsOrder
     | viewsCountDesc: gotViewsCountDescOrder
-    | dateAsc: gotDateAsc
-    | dateDesc: gotDateDesc;
+    | dateAsc: youtubeService.viewsAscSort
+    | dateDesc: youtubeService.viewsDescSort;
   track responseCard.id
 ) {
   <app-search-item

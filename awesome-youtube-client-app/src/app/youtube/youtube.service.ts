@@ -10,6 +10,10 @@ export class YoutubeService {
   isFiltersVisible = true;
   headerSearchInputValue = '';
   filterSearchInputValue = '';
+  viewsAscSort = true;
+  viewsDescSort = true;
+  dateAscSort = true;
+  dateDescSort = true;
 
   getCards(): SearchItem[] {
     return this.responseCards;
@@ -31,6 +35,26 @@ export class YoutubeService {
 
   catchFilterInputSearchValue(value: string) {
     this.filterSearchInputValue = value;
-    console.log(this.filterSearchInputValue);
+  }
+
+  public sortViewsAsc(value: boolean) {
+    this.viewsAscSort = value;
+    console.log(value);
+    return value;
+  }
+
+  public sortViewsDesc(value: boolean) {
+    this.viewsDescSort = value;
+    return value;
+  }
+
+  public sortDateAsc(value: boolean) {
+    this.dateAscSort = value;
+    return value;
+  }
+
+  public sortDateDesc(value: boolean) {
+    this.dateDescSort = value;
+    return value;
   }
 }

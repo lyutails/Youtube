@@ -1,14 +1,6 @@
 <app-header></app-header>
-<app-filters
-  (viewsCountAsc)="sortViewsAsc($event)"
-  (viewsCountDesc)="sortViewsDesc($event)"
-  (dateAsc)="sortDateAsc($event)"
-  (dateDesc)="sortDateDesc($event)"></app-filters>
-<app-search-results class="search_results"
-  [gotViewsCountAcsOrder]="viewsAscSort"
-  [gotViewsCountDescOrder]="viewsDescSort"
-  [gotDateAsc]="dateAscSort"
-  [gotDateDesc]="dateDescSort"></app-search-results>
+<app-filters></app-filters>
+<app-search-results class="search_results"></app-search-results>
 
 <router-outlet />
 <app-footer></app-footer>

@@ -69,12 +69,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   dateSortAsc() {
     this.isDateAsc = !this.isDateAsc;
-    this.dateAsc.emit(this.isDateAsc);
+    // this.dateAsc.emit(this.isDateAsc);
+    this.youtubeService.sortViewsAsc(this.isDateAsc);
   }
 
   dateSortDesc() {
     this.isDateDesc = !this.isDateDesc;
-    this.dateDesc.emit(this.isDateDesc);
+    // this.dateDesc.emit(this.isDateDesc);
+    this.youtubeService.sortViewsDesc(this.isDateDesc);
   }
 
   ngOnDestroy() {
