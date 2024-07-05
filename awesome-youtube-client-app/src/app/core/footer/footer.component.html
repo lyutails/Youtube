@@ -1,30 +1,28 @@
 <footer
   [ngStyle]="{
-    'background-color': isDay
+    'background-color': themeService.isLightTheme
       ? 'oklch(99.13% 0.0085 205.9)'
       : 'oklch(14.09% 0.024 205.29)',
   }"
-  class="footer"
->
+  class="footer">
   <div class="footer_wrapper">
     <a class="footer_logo" href="https://app.rs.school/registry/student">RS</a>
     <button
       (click)="changeTheme()"
       class="footer_theme"
       [ngStyle]="{
-        border: isDay
+        border: themeService.isLightTheme
           ? '1px solid oklch(14.09% 0.024 205.29)'
           : '1px solid oklch(99.13% 0.0085 205.9)',
-      }"
-    >
+      }">
       <mat-icon
         [ngStyle]="{
-          color: isDay
+          color: themeService.isLightTheme
             ? 'oklch(14.09% 0.024 205.29)'
             : 'oklch(99.13% 0.0085 205.9)',
         }"
         class="footer_theme-icon"
-        >{{ isDay ? isLight : isDark }}</mat-icon
+        >{{ themeService.isLightTheme ? isLight : isDark }}</mat-icon
       >
     </button>
     <a class="footer_lyutails" href="https://github.com/lyutails">{{

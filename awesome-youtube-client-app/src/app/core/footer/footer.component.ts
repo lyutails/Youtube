@@ -1,3 +1,4 @@
+import { ThemeService } from './../../theme.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
@@ -15,7 +16,9 @@ export class FooterComponent {
   isLight = 'wb_sunny';
   isDark = 'bedtime';
 
+  constructor(public themeService: ThemeService) {}
+
   changeTheme() {
-    this.isDay = !this.isDay;
+    this.themeService.switchTheme();
   }
 }
