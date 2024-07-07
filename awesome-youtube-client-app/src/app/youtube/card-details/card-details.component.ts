@@ -6,8 +6,8 @@ import { MatIcon } from '@angular/material/icon';
 import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
 import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CutDatePipe } from '../../pipes/cut-date.pipe';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-details',
@@ -19,7 +19,7 @@ import { CutDatePipe } from '../../pipes/cut-date.pipe';
     WordsPipePipe,
     ColouredByDateBorderDirective,
     CustomButtonComponent,
-    CutDatePipe
+    CutDatePipe,
   ],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.scss',

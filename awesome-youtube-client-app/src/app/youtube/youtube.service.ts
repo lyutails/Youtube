@@ -19,7 +19,7 @@ export class YoutubeService {
     return this.responseCards;
   }
 
-  getCard(cardId: string): SearchItem | undefined {
+ getCard(cardId: string): SearchItem | undefined {
     return this.getCards().find(elem => {
       return elem.id === cardId;
     });

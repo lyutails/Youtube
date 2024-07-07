@@ -23,7 +23,7 @@ import { YoutubeService } from '../../youtube.service';
     ViewsCountAscPipe,
     ViewsCountDescPipe,
     DateAscPipe,
-    DateDescPipe
+    DateDescPipe,
   ],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
