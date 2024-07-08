@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
@@ -10,6 +10,7 @@ import { ViewsCountDescPipe } from '../../../pipes/views-count-desc.pipe';
 import { DateAscPipe } from '../../../pipes/date-asc.pipe';
 import { DateDescPipe } from '../../../pipes/date-desc.pipe';
 import { YoutubeService } from '../../youtube.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-search-results',
@@ -28,7 +29,7 @@ import { YoutubeService } from '../../youtube.service';
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
-export class SearchResultsComponent {
+export class SearchResultsComponent implements OnInit {
   @Input() filterValueDownFromApp = '';
   gotFilterValue = '';
   @Input() fakeSearchDownFromApp = '';
@@ -38,19 +39,22 @@ export class SearchResultsComponent {
   @Input() gotViewsCountDescOrder = true;
   @Input() gotDateAsc = true;
   @Input() gotDateDesc = true;
-  youtubeFakeCards: SearchItem[];
+  // youtubeFakeCards: SearchItem[];
+  public http = inject(HttpClient);
+  realAPICards: SearchItem[] = [];
 
-  constructor(public youtubeService: YoutubeService) {
-    this.youtubeFakeCards = this.youtubeService.getCards();
+  constructor(public youtubeService: YoutubeService) {}
+
+  ngOnInit(): void {
+    this.youtubeService.getRealAPICards().subscribe(data => {
+      this.realAPICards = data.items;
+    });
   }
 
-  getCardsBasedOnHeaderInputValue(value: string): SearchItem[] {
-    return value === ''
-      ? []
-      : this.youtubeFakeCards.filter(
-          item =>
-            item.snippet.title.toLowerCase().includes(value) &&
-            this.responseCardsOnRequest.push(item)
-        );
+  getCardsBasedOnHeaderInputValue(): SearchItem[] {
+    return this.realAPICards;
+    /* .filter(item =>
+          item.snippet.title.toLowerCase().includes(value)
+        ); */
   }
 }

@@ -6,12 +6,4 @@
     [(ngModel)]="inputValue"
     (input)="inputSearch(inputValue)"
   />
-  <button
-    class="header-input_search-button"
-    (click)="recolour()"
-    [@changeBackgroundColour]="isBackgroundRecoloured ? 'initial' : 'coloured'"
-    (click)="startSearch(inputValue)"
-  >
-    <mat-icon class="header-input_search-icon">search</mat-icon>
-  </button>
 </div>

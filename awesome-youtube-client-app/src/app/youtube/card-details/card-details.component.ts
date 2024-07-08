@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { YoutubeService } from '../youtube.service';
 import { SearchItem } from '../search/search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
@@ -24,7 +24,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.scss',
 })
-export class CardDetailsComponent implements OnInit {
+// implements OnInit
+export class CardDetailsComponent {
   protected isFavourite = false;
   buttonName = 'more...';
   card: SearchItem | undefined;
@@ -36,7 +37,7 @@ export class CardDetailsComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  /* ngOnInit() {
     const cardId = this.route.snapshot.paramMap.get('id');
     if (cardId !== null) {
       this.card = this.youtubeService.getCard(cardId);
@@ -44,7 +45,7 @@ export class CardDetailsComponent implements OnInit {
     if (!cardId || !this.card) {
       this.router.navigate(['/404']);
     }
-  }
+  } */
 
   navigateToMain() {
     this.router.navigate(['/main']);

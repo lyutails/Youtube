@@ -51,12 +51,6 @@ export class SearchInputFieldComponent {
   inputSearch(value: string) {
     // const inputTarget = event.target as HTMLInputElement;
     this.inputValue = value;
-    return this.inputValue;
-  }
-
-  startSearch(value: string) {
-    this.inputValue = value;
-    // this.fakeSearch.emit(this.inputValue);
     this.youtubeService.catchHeaderInputSearchValue(value);
   }
 }

@@ -1,7 +1,5 @@
-<!-- @for (
-  responseCard of getCardsBasedOnHeaderInputValue(
-    youtubeService.headerSearchInputValue
-  )
+@for (
+  responseCard of getCardsBasedOnHeaderInputValue()
     | wordsPipe: youtubeService.filterSearchInputValue
     | viewsCountAsc: youtubeService.viewsAscSort
     | viewsCountDesc: youtubeService.viewsDescSort
@@ -15,4 +13,3 @@
     [appColouredByDateBorder]="responseCard.snippet.publishedAt"
     [ngStyle]="{ display: 'block' }"></app-search-item>
 }
- -->
