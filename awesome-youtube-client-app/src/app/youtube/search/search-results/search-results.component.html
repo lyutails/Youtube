@@ -1,5 +1,5 @@
 @for (
-  responseCard of getCardsBasedOnHeaderInputValue()
+  responseCard of youtubeService.cards
     | wordsPipe: youtubeService.filterSearchInputValue
     | viewsCountAsc: youtubeService.viewsAscSort
     | viewsCountDesc: youtubeService.viewsDescSort

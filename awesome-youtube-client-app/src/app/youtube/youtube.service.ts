@@ -1,11 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 // import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import {
-  SearchResponse,
-  VideosResponse,
-} from './search/search-response.model';
+import { SearchResponse, VideosResponse } from './search/search-response.model';
 import { Observable, map, mergeMap } from 'rxjs';
+import { SearchItem } from './search/search-item.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +17,8 @@ export class YoutubeService {
   dateAscSort = true;
   dateDescSort = true;
 
+  cards: SearchItem[] = [];
+
   public http = inject(HttpClient);
 
   private API_KEY = 'AIzaSyCAf-6LwDXxX5ovVfBeLH5L5XBLMXSvvEM';
@@ -28,11 +28,11 @@ export class YoutubeService {
   maxResults = 10;
   searchInput = '';
 
-  getRealAPICards(): Observable<VideosResponse> {
-    console.log(this.headerSearchInputValue)
+  getRealAPICards(value: string): Observable<VideosResponse> {
+    console.log(this.headerSearchInputValue);
     return this.http
       .get<SearchResponse>(
-        `${this.API_SEARCH_URL}?key=${this.API_KEY}&type=video&part=snippet&maxResults=${this.maxResults}&q=${this.headerSearchInputValue}`
+        `${this.API_SEARCH_URL}?key=${this.API_KEY}&type=video&part=snippet&maxResults=${this.maxResults}&q=${value}`
       )
       .pipe(
         map(data => {
@@ -62,8 +62,9 @@ export class YoutubeService {
     this.isFiltersVisible = !this.isFiltersVisible;
   }
 
-  catchHeaderInputSearchValue(value: string) {
-    this.headerSearchInputValue = value;
+  passCards(value: SearchItem[]) {
+    console.log(value);
+    return this.cards = value;
   }
 
   catchFilterInputSearchValue(value: string) {

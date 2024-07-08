@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import {
   trigger,
@@ -9,6 +16,8 @@ import {
 } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
 import { YoutubeService } from '../../youtube/youtube.service';
+import { debounceTime, fromEvent, map } from 'rxjs';
+import { SearchItem } from '../../youtube/search/search-item.model';
 
 @Component({
   selector: 'app-search-input-field',
@@ -37,20 +46,42 @@ import { YoutubeService } from '../../youtube/youtube.service';
     ]),
   ],
 })
-export class SearchInputFieldComponent {
+export class SearchInputFieldComponent implements AfterViewInit {
   isBackgroundRecoloured = true;
   inputValue = '';
-  @Output() fakeSearch = new EventEmitter<string>();
+  @ViewChild('input') inputElement!: ElementRef;
+  @Output() search = new EventEmitter<string>();
+  realAPICards: SearchItem[] = [];
 
   constructor(private youtubeService: YoutubeService) {}
+
+  ngAfterViewInit() {
+    fromEvent<KeyboardEvent>(this.inputElement.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(500),
+        map((input: KeyboardEvent) => {
+          if (input?.target instanceof HTMLInputElement) {
+            return input.target?.value;
+          } else return '';
+        })
+        //filter((value: string) => value.length > 2)
+      )
+      .subscribe(value => {
+        return value !== undefined &&
+          this.youtubeService.getRealAPICards(value).subscribe(data => {
+            //this.realAPICards = data.items;
+            this.youtubeService.passCards(data.items);
+          });
+      });
+  }
 
   recolour() {
     this.isBackgroundRecoloured = !this.isBackgroundRecoloured;
   }
 
-  inputSearch(value: string) {
+  /* inputSearch(value: string) {
     // const inputTarget = event.target as HTMLInputElement;
     this.inputValue = value;
     this.youtubeService.catchHeaderInputSearchValue(value);
-  }
+  } */
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { SearchItemComponent } from '../search-item/search-item.component';
@@ -29,7 +29,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent {
   @Input() filterValueDownFromApp = '';
   gotFilterValue = '';
   @Input() fakeSearchDownFromApp = '';
@@ -45,11 +45,11 @@ export class SearchResultsComponent implements OnInit {
 
   constructor(public youtubeService: YoutubeService) {}
 
-  ngOnInit(): void {
+  /* ngAfterViewInit(): void {
     this.youtubeService.getRealAPICards().subscribe(data => {
       this.realAPICards = data.items;
     });
-  }
+  } */
 
   getCardsBasedOnHeaderInputValue(): SearchItem[] {
     return this.realAPICards;
