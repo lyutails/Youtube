@@ -6,19 +6,19 @@
   }"></div>
 <div class="card_stats">
   <div class="card_stat view">
-    {{ card.statistics.viewCount }}
+    {{ card.statistics.viewCount ? card.statistics.viewCount : '0'  }}
     <mat-icon class="header_icon">visibility</mat-icon>
   </div>
   <div class="card_stat like">
-    {{ card.statistics.likeCount }}
+    {{ card.statistics.likeCount ? card.statistics.likeCount : '0' }}
     <mat-icon class="header_icon">thumb_up</mat-icon>
   </div>
   <div class="card_stat dislike">
-    {{ card.statistics.dislikeCount }}
+    {{ card.statistics.dislikeCount ? card.statistics.dislikeCount : '0' }}
     <mat-icon class="header_icon">thumb_down</mat-icon>
   </div>
   <div class="card_stat comments">
-    {{ card.statistics.commentCount }}
+    {{ card.statistics.commentCount ? card.statistics.commentCount : '0' }}
     <mat-icon class="header_icon">comment</mat-icon>
   </div>
   <button

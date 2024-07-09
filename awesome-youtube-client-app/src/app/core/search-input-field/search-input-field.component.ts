@@ -16,7 +16,7 @@ import {
 } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
 import { YoutubeService } from '../../youtube/youtube.service';
-import { debounceTime, fromEvent, map } from 'rxjs';
+import { debounceTime, filter, fromEvent, map } from 'rxjs';
 import { SearchItem } from '../../youtube/search/search-item.model';
 
 @Component({
@@ -58,19 +58,18 @@ export class SearchInputFieldComponent implements AfterViewInit {
   ngAfterViewInit() {
     fromEvent<KeyboardEvent>(this.inputElement.nativeElement, 'keyup')
       .pipe(
-        debounceTime(500),
+        debounceTime(1000),
         map((input: KeyboardEvent) => {
           if (input?.target instanceof HTMLInputElement) {
             return input.target?.value;
           } else return '';
-        })
-        //filter((value: string) => value.length > 2)
+        }),
+        filter((value: string) => value.length > 3)
       )
       .subscribe(value => {
         return value !== undefined &&
           this.youtubeService.getRealAPICards(value).subscribe(data => {
-            //this.realAPICards = data.items;
-            this.youtubeService.passCards(data.items);
+            this.youtubeService.getCards(data.items);
           });
       });
   }
@@ -78,10 +77,4 @@ export class SearchInputFieldComponent implements AfterViewInit {
   recolour() {
     this.isBackgroundRecoloured = !this.isBackgroundRecoloured;
   }
-
-  /* inputSearch(value: string) {
-    // const inputTarget = event.target as HTMLInputElement;
-    this.inputValue = value;
-    this.youtubeService.catchHeaderInputSearchValue(value);
-  } */
 }

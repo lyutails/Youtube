@@ -29,7 +29,6 @@ export class YoutubeService {
   searchInput = '';
 
   getRealAPICards(value: string): Observable<VideosResponse> {
-    console.log(this.headerSearchInputValue);
     return this.http
       .get<SearchResponse>(
         `${this.API_SEARCH_URL}?key=${this.API_KEY}&type=video&part=snippet&maxResults=${this.maxResults}&q=${value}`
@@ -48,23 +47,13 @@ export class YoutubeService {
       );
   }
 
-  /* getCards(): SearchItem[] {
-    return this.responseCards;
-  } */
-
-  /* getCard(cardId: string): SearchItem | undefined {
-    return this.getCards().find(elem => {
-      return elem.id === cardId;
-    });
-  } */
+  getCards(value: SearchItem[]) {
+    console.log(value);
+    return this.cards = value;
+  }
 
   toggleFilters(): void {
     this.isFiltersVisible = !this.isFiltersVisible;
-  }
-
-  passCards(value: SearchItem[]) {
-    console.log(value);
-    return this.cards = value;
   }
 
   catchFilterInputSearchValue(value: string) {
