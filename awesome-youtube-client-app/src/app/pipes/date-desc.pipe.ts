@@ -1,13 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as cards from '../../../response.json';
 import { SearchItem } from '../youtube/search/search-item.model';
+import { YoutubeService } from '../youtube/youtube.service';
 
 @Pipe({
   name: 'dateDesc',
   standalone: true,
 })
 export class DateDescPipe implements PipeTransform {
-  responseCards = cards.items;
+  constructor(public youtubeService: YoutubeService){}
+  responseCards = this.youtubeService.cards;
 
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
     if (value === false) {

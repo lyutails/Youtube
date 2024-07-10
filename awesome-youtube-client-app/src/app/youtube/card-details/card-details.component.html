@@ -1,43 +1,55 @@
-<div
-  class="card_pic"
-  [ngStyle]="{
-    'background-image': 'url(' + card?.snippet?.thumbnails?.maxres?.url + ')',
-  }"></div>
-<div class="card_description">
-  Description: {{ card?.snippet?.description }}
-</div>
-<div class="card_stats">
-  <div class="card_stat view">
-    {{ card?.statistics?.viewCount ? card?.statistics?.viewCount : '0' }}
-    <mat-icon class="header_icon">visibility</mat-icon>
-  </div>
-  <div class="card_stat like">
-    {{ card?.statistics?.likeCount ? card?.statistics?.likeCount : '0' }}
-    <mat-icon class="header_icon">thumb_up</mat-icon>
-  </div>
-  <div class="card_stat dislike">
-    {{ card?.statistics?.dislikeCount ? card?.statistics?.dislikeCount : '0' }}
-    <mat-icon class="header_icon">thumb_down</mat-icon>
-  </div>
-  <div class="card_stat comments">
-    {{ card?.statistics?.commentCount ? card?.statistics?.commentCount : '0' }}
-    <mat-icon class="header_icon">comment</mat-icon>
-  </div>
-  <button
-    id="{{ card?.id }}"
-    class="card_stat favourite"
+@if (card) {
+  <div
+    class="card_pic"
     [ngStyle]="{
-      color: isFavourite ? '#be003d' : '#000000',
-    }">
-    <mat-icon class="header_icon">favorite</mat-icon>
-    <!-- <mat-icon class="header_icon">heart_broken</mat-icon> -->
-    <!-- <mat-icon class="header_icon">person_add</mat-icon> -->
+      'background-image':
+        'url(' + card.snippet.thumbnails.maxres.url + ')'
+          ? 'url(' + card.snippet.thumbnails.maxres.url + ')'
+          : '../../../../public/favicon_youtube_angular_colours.svg',
+    }"></div>
+  <div class="card_description">
+    Description:
+    {{
+      card.snippet.description
+        ? card.snippet.description
+        : 'good long meaningful text'
+    }}
+  </div>
+  <div class="card_stats">
+    <div class="card_stat view">
+      {{ card.statistics.viewCount ? card.statistics.viewCount : '0' }}
+      <mat-icon class="header_icon">visibility</mat-icon>
+    </div>
+    <div class="card_stat like">
+      {{ card.statistics.likeCount ? card.statistics.likeCount : '0' }}
+      <mat-icon class="header_icon">thumb_up</mat-icon>
+    </div>
+    <div class="card_stat dislike">
+      {{ card.statistics.dislikeCount ? card.statistics.dislikeCount : '0' }}
+      <mat-icon class="header_icon">thumb_down</mat-icon>
+    </div>
+    <div class="card_stat comments">
+      {{ card.statistics.commentCount ? card.statistics.commentCount : '0' }}
+      <mat-icon class="header_icon">comment</mat-icon>
+    </div>
+    <button
+      id="{{ card.id }}"
+      class="card_stat favourite"
+      [ngStyle]="{
+        color: isFavourite ? '#be003d' : '#000000',
+      }">
+      <mat-icon class="header_icon">favorite</mat-icon>
+      <!-- <mat-icon class="header_icon">heart_broken</mat-icon> -->
+      <!-- <mat-icon class="header_icon">person_add</mat-icon> -->
+    </button>
+  </div>
+  <div class="card_title">
+    {{ card.snippet.title }}
+  </div>
+  <div class="card_public-date">
+    {{ card.snippet.publishedAt | cutDate }}
+  </div>
+  <button (click)="navigateToMain()" class="card_come-back">
+    {{ returnBackButtonName | uppercase }}
   </button>
-</div>
-<div class="card_title">
-  {{ card?.snippet?.title }}
-</div>
-<div class="card_public-date">{{ card?.snippet?.publishedAt | cutDate }}</div>
-<button (click)="navigateToMain()" class="card_come-back">
-  {{ returnBackButtonName | uppercase }}
-</button>
+}

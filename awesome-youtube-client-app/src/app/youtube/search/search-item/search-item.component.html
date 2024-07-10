@@ -1,4 +1,3 @@
-<!-- <div class="card_id">id: {{ card.id }}</div> -->
 <div
   class="card_pic"
   [ngStyle]="{
@@ -36,7 +35,7 @@
 <div class="card_title">
   {{ card.snippet.title }}
 </div>
-<button class="card_button" (click)="goToCard(card)">
+<button class="card_button" (click)="goToCard(card.id)">
   <app-custom-button class="card_app-custom-button">
     {{ buttonName | uppercase }}
   </app-custom-button>

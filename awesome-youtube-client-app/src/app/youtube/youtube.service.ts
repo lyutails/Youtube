@@ -18,6 +18,7 @@ export class YoutubeService {
   dateDescSort = true;
 
   cards: SearchItem[] = [];
+  card!: SearchItem;
 
   public http = inject(HttpClient);
 
@@ -31,7 +32,7 @@ export class YoutubeService {
   getRealAPICards(value: string): Observable<VideosResponse> {
     return this.http
       .get<SearchResponse>(
-        `${this.API_SEARCH_URL}?key=${this.API_KEY}&type=video&part=snippet&maxResults=${this.maxResults}&q=${value}`
+        `${this.API_SEARCH_URL}?type=video&part=snippet&maxResults=${this.maxResults}&q=${value}`
       )
       .pipe(
         map(data => {
@@ -41,15 +42,25 @@ export class YoutubeService {
       .pipe(
         mergeMap(ids => {
           return this.http.get<VideosResponse>(
-            `${this.API_VIDEOS_URL}?key=${this.API_KEY}&id=${ids.join()}&part=snippet,statistics`
+            `${this.API_VIDEOS_URL}?id=${ids.join()}&part=snippet,statistics`
           );
         })
       );
   }
 
+  getRealDetailedCard(id: string) {
+    return this.http.get<VideosResponse>(
+      `${this.API_VIDEOS_URL}?&id=${id}&part=snippet,statistics`
+    );
+  }
+
   getCards(value: SearchItem[]) {
     console.log(value);
-    return this.cards = value;
+    return (this.cards = value);
+  }
+
+  setDetailedCard(value: SearchItem) {
+    this.card = value;
   }
 
   toggleFilters(): void {

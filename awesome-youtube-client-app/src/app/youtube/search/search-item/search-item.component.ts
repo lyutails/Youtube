@@ -1,3 +1,4 @@
+import { YoutubeService } from './../../youtube.service';
 import { Component, Input } from '@angular/core';
 import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
@@ -6,7 +7,6 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
-// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-item',
@@ -29,25 +29,18 @@ export class SearchItemComponent {
   protected isFavourite = false;
   buttonName = 'more...';
   @Input() filterByWordSearchResults = '';
-  // route: ActivatedRoute = inject(ActivatedRoute);
   youtubeCard!: SearchItem;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public youtubeService: YoutubeService
+  ) {}
 
-  goToCard(card: SearchItem) {
-    const cardId = card ? card.id : null;
-    this.router.navigate(['/card', cardId]);
+  goToCard(id: string) {
+    this.router.navigate(['/card', id]);
   }
 
   countFavourites() {
-    /* const heart = event?.currentTarget as HTMLButtonElement;
-    this.responseCards.map((item) => {
-      if (item.id === heart.id) {
-        this.favourites.push(item.id);
-        this.isFavourite = true;
-      }
-    });*/
-
     this.isFavourite = !this.isFavourite;
   }
 }

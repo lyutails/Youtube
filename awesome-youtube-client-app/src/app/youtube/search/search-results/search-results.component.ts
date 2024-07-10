@@ -39,22 +39,12 @@ export class SearchResultsComponent {
   @Input() gotViewsCountDescOrder = true;
   @Input() gotDateAsc = true;
   @Input() gotDateDesc = true;
-  // youtubeFakeCards: SearchItem[];
   public http = inject(HttpClient);
   realAPICards: SearchItem[] = [];
 
   constructor(public youtubeService: YoutubeService) {}
 
-  /* ngAfterViewInit(): void {
-    this.youtubeService.getRealAPICards().subscribe(data => {
-      this.realAPICards = data.items;
-    });
-  } */
-
   getCardsBasedOnHeaderInputValue(): SearchItem[] {
     return this.realAPICards;
-    /* .filter(item =>
-          item.snippet.title.toLowerCase().includes(value)
-        ); */
   }
 }
