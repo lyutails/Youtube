@@ -22,17 +22,13 @@ export class YoutubeService {
 
   public http = inject(HttpClient);
 
-  private API_KEY = 'AIzaSyCAf-6LwDXxX5ovVfBeLH5L5XBLMXSvvEM';
-  private API_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
-  private API_VIDEOS_URL = 'https://www.googleapis.com/youtube/v3/videos';
-
   maxResults = 10;
   searchInput = '';
 
   getRealAPICards(value: string): Observable<VideosResponse> {
     return this.http
       .get<SearchResponse>(
-        `${this.API_SEARCH_URL}?type=video&part=snippet&maxResults=${this.maxResults}&q=${value}`
+        `search?type=video&part=snippet&maxResults=${this.maxResults}&q=${value}`
       )
       .pipe(
         map(data => {
@@ -42,7 +38,7 @@ export class YoutubeService {
       .pipe(
         mergeMap(ids => {
           return this.http.get<VideosResponse>(
-            `${this.API_VIDEOS_URL}?id=${ids.join()}&part=snippet,statistics`
+            `videos?id=${ids.join()}&part=snippet,statistics`
           );
         })
       );
@@ -50,7 +46,7 @@ export class YoutubeService {
 
   getRealDetailedCard(id: string) {
     return this.http.get<VideosResponse>(
-      `${this.API_VIDEOS_URL}?&id=${id}&part=snippet,statistics`
+      `videos?&id=${id}&part=snippet,statistics`
     );
   }
 
