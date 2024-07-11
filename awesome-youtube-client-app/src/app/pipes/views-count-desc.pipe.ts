@@ -9,7 +9,6 @@ import { SearchItem } from '../youtube/search/search-item.model';
 })
 export class ViewsCountDescPipe implements PipeTransform {
   constructor(private youtubeService: YoutubeService) {}
-  initialCards = this.youtubeService.cards;
 
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
     if (value === false) {
@@ -17,6 +16,6 @@ export class ViewsCountDescPipe implements PipeTransform {
         return +b.statistics.viewCount - +a.statistics.viewCount;
       });
     }
-    return this.initialCards;
+    return [...this.youtubeService.cards];
   }
 }

@@ -10,7 +10,12 @@
     matTooltip="date sort"
     class="filters_item button"
     (click)="dateSortAsc()"
-    [disabled]="!isDateDesc || !isViewsCountAsc || !isViewsCountDesc"
+    [disabled]="
+      !isDateDesc ||
+      !isViewsCountAsc ||
+      !isViewsCountDesc ||
+      youtubeService.filterSearchInputValue !== ''
+    "
     [ngStyle]="{
       background: !isDateAsc ? 'oklch(75.93% 0.15 14.33 / 10%)' : 'transparent',
     }">
@@ -21,7 +26,12 @@
     matTooltip="date sort"
     class="filters_item button"
     (click)="dateSortDesc()"
-    [disabled]="!isDateAsc || !isViewsCountDesc || !isViewsCountAsc"
+    [disabled]="
+      !isDateAsc ||
+      !isViewsCountDesc ||
+      !isViewsCountAsc ||
+      youtubeService.filterSearchInputValue !== ''
+    "
     [ngStyle]="{
       background: !isDateDesc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
@@ -33,7 +43,12 @@
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderAsc()"
-    [disabled]="!isViewsCountDesc || !isDateAsc || !isDateDesc"
+    [disabled]="
+      !isViewsCountDesc ||
+      !isDateAsc ||
+      !isDateDesc ||
+      youtubeService.filterSearchInputValue !== ''
+    "
     [ngStyle]="{
       background: !isViewsCountAsc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
@@ -45,7 +60,12 @@
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderDesc()"
-    [disabled]="!isViewsCountAsc || !isDateAsc || !isDateDesc"
+    [disabled]="
+      !isViewsCountAsc ||
+      !isDateAsc ||
+      !isDateDesc ||
+      youtubeService.filterSearchInputValue !== ''
+    "
     [ngStyle]="{
       background: !isViewsCountDesc
         ? 'oklch(75.93% 0.15 14.33 / 10%)'
@@ -59,7 +79,9 @@
   <div class="filters_item">
     by word or sentence
     <input
-      [disabled]="!isViewsCountAsc || !isViewsCountDesc || !isDateAsc || !isDateDesc"
+      [disabled]="
+        !isViewsCountAsc || !isViewsCountDesc || !isDateAsc || !isDateDesc
+      "
       class="filters_input"
       type="text"
       placeholder="what you're looking for..."
