@@ -5,14 +5,14 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class LoadingService {
-  public spinnerCounter = new BehaviorSubject<number>(0);
+  private spinnerCounter = new BehaviorSubject<boolean>(false);
   spinnerCounter$ = this.spinnerCounter.asObservable();
 
   show() {
-    this.spinnerCounter.next(this.spinnerCounter.value + 1);
+    this.spinnerCounter.next(true);
   }
 
   hide() {
-    this.spinnerCounter.next(this.spinnerCounter.value - 1);
+    this.spinnerCounter.next(false);
   }
 }

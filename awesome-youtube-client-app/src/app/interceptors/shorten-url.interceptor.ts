@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const shortenUrlInterceptor: HttpInterceptorFn = (request, next) => {
-  const API_KEY = 'AIzaSyCAf-6LwDXxX5ovVfBeLH5L5XBLMXSvvEM';
+  const API_KEY = 'AIzaSyCQh1dEquQQKLFXiKe2a9nU06-k3_TRouQ';
   const API_URL = 'https://www.googleapis.com/youtube/v3/';
 
   const authReq = request.clone({
