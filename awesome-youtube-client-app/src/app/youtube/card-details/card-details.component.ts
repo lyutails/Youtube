@@ -8,6 +8,7 @@ import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
 import { CutDatePipe } from '../../pipes/cut-date.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoadingService } from '../../interceptors/loading.service';
 
 @Component({
   selector: 'app-card-details',
@@ -34,6 +35,7 @@ export class CardDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     public youtubeService: YoutubeService,
     private router: Router,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {
@@ -42,13 +44,15 @@ export class CardDetailsComponent implements OnInit {
       this.router.navigate(['/404']);
       return;
     }
-    this.youtubeService.getRealDetailedCard(cardId).subscribe(data => {
-      if (data.items[0]) {
-        this.card = data.items[0];
-      } else {
-        this.router.navigate(['/404']);
-      }
-    });
+    setTimeout(() => {
+      this.youtubeService.getRealDetailedCard(cardId).subscribe(data => {
+        if (data.items[0]) {
+          this.card = data.items[0];
+        } else {
+          this.router.navigate(['/404']);
+        }
+      });
+    }, 100);
   }
 
   navigateToMain() {
