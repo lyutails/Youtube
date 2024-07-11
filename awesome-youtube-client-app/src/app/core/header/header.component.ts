@@ -45,17 +45,11 @@ export class HeaderComponent {
     return value;
   }
 
-  /* @Output() fakeSearchHeader = new EventEmitter<string>();
-
-  public fakeSearchToApp(value: string) {
-    this.fakeSearchHeader.emit(value);
-  } */
-
   public toggleIsAuth() {
-    this.loginService.isLoggedIn();
+    this.loginService.toggleLoginLogout();
     if (
-      this.loginService.getToken() !== null ||
-      this.loginService.isAuth === true
+      this.loginService.getToken() === null ||
+      this.loginService.login.value === false
     ) {
       this.router.navigate(['/login']);
       return this.loginService.removeCredentials();

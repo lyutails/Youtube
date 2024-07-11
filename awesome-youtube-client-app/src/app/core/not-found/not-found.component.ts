@@ -21,7 +21,7 @@ export class NotFoundComponent {
   ) {}
 
   goHome() {
-    const route = this.loginService.isLoggedIn() ? '/main' : '/login';
+    const route = this.loginService.getToken() !== null ? '/main' : '/login';
     return this.router.navigate([route]);
   }
 }

@@ -31,7 +31,7 @@ export class LoginComponent {
       this.loginForm.value.login?.trim() &&
       this.loginForm.value.password?.trim()
     ) {
-      this.loginService.isLoggedIn();
+      this.loginService.toggleLoginLogout();
       this.loginService.saveCredentials(data);
       this.router.navigate(['/main']);
     }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface Credentials {
   login: string;
@@ -10,15 +11,17 @@ export interface Credentials {
 })
 export class LoginService {
   data!: Credentials;
-  isAuth = false;
+
+  public login = new BehaviorSubject<boolean>(false);
+  login$ = this.login.asObservable();
+
+  toggleLoginLogout() {
+    this.login.next(!this.login.value);
+  }
 
   generateToken() {
     const fakeAuthToken = Math.random().toString(36).substring(2);
     return fakeAuthToken;
-  }
-
-  isLoggedIn() {
-    return (this.isAuth = !this.isAuth);
   }
 
   saveCredentials(data: Credentials) {
