@@ -18,6 +18,24 @@ a {
   text-decoration: none;
 }
 
+.overlay {
+  &.show {
+    width: 100vw;
+    min-height: 100%;
+    position: absolute;
+    background-color: oklch(75.93% 0.15 14.33 / 20%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+}
+
+.spinner {
+  font-size: 2rem;
+  z-index: 100;
+}
+
 @media screen and (min-width: 320px) and (max-width: 649.99px) {
   .content {
     flex-direction: column;
