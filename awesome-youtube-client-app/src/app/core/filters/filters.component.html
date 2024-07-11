@@ -59,6 +59,7 @@
   <div class="filters_item">
     by word or sentence
     <input
+      [disabled]="!isViewsCountAsc || !isViewsCountDesc || !isDateAsc || !isDateDesc"
       class="filters_input"
       type="text"
       placeholder="what you're looking for..."

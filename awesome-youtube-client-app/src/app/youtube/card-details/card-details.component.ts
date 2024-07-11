@@ -33,7 +33,7 @@ export class CardDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public youtubeService: YoutubeService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {

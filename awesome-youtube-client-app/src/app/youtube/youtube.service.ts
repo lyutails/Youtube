@@ -1,5 +1,4 @@
 import { Injectable, inject } from '@angular/core';
-// import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SearchResponse, VideosResponse } from './search/search-response.model';
 import { Observable, map, mergeMap } from 'rxjs';
@@ -51,7 +50,6 @@ export class YoutubeService {
   }
 
   getCards(value: SearchItem[]) {
-    console.log(value);
     return (this.cards = value);
   }
 

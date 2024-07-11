@@ -1,10 +1,10 @@
 @for (
   responseCard of youtubeService.cards
-    | wordsPipe: youtubeService.filterSearchInputValue
     | viewsCountAsc: youtubeService.viewsAscSort
     | viewsCountDesc: youtubeService.viewsDescSort
     | dateAsc: youtubeService.dateAscSort
-    | dateDesc: youtubeService.dateDescSort;
+    | dateDesc: youtubeService.dateDescSort
+    | wordsPipe: youtubeService.filterSearchInputValue;
   track responseCard.id
 ) {
   <app-search-item
