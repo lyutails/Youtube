@@ -4,6 +4,7 @@ import { SearchItem } from '../youtube/search/search-item.model';
 @Pipe({
   name: 'dateDesc',
   standalone: true,
+  pure: false,
 })
 export class DateDescPipe implements PipeTransform {
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
@@ -15,6 +16,6 @@ export class DateDescPipe implements PipeTransform {
         );
       });
     }
-    return responseCards;
+    return [...responseCards];
   }
 }

@@ -19,6 +19,6 @@ export class DateAscPipe implements PipeTransform {
         );
       });
     }
-    return [...this.youtubeService.cards];
+    return [...responseCards];
   }
 }

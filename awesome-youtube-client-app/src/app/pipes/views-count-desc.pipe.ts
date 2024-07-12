@@ -16,6 +16,6 @@ export class ViewsCountDescPipe implements PipeTransform {
         return +b.statistics.viewCount - +a.statistics.viewCount;
       });
     }
-    return [...this.youtubeService.cards];
+    return [...responseCards];
   }
 }
