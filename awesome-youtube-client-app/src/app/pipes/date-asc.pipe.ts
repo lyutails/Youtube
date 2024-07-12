@@ -4,7 +4,6 @@ import { SearchItem } from '../youtube/search/search-item.model';
 @Pipe({
   name: 'dateAsc',
   standalone: true,
-  pure: false,
 })
 export class DateAscPipe implements PipeTransform {
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {

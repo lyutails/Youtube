@@ -3,7 +3,6 @@ import { SearchItem } from '../youtube/search/search-item.model';
 @Pipe({
   name: 'viewsCountAsc',
   standalone: true,
-  pure: false,
 })
 export class ViewsCountAscPipe implements PipeTransform {
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
