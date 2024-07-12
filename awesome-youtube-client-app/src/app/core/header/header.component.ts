@@ -47,7 +47,6 @@ export class HeaderComponent {
 
   public toggleIsAuth() {
     this.loginService.toggleLoginLogout();
-    console.log(this.loginService.login.value);
     if (
       this.loginService.getToken() !== null ||
       this.loginService.login.value === false
