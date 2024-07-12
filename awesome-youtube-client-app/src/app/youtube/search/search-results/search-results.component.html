@@ -1,9 +1,9 @@
 @for (
   responseCard of youtubeService.cards
-    | viewsCountAsc: youtubeService.viewsAscSort
-    | viewsCountDesc: youtubeService.viewsDescSort
     | dateAsc: youtubeService.dateAscSort
     | dateDesc: youtubeService.dateDescSort
+    | viewsCountAsc: youtubeService.viewsAscSort
+    | viewsCountDesc: youtubeService.viewsDescSort
     | wordsPipe: youtubeService.filterSearchInputValue;
   track responseCard.id
 ) {
