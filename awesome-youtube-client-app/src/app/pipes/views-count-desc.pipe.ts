@@ -1,4 +1,3 @@
-import { YoutubeService } from './../youtube/youtube.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { SearchItem } from '../youtube/search/search-item.model';
 
@@ -8,8 +7,6 @@ import { SearchItem } from '../youtube/search/search-item.model';
   pure: false,
 })
 export class ViewsCountDescPipe implements PipeTransform {
-  constructor(private youtubeService: YoutubeService) {}
-
   transform(responseCards: SearchItem[], value: boolean): SearchItem[] {
     if (value === false) {
       return [...responseCards]?.sort((a, b) => {
