@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   buttonName = 'Submit';
   loginData!: Credentials;
+  emailSign = '@';
 
   constructor(
     private loginService: LoginService,
