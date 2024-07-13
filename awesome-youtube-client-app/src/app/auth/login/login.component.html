@@ -29,6 +29,20 @@
         formControlName="password"
         placeholder="your password..." />
     </div>
+    <div
+      *ngIf="password?.invalid && password?.touched"
+      class="alert alert-danger">
+      <div *ngIf="password?.hasError('required')">
+        please enter your password
+      </div>
+      <div *ngIf="password?.hasError('minlength')">
+        password must be at least 4 characters long
+      </div>
+      <div *ngIf="password?.hasError('pattern')">
+        should contain lowercase and capital letters, at least one number and at
+        least one special symbol
+      </div>
+    </div>
     <button class="login_button" type="submit" [disabled]="!loginForm.valid">
       {{ buttonName | uppercase }}
     </button>
