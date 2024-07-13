@@ -54,6 +54,10 @@
   }
 }
 
+input.ng-invalid.ng-touched {
+  border: 1px solid oklch(59.98% 0.236 15.45);
+}
+
 .alert.alert-danger {
   color: oklch(59.98% 0.236 15.45);
 }
