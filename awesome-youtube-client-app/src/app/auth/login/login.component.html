@@ -35,9 +35,6 @@
       <div *ngIf="password?.hasError('required')">
         please enter your password
       </div>
-      <div *ngIf="password?.hasError('minlength')">
-        * password must be at least 4 characters long
-      </div>
       <div *ngIf="password?.hasError('pattern')">
         * should be at least 8 characters long
       </div>
@@ -45,10 +42,11 @@
         * should contain lowercase and capital letters
       </div>
       <div *ngIf="password?.hasError('pattern')">
-        * should contain at least one number and at least one special symbol
+        * should contain at least one number
       </div>
       <div *ngIf="password?.hasError('pattern')">
         * should contain at least one special symbol
+        {{ passwordSpecialSymbols }}
       </div>
     </div>
     <button class="login_button" type="submit" [disabled]="!loginForm.valid">
