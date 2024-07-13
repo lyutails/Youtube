@@ -61,3 +61,21 @@ input.ng-invalid.ng-touched {
 .alert.alert-danger {
   color: oklch(59.98% 0.236 15.45);
 }
+
+@media screen and (min-width: 320px) and (max-width: 499.99px) {
+  .login_form {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 999.99px) {
+  .login_form {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 999.99px) {
+  .login_item {
+    flex-direction: column;
+  }
+}
