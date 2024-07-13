@@ -14,10 +14,10 @@
         please enter your login email
       </div>
       <div *ngIf="login?.hasError('minlength')">
-        login must be at least 4 characters long
+        * login must be at least 4 characters long
       </div>
       <div *ngIf="login?.hasError('email')">
-        should contain {{ emailSign }} sign
+        * should contain {{ emailSign }} sign
       </div>
     </div>
     <div class="login_item">
@@ -36,11 +36,19 @@
         please enter your password
       </div>
       <div *ngIf="password?.hasError('minlength')">
-        password must be at least 4 characters long
+        * password must be at least 4 characters long
       </div>
       <div *ngIf="password?.hasError('pattern')">
-        should be at least 8 characters long, contain lowercase and capital letters, at least one number and at
-        least one special symbol
+        * should be at least 8 characters long
+      </div>
+      <div *ngIf="password?.hasError('pattern')">
+        * should contain lowercase and capital letters
+      </div>
+      <div *ngIf="password?.hasError('pattern')">
+        * should contain at least one number and at least one special symbol
+      </div>
+      <div *ngIf="password?.hasError('pattern')">
+        * should contain at least one special symbol
       </div>
     </div>
     <button class="login_button" type="submit" [disabled]="!loginForm.valid">
