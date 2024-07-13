@@ -7,10 +7,10 @@
         id="login"
         type="text"
         formControlName="login"
-        placeholder="your login name..." />
+        placeholder="your email..." />
     </div>
     <div *ngIf="login?.invalid && login?.touched" class="alert alert-danger">
-      <div *ngIf="login?.hasError('required')">please enter a login email</div>
+      <div *ngIf="login?.hasError('required')">please enter your login email</div>
       <div *ngIf="login?.hasError('required')">
         login must be at least 4 characters long
       </div>
