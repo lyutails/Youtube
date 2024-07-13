@@ -1,4 +1,4 @@
-import { UpperCasePipe } from '@angular/common';
+import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, UpperCasePipe],
+  imports: [ReactiveFormsModule, UpperCasePipe, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

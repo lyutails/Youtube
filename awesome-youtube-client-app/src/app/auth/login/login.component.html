@@ -9,6 +9,12 @@
         formControlName="login"
         placeholder="your login name..." />
     </div>
+    <div *ngIf="login?.invalid && login?.touched" class="alert alert-danger">
+      <div *ngIf="login?.hasError('required')">please enter a login email</div>
+      <div *ngIf="login?.hasError('required')">
+        login must be at least 4 characters long
+      </div>
+    </div>
     <div class="login_item">
       <label class="login_label" for="password">Password</label>
       <input
