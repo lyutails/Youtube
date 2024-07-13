@@ -1,6 +1,11 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Credentials, LoginService } from '../login.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +16,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   buttonName = 'Submit';
   loginData!: Credentials;
 
@@ -35,5 +40,23 @@ export class LoginComponent {
       this.loginService.saveCredentials(data);
       this.router.navigate(['/main']);
     }
+  }
+
+  ngOnInit() {
+    this.loginForm = new FormGroup({
+      login: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+      password: new FormControl(''),
+    });
+  }
+
+  get login() {
+    return this.loginForm.get('login');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 }
