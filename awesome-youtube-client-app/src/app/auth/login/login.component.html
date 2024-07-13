@@ -13,10 +13,10 @@
       <div *ngIf="login?.hasError('required')">
         please enter your login email
       </div>
-      <div *ngIf="login?.hasError('required')">
+      <div *ngIf="login?.hasError('minlength')">
         login must be at least 4 characters long
       </div>
-      <div *ngIf="login?.hasError('required')">
+      <div *ngIf="login?.hasError('email')">
         should contain {{ emailSign }} sign
       </div>
     </div>
