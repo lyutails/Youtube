@@ -59,10 +59,9 @@
         please enter a link video
       </div>
       <div *ngIf="linkVideo?.hasError('minlength')">
-        * the title is too short
+        * the link is too short
       </div>
     </div>
-
     <ng-container formArrayName="tags">
       <div *ngFor="let tag of tags.controls; let index = index">
         <div class="admin_item">
@@ -75,7 +74,7 @@
             placeholder="tag..." />
         </div>
         <div *ngIf="tags?.invalid && tags?.touched" class="alert alert-danger">
-          <div *ngIf="tags?.hasError('required')">please enter a tag</div>
+          <div *ngIf="tag?.hasError('required')">please enter a tag</div>
         </div>
         <button class="admin_button delete" (click)="addTag()">
           {{ addButtonName | uppercase }}
@@ -85,7 +84,6 @@
         </button>
       </div></ng-container
     >
-
     <button class="admin_button reset" (click)="reset()">
       {{ resetButtonName | uppercase }}
     </button>
