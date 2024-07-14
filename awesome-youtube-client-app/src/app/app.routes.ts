@@ -26,6 +26,13 @@ export const routes: Routes = [
         m => m.CardDetailsComponent
       ),
   },
+  {
+    path: 'admin',
+    title: 'admin',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./core/admin/admin.component').then(m => m.AdminComponent),
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: '**',

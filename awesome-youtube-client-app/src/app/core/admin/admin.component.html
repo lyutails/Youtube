@@ -1,0 +1,67 @@
+<div class="admin">
+  Create new card
+  <form [formGroup]="adminForm" class="admin_form" (ngSubmit)="onSubmit()">
+    <div class="admin_item">
+      <label class="admin_label" for="title">Title</label>
+      <input
+        class="admin_input"
+        id="admin"
+        type="text"
+        formControlName="admin"
+        placeholder="title..." />
+    </div>
+    <div *ngIf="title?.invalid && title?.touched" class="alert alert-danger">
+      <div *ngIf="title?.hasError('required')">please enter a title</div>
+      <div *ngIf="title?.hasError('minlength')">* the title is too short</div>
+      <div *ngIf="title?.hasError('maxlength')">* the title is too long</div>
+    </div>
+    <div class="admin_item">
+      <label class="admin_label" for="description">Description</label>
+      <input
+        class="admin_input"
+        id="password"
+        type="text"
+        formControlName="description"
+        placeholder="description..." />
+    </div>
+    <div *ngIf="description?.invalid" class="alert alert-danger">
+      <div *ngIf="description?.hasError('maxlength')">
+        * the description is too long
+      </div>
+    </div>
+    <div class="admin_item">
+      <label class="admin_label" for="img">Image</label>
+      <input
+        class="admin_input"
+        id="img"
+        type="text"
+        formControlName="admin"
+        placeholder="image..." />
+    </div>
+    <div *ngIf="img?.invalid && img?.touched" class="alert alert-danger">
+      <div *ngIf="img?.hasError('required')">please enter an img</div>
+    </div>
+    <div class="admin_item">
+      <label class="admin_label" for="link">Link video</label>
+      <input
+        class="admin_input"
+        id="link"
+        type="text"
+        formControlName="admin"
+        placeholder="link video..." />
+    </div>
+    <div
+      *ngIf="linkVideo?.invalid && linkVideo?.touched"
+      class="alert alert-danger">
+      <div *ngIf="linkVideo?.hasError('required')">
+        please enter a linkVideo
+      </div>
+      <div *ngIf="linkVideo?.hasError('minlength')">
+        * the title is too short
+      </div>
+    </div>
+    <button class="admin_button" type="submit" [disabled]="!adminForm.valid">
+      {{ buttonName | uppercase }}
+    </button>
+  </form>
+</div>

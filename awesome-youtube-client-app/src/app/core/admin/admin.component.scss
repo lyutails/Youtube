@@ -1,0 +1,81 @@
+.admin {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 20px 0px;
+
+  &_form {
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid oklch(0% 0 0 / 50);
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  &_text {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  &_item {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_input {
+    outline: none;
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+  }
+
+  &_label {
+    pointer-events: none;
+  }
+
+  &_button {
+    padding: 5px 10px;
+    margin-top: 20px;
+  }
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid oklch(59.98% 0.236 15.45);
+}
+
+.alert.alert-danger {
+  color: oklch(59.98% 0.236 15.45);
+}
+
+@media screen and (min-width: 320px) and (max-width: 499.99px) {
+  .admin_form {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 999.99px) {
+  .admin_form {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 999.99px) {
+  .admin_item {
+    flex-direction: column;
+  }
+}
