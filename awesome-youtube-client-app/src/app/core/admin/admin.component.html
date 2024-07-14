@@ -62,9 +62,9 @@
         * the link is too short
       </div>
     </div>
-    <ng-container formArrayName="tags">
-      <div *ngFor="let tag of tags.controls; let index = index">
-        <div class="admin_item">
+    <div class="tags_wrapper" formArrayName="tags">
+      <div class="tags" *ngFor="let tag of tags.controls; let index = index">
+        <div class="admin_item tag">
           <label class="admin_label" for="tag">Tag</label>
           <input
             class="admin_input"
@@ -72,18 +72,18 @@
             type="text"
             [formControlName]="index"
             placeholder="tag..." />
+          <button class="admin_button tag" (click)="addTag()">
+            {{ addButtonName | uppercase }}
+          </button>
+          <button class="admin_button tag" (click)="removeTag()">
+            {{ deleteButtonName | uppercase }}
+          </button>
         </div>
         <div *ngIf="tags?.invalid && tags?.touched" class="alert alert-danger">
           <div *ngIf="tag?.hasError('required')">please enter a tag</div>
         </div>
-        <button class="admin_button delete" (click)="addTag()">
-          {{ addButtonName | uppercase }}
-        </button>
-        <button class="admin_button delete" (click)="removeTag()">
-          {{ deleteButtonName | uppercase }}
-        </button>
-      </div></ng-container
-    >
+      </div>
+    </div>
     <button class="admin_button reset" (click)="reset()">
       {{ resetButtonName | uppercase }}
     </button>
