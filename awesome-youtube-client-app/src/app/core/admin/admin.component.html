@@ -10,13 +10,19 @@
         formControlName="title"
         placeholder="title..." />
     </div>
-    <div *ngIf="title?.invalid && title?.touched" class="alert alert-danger">
-      <div *ngIf="adminForm.get('title')?.hasError('required')">
-        please enter a title
+    @if (title?.invalid && title?.touched) {
+      <div class="alert alert-danger">
+        @if (adminForm.get('title')?.hasError('required')) {
+          <div>please enter a title</div>
+        }
+        @if (title?.hasError('minlength')) {
+          <div>* the title is too short</div>
+        }
+        @if (title?.hasError('maxlength')) {
+          <div>* the title is too long</div>
+        }
       </div>
-      <div *ngIf="title?.hasError('minlength')">* the title is too short</div>
-      <div *ngIf="title?.hasError('maxlength')">* the title is too long</div>
-    </div>
+    }
     <div class="admin_item">
       <label class="admin_label" for="description">Description</label>
       <input
@@ -26,11 +32,13 @@
         formControlName="description"
         placeholder="description..." />
     </div>
-    <div *ngIf="description?.invalid" class="alert alert-danger">
-      <div *ngIf="description?.hasError('maxlength')">
-        * the description is too long
+    @if (description?.invalid && description?.touched) {
+      <div class="alert alert-danger">
+        @if (description?.hasError('maxlength')) {
+          <div>* the description is too long</div>
+        }
       </div>
-    </div>
+    }
     <div class="admin_item">
       <label class="admin_label" for="img">Image</label>
       <input
@@ -40,9 +48,13 @@
         formControlName="img"
         placeholder="image..." />
     </div>
-    <div *ngIf="img?.invalid && img?.touched" class="alert alert-danger">
-      <div *ngIf="img?.hasError('required')">please enter an img</div>
-    </div>
+    @if (img?.invalid && img?.touched) {
+      <div class="alert alert-danger">
+        @if (img?.hasError('required')) {
+          <div>please enter an img</div>
+        }
+      </div>
+    }
     <div class="admin_item">
       <label class="admin_label" for="link">Link video</label>
       <input
@@ -52,16 +64,16 @@
         formControlName="linkVideo"
         placeholder="link video..." />
     </div>
-    <div
-      *ngIf="linkVideo?.invalid && linkVideo?.touched"
-      class="alert alert-danger">
-      <div *ngIf="linkVideo?.hasError('required')">
-        please enter a link video
+    @if (linkVideo?.invalid && linkVideo?.touched) {
+      <div class="alert alert-danger">
+        @if (linkVideo?.hasError('required')) {
+          <div>please enter a link video</div>
+        }
+        @if (linkVideo?.hasError('minlength')) {
+          <div>* the link is too short</div>
+        }
       </div>
-      <div *ngIf="linkVideo?.hasError('minlength')">
-        * the link is too short
-      </div>
-    </div>
+    }
     <div class="tags_wrapper" formArrayName="tags">
       <div class="tags" *ngFor="let tag of tags.controls; let index = index">
         <div class="admin_item tag">
@@ -79,9 +91,13 @@
             {{ deleteButtonName | uppercase }}
           </button>
         </div>
-        <div *ngIf="tags?.invalid && tags?.touched" class="alert alert-danger">
-          <div *ngIf="tag?.hasError('required')">please enter a tag</div>
-        </div>
+        @if (tags.invalid && tags.touched) {
+          <div class="alert alert-danger">
+            @if (tag?.hasError('required')) {
+              <div>please enter a tag</div>
+            }
+          </div>
+        }
       </div>
     </div>
     <button class="admin_button reset" (click)="reset()">
