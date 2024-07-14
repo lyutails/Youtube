@@ -18,9 +18,6 @@ import { CommonModule, UpperCasePipe } from '@angular/common';
 })
 export class AdminComponent implements OnInit {
   buttonName = 'Submit';
-  loginData!: Credentials;
-  emailSign = '@';
-  passwordSpecialSymbols = 'e.g. ! @ # ?';
 
   constructor(
     private loginService: LoginService,
@@ -67,7 +64,7 @@ export class AdminComponent implements OnInit {
   }
 
   get title() {
-    return this.adminForm.get('login');
+    return this.adminForm.get('title');
   }
 
   get description() {

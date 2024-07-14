@@ -5,13 +5,15 @@
       <label class="admin_label" for="title">Title</label>
       <input
         class="admin_input"
-        id="admin"
+        id="title"
         type="text"
-        formControlName="admin"
+        formControlName="title"
         placeholder="title..." />
     </div>
     <div *ngIf="title?.invalid && title?.touched" class="alert alert-danger">
-      <div *ngIf="title?.hasError('required')">please enter a title</div>
+      <div *ngIf="adminForm.get('title')?.hasError('required')">
+        please enter a title
+      </div>
       <div *ngIf="title?.hasError('minlength')">* the title is too short</div>
       <div *ngIf="title?.hasError('maxlength')">* the title is too long</div>
     </div>
@@ -35,7 +37,7 @@
         class="admin_input"
         id="img"
         type="text"
-        formControlName="admin"
+        formControlName="img"
         placeholder="image..." />
     </div>
     <div *ngIf="img?.invalid && img?.touched" class="alert alert-danger">
@@ -47,14 +49,14 @@
         class="admin_input"
         id="link"
         type="text"
-        formControlName="admin"
+        formControlName="linkVideo"
         placeholder="link video..." />
     </div>
     <div
       *ngIf="linkVideo?.invalid && linkVideo?.touched"
       class="alert alert-danger">
       <div *ngIf="linkVideo?.hasError('required')">
-        please enter a linkVideo
+        please enter a link video
       </div>
       <div *ngIf="linkVideo?.hasError('minlength')">
         * the title is too short
