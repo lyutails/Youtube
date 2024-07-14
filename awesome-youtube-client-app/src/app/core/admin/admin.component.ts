@@ -102,13 +102,23 @@ export class AdminComponent implements OnInit {
   }
 
   reset() {
-    /* return this.adminForm.reset({
+    // this.tags.reset(['']);
+
+    /*  return this.adminForm.reset({
       title: this.initialValue,
       description: this.initialValue,
       img: this.initialValue,
       linkVideo: this.initialValue,
       tags: [],
     }); */
+
+    /* this.adminForm.reset();
+    while (this.tags.length > 1) {
+      this.removeTag();
+    } */
+
     this.adminForm.reset();
+    this.tags.clear();
+    this.addTag();
   }
 }
