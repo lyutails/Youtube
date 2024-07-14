@@ -62,10 +62,37 @@
         * the title is too short
       </div>
     </div>
-    <button class="admin_button">
+
+    <ng-container formArrayName="tags">
+      <div *ngFor="let tag of tags.controls; let index = index">
+        <div class="admin_item">
+          <label class="admin_label" for="tag">Tag</label>
+          <input
+            class="admin_input"
+            id="tag"
+            type="text"
+            [formControlName]="index"
+            placeholder="tag..." />
+        </div>
+        <div *ngIf="tags?.invalid && tags?.touched" class="alert alert-danger">
+          <div *ngIf="tags?.hasError('required')">please enter a tag</div>
+        </div>
+        <button class="admin_button delete" (click)="addTag()">
+          {{ addButtonName | uppercase }}
+        </button>
+        <button class="admin_button delete" (click)="removeTag()">
+          {{ deleteButtonName | uppercase }}
+        </button>
+      </div></ng-container
+    >
+
+    <button class="admin_button reset" (click)="reset()">
       {{ resetButtonName | uppercase }}
     </button>
-    <button class="admin_button" type="submit" [disabled]="!adminForm.valid">
+    <button
+      class="admin_button submit"
+      type="submit"
+      [disabled]="!adminForm.valid">
       {{ submitButtonName | uppercase }}
     </button>
   </form>

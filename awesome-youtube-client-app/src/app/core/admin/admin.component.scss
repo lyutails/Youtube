@@ -51,6 +51,10 @@
   &_button {
     padding: 5px 10px;
     margin-top: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

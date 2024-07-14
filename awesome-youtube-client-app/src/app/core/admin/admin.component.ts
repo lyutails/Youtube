@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormArray,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -19,6 +20,9 @@ import { CommonModule, UpperCasePipe } from '@angular/common';
 export class AdminComponent implements OnInit {
   submitButtonName = 'Submit';
   resetButtonName = 'Reset';
+  deleteButtonName = 'delete';
+  addButtonName = 'add';
+  index!: number;
 
   constructor(
     private loginService: LoginService,
@@ -30,6 +34,7 @@ export class AdminComponent implements OnInit {
     description: new FormControl(''),
     img: new FormControl(''),
     linkVideo: new FormControl(''),
+    tags: new FormArray([new FormControl()]),
   });
 
   onSubmit() {
@@ -51,16 +56,13 @@ export class AdminComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(20),
       ]),
-      description: new FormControl('', [
-        Validators.maxLength(255),
-      ]),
-      img: new FormControl('', [
-        Validators.required,
-      ]),
+      description: new FormControl('', [Validators.maxLength(255)]),
+      img: new FormControl('', [Validators.required]),
       linkVideo: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
       ]),
+      tags: new FormArray([new FormControl('', Validators.required)]),
     });
   }
 
@@ -78,5 +80,23 @@ export class AdminComponent implements OnInit {
 
   get linkVideo() {
     return this.adminForm.get('linkVideo');
+  }
+
+  get tags() {
+    const tags = this.adminForm.controls['tags'];
+    return tags;
+  }
+
+  addTag() {
+    const tag = new FormControl('', Validators.required);
+    return this.tags.push(tag);
+  }
+
+  removeTag() {
+    return this.tags.removeAt(this.index);
+  }
+
+  reset() {
+    console.log('reset');
   }
 }
