@@ -33,6 +33,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./core/admin/admin.component').then(m => m.AdminComponent),
   },
+  {
+    path: 'favourite',
+    title: 'favourite',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./core/favourite/favourite.component').then(m => m.FavouriteComponent),
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: '**',
