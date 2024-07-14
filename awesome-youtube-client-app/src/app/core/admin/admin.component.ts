@@ -101,6 +101,10 @@ export class AdminComponent implements OnInit {
   }
 
   reset() {
-    console.log('reset');
+    this.title?.reset();
+    this.description?.reset();
+    this.img?.reset();
+    this.linkVideo?.reset();
+    this.tags?.reset();
   }
 }
