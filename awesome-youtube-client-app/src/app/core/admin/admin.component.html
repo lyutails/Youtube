@@ -62,8 +62,11 @@
         * the title is too short
       </div>
     </div>
+    <button class="admin_button">
+      {{ resetButtonName | uppercase }}
+    </button>
     <button class="admin_button" type="submit" [disabled]="!adminForm.valid">
-      {{ buttonName | uppercase }}
+      {{ submitButtonName | uppercase }}
     </button>
   </form>
 </div>

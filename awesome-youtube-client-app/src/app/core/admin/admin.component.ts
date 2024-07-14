@@ -17,7 +17,8 @@ import { CommonModule, UpperCasePipe } from '@angular/common';
   styleUrl: './admin.component.scss',
 })
 export class AdminComponent implements OnInit {
-  buttonName = 'Submit';
+  submitButtonName = 'Submit';
+  resetButtonName = 'Reset';
 
   constructor(
     private loginService: LoginService,
