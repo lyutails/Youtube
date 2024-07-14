@@ -9,17 +9,19 @@
         formControlName="login"
         placeholder="your email..." />
     </div>
-    <div *ngIf="login?.invalid && login?.touched" class="alert alert-danger">
-      <div *ngIf="login?.hasError('required')">
-        please enter your login email
+    @if (login?.invalid && login?.touched) {
+      <div class="alert alert-danger">
+        @if (login?.hasError('required')) {
+          <div>please enter your login email</div>
+        }
+        @if (login?.hasError('minlength')) {
+          <div>* login must be at least 4 characters long</div>
+        }
+        @if (login?.hasError('email')) {
+          <div>* should contain {{ emailSign }} sign</div>
+        }
       </div>
-      <div *ngIf="login?.hasError('minlength')">
-        * login must be at least 4 characters long
-      </div>
-      <div *ngIf="login?.hasError('email')">
-        * should contain {{ emailSign }} sign
-      </div>
-    </div>
+    }
     <div class="login_item">
       <label class="login_label" for="password">Password</label>
       <input
@@ -29,26 +31,28 @@
         formControlName="password"
         placeholder="your password..." />
     </div>
-    <div
-      *ngIf="password?.invalid && password?.touched"
-      class="alert alert-danger">
-      <div *ngIf="password?.hasError('required')">
-        please enter your password
+    @if (password?.invalid && password?.touched) {
+      <div class="alert alert-danger">
+        @if (password?.hasError('required')) {
+          <div>please enter your password</div>
+        }
+        @if (password?.hasError('pattern')) {
+          <div>* should be at least 8 characters long</div>
+        }
+        @if (password?.hasError('pattern')) {
+          <div>* should contain lowercase and capital letters</div>
+        }
+        @if (password?.hasError('pattern')) {
+          <div>* should contain at least one number</div>
+        }
+        @if (password?.hasError('pattern')) {
+          <div>
+            * should contain at least one special symbol
+            {{ passwordSpecialSymbols }}
+          </div>
+        }
       </div>
-      <div *ngIf="password?.hasError('pattern')">
-        * should be at least 8 characters long
-      </div>
-      <div *ngIf="password?.hasError('pattern')">
-        * should contain lowercase and capital letters
-      </div>
-      <div *ngIf="password?.hasError('pattern')">
-        * should contain at least one number
-      </div>
-      <div *ngIf="password?.hasError('pattern')">
-        * should contain at least one special symbol
-        {{ passwordSpecialSymbols }}
-      </div>
-    </div>
+    }
     <button class="login_button" type="submit" [disabled]="!loginForm.valid">
       {{ buttonName | uppercase }}
     </button>

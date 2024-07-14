@@ -1,7 +1,9 @@
 <app-header></app-header>
-<div class="overlay show" *ngIf="loadingService.spinnerCounter$ | async">
-  <div class="spinner"></div>
-</div>
+@if (loadingService.spinnerCounter$ | async) {
+  <div class="overlay show">
+    <div class="spinner"></div>
+  </div>
+}
 <app-filters></app-filters>
 <router-outlet />
 <app-footer></app-footer>
