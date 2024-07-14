@@ -72,7 +72,7 @@ export class AdminComponent implements OnInit {
   }
 
   get description() {
-    return this.adminForm.get('password');
+    return this.adminForm.get('description');
   }
 
   get img() {
