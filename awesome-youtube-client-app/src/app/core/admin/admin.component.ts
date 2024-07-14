@@ -29,14 +29,6 @@ export class AdminComponent implements OnInit {
     private router: Router
   ) {}
 
-  adminForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    img: new FormControl(''),
-    linkVideo: new FormControl(''),
-    tags: new FormArray([new FormControl()]),
-  });
-
   onSubmit() {
     const data = this.adminForm.value as Credentials;
     if (
@@ -48,6 +40,14 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/main']);
     }
   }
+
+  adminForm = new FormGroup({
+    title: new FormControl(''),
+    description: new FormControl(''),
+    img: new FormControl(''),
+    linkVideo: new FormControl(''),
+    tags: new FormArray([new FormControl()]),
+  });
 
   ngOnInit() {
     this.adminForm = new FormGroup({
@@ -93,7 +93,9 @@ export class AdminComponent implements OnInit {
   }
 
   removeTag() {
-    return this.tags.removeAt(this.index);
+    if (this.tags.length > 1) {
+      return this.tags.removeAt(this.index);
+    }
   }
 
   reset() {
