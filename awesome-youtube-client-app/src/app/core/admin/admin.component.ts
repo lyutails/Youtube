@@ -89,7 +89,7 @@ export class AdminComponent implements OnInit {
   }
 
   addTag() {
-    if (this.tags.length <= 5) {
+    if (this.tags.length <= 4) {
       const tag = new FormControl('', Validators.required);
       return this.tags.push(tag);
     }
