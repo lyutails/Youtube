@@ -23,6 +23,7 @@ export class AdminComponent implements OnInit {
   deleteButtonName = 'delete';
   addButtonName = 'add';
   index!: number;
+  initialValue = '';
 
   constructor(
     private loginService: LoginService,
@@ -101,10 +102,13 @@ export class AdminComponent implements OnInit {
   }
 
   reset() {
-    this.title?.reset();
-    this.description?.reset();
-    this.img?.reset();
-    this.linkVideo?.reset();
-    this.tags?.reset();
+    /* return this.adminForm.reset({
+      title: this.initialValue,
+      description: this.initialValue,
+      img: this.initialValue,
+      linkVideo: this.initialValue,
+      tags: [],
+    }); */
+    this.adminForm.reset();
   }
 }
