@@ -1,12 +1,13 @@
-import { YoutubeService } from './../../youtube.service';
-import { Component, Input } from '@angular/core';
-import { SearchItem } from '../search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
+
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
+import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
+import { YoutubeService } from '../../youtube.service';
+import { SearchItem } from '../search-item.model';
 
 @Component({
   selector: 'app-search-item',

@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+
 import { Colour } from './dateColoursEnum.model';
 
 @Directive({
@@ -37,6 +38,6 @@ export class ColouredByDateBorderDirective implements OnInit {
   }
 
   ngOnInit(): string {
-    return this.elem.nativeElement.style.borderBottom = `${this.borderStyleParams + this.getColor()}`;
+    return (this.elem.nativeElement.style.borderBottom = `${this.borderStyleParams + this.getColor()}`);
   }
 }

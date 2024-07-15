@@ -1,8 +1,9 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SearchResponse, VideosResponse } from './search/search-response.model';
-import { Observable, map, mergeMap } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { map, mergeMap, Observable } from 'rxjs';
+
 import { SearchItem } from './search/search-item.model';
+import { SearchResponse, VideosResponse } from './search/search-response.model';
 
 @Injectable({
   providedIn: 'root',

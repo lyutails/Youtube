@@ -1,4 +1,11 @@
 import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {
   AfterViewInit,
   Component,
   ElementRef,
@@ -6,18 +13,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
 import { FormsModule } from '@angular/forms';
-import { YoutubeService } from '../../youtube/youtube.service';
+import { MatIconModule } from '@angular/material/icon';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
+
 import { SearchItem } from '../../youtube/search/search-item.model';
+import { YoutubeService } from '../../youtube/youtube.service';
 
 @Component({
   selector: 'app-search-input-field',
@@ -62,15 +63,18 @@ export class SearchInputFieldComponent implements AfterViewInit {
         map((input: KeyboardEvent) => {
           if (input?.target instanceof HTMLInputElement) {
             return input.target?.value;
-          } else return '';
+          }
+          return '';
         }),
         filter((value: string) => value.length > 3)
       )
       .subscribe(value => {
-        return value !== undefined &&
+        return (
+          value !== undefined &&
           this.youtubeService.getRealAPICards(value).subscribe(data => {
             this.youtubeService.getCards(data.items);
-          });
+          })
+        );
       });
   }
 

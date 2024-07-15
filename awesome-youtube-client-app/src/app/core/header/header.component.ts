@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatIconModule } from '@angular/material/icon';
-import { SearchInputFieldComponent } from '../search-input-field/search-input-field.component';
-import { LoginService } from '../../auth/login.service';
-import { Router, RouterModule } from '@angular/router';
-import { YoutubeService } from '../../youtube/youtube.service';
-import { ThemeService } from '../../theme.service';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { Router, RouterModule } from '@angular/router';
+
+import { LoginService } from '../../auth/login.service';
+import { ThemeService } from '../../theme.service';
+import { YoutubeService } from '../../youtube/youtube.service';
+import { SearchInputFieldComponent } from '../search-input-field/search-input-field.component';
 
 @Component({
   selector: 'app-header',

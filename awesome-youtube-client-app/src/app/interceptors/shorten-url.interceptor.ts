@@ -1,4 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+
 import { environment } from '../../environment';
 
 export const shortenUrlInterceptor: HttpInterceptorFn = (request, next) => {

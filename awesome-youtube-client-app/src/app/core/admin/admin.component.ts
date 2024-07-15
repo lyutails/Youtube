@@ -1,3 +1,4 @@
+import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormArray,
@@ -7,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CommonModule, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit {
       this.adminForm.value.title?.trim() &&
       this.adminForm.value.img?.trim() &&
       this.adminForm.value.linkVideo?.trim() &&
-      this.adminForm.controls['tags'].valid &&
+      this.adminForm.controls.tags.valid &&
       this.adminForm.valid
     ) {
       this.router.navigate(['/main']);
@@ -81,7 +81,7 @@ export class AdminComponent implements OnInit {
   }
 
   get tags() {
-    const tags = this.adminForm.controls['tags'];
+    const { tags } = this.adminForm.controls;
     return tags;
   }
 

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+
 import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
@@ -38,7 +39,9 @@ export const routes: Routes = [
     title: 'favourite',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./core/favourite/favourite.component').then(m => m.FavouriteComponent),
+      import('./core/favourite/favourite.component').then(
+        m => m.FavouriteComponent
+      ),
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {

@@ -6,8 +6,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Credentials, LoginService } from '../login.service';
 import { Router } from '@angular/router';
+
+import { Credentials, LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -54,7 +55,9 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
+        Validators.pattern(
+          '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
+        ),
       ]),
     });
   }

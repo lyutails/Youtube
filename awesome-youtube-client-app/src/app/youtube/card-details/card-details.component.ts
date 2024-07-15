@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { YoutubeService } from '../youtube.service';
-import { SearchItem } from '../search/search-item.model';
 import { CommonModule, UpperCasePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
-import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
-import { CustomButtonComponent } from '../custom-button/custom-button.component';
-import { CutDatePipe } from '../../pipes/cut-date.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { ColouredByDateBorderDirective } from '../../directives/coloured-by-date-border.directive';
 import { LoadingService } from '../../interceptors/loading.service';
+import { CutDatePipe } from '../../pipes/cut-date.pipe';
+import { WordsPipePipe } from '../../pipes/words-pipe.pipe';
+import { CustomButtonComponent } from '../custom-button/custom-button.component';
+import { SearchItem } from '../search/search-item.model';
+import { YoutubeService } from '../youtube.service';
 
 @Component({
   selector: 'app-card-details',

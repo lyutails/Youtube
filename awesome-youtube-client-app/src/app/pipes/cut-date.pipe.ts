@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'cutDate',
-  standalone: true
+  standalone: true,
 })
 export class CutDatePipe implements PipeTransform {
   transform(value: string | undefined) {

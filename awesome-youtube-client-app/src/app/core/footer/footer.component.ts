@@ -1,7 +1,8 @@
-import { ThemeService } from './../../theme.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+
+import { ThemeService } from '../../theme.service';
 
 @Component({
   selector: 'app-footer',

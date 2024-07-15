@@ -1,16 +1,17 @@
-import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { SearchItemComponent } from '../search-item/search-item.component';
-import { SearchItem } from '../search-item.model';
-import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
+
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
-import { ViewsCountAscPipe } from '../../../pipes/views-count-asc.pipe';
-import { ViewsCountDescPipe } from '../../../pipes/views-count-desc.pipe';
 import { DateAscPipe } from '../../../pipes/date-asc.pipe';
 import { DateDescPipe } from '../../../pipes/date-desc.pipe';
+import { ViewsCountAscPipe } from '../../../pipes/views-count-asc.pipe';
+import { ViewsCountDescPipe } from '../../../pipes/views-count-desc.pipe';
+import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import { YoutubeService } from '../../youtube.service';
-import { HttpClient } from '@angular/common/http';
+import { SearchItem } from '../search-item.model';
+import { SearchItemComponent } from '../search-item/search-item.component';
 
 @Component({
   selector: 'app-search-results',

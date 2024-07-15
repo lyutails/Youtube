@@ -1,11 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { FooterComponent } from './core/footer/footer.component';
+
 import { FiltersComponent } from './core/filters/filters.component';
+import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
-import { SearchResultsComponent } from './youtube/search/search-results/search-results.component';
 import { LoadingService } from './interceptors/loading.service';
-import { CommonModule } from '@angular/common';
+import { SearchResultsComponent } from './youtube/search/search-results/search-results.component';
 
 @Component({
   selector: 'app-root',
