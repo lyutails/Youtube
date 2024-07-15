@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Credentials, LoginService } from '../../auth/login.service';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 
 @Component({
@@ -24,20 +23,16 @@ export class AdminComponent implements OnInit {
   addButtonName = 'add';
   index!: number;
   initialValue = '';
+  requiredSign = '*';
 
-  constructor(
-    private loginService: LoginService,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
   onSubmit() {
-    const data = this.adminForm.value as Credentials;
     if (
       this.adminForm.value.title?.trim() &&
-      this.adminForm.value.description?.trim()
+      this.adminForm.value.img?.trim() &&
+      this.adminForm.value.linkVideo?.trim()
     ) {
-      this.loginService.toggleLoginLogout();
-      this.loginService.saveCredentials(data);
       this.router.navigate(['/main']);
     }
   }

@@ -2,7 +2,9 @@
   Create new card
   <form [formGroup]="adminForm" class="admin_form" (ngSubmit)="onSubmit()">
     <div class="admin_item">
-      <label class="admin_label" for="title">Title</label>
+      <label class="admin_label" for="title"
+        >Title <span class="required_sign">{{ requiredSign }}</span></label
+      >
       <input
         class="admin_input"
         id="title"
@@ -40,7 +42,9 @@
       </div>
     }
     <div class="admin_item">
-      <label class="admin_label" for="img">Image</label>
+      <label class="admin_label" for="img"
+        >Image <span class="required_sign">{{ requiredSign }}</span></label
+      >
       <input
         class="admin_input"
         id="img"
@@ -56,7 +60,9 @@
       </div>
     }
     <div class="admin_item">
-      <label class="admin_label" for="link">Link video</label>
+      <label class="admin_label" for="link"
+        >Link video <span class="required_sign">{{ requiredSign }}</span></label
+      >
       <input
         class="admin_input"
         id="link"
@@ -75,30 +81,37 @@
       </div>
     }
     <div class="tags_wrapper" formArrayName="tags">
-      <div class="tags" *ngFor="let tag of tags.controls; let index = index">
-        <div class="admin_item tag">
-          <label class="admin_label" for="tag">Tag</label>
-          <input
-            class="admin_input"
-            id="tag"
-            type="text"
-            [formControlName]="index"
-            placeholder="tag..." />
-          <button class="admin_button tag" (click)="addTag()">
-            {{ addButtonName | uppercase }}
-          </button>
-          <button class="admin_button tag" (click)="removeTag()">
-            {{ deleteButtonName | uppercase }}
-          </button>
-        </div>
-        @if (tags.invalid && tags.touched) {
-          <div class="alert alert-danger">
-            @if (tag?.hasError('required')) {
-              <div>please enter a tag</div>
-            }
+      @for (tag of tags.controls; track tag; let index = $index) {
+        <div class="tags">
+          <div class="admin_item tag">
+            <label class="admin_label" for="tag"
+              >Tag <span class="required_sign">{{ requiredSign }}</span></label
+            >
+            <input
+              class="admin_input"
+              id="tag"
+              type="text"
+              [formControlName]="index"
+              placeholder="tag..." />
+            <button class="admin_button tag" (click)="addTag()">
+              {{ addButtonName | uppercase }}
+            </button>
+            <button class="admin_button tag" (click)="removeTag()">
+              {{ deleteButtonName | uppercase }}
+            </button>
           </div>
-        }
-      </div>
+          @if (tag.invalid && tag.touched) {
+            <div class="alert alert-danger">
+              @if (tag?.hasError('required')) {
+                <div>please enter a tag</div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+    <div class="required">
+      <span class="required_sign">{{ requiredSign }}</span> required
     </div>
     <button class="admin_button reset" (click)="reset()">
       {{ resetButtonName | uppercase }}
