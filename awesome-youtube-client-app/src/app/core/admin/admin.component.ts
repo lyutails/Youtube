@@ -27,16 +27,6 @@ export class AdminComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  onSubmit() {
-    if (
-      this.adminForm.value.title?.trim() &&
-      this.adminForm.value.img?.trim() &&
-      this.adminForm.value.linkVideo?.trim()
-    ) {
-      this.router.navigate(['/main']);
-    }
-  }
-
   adminForm = new FormGroup({
     title: new FormControl(''),
     description: new FormControl(''),
@@ -44,6 +34,18 @@ export class AdminComponent implements OnInit {
     linkVideo: new FormControl(''),
     tags: new FormArray([new FormControl()]),
   });
+
+  onSubmit() {
+    if (
+      this.adminForm.value.title?.trim() &&
+      this.adminForm.value.img?.trim() &&
+      this.adminForm.value.linkVideo?.trim() &&
+      this.adminForm.controls['tags'].valid
+    ) {
+      console.log(this.adminForm.controls['tags']);
+      this.router.navigate(['/main']);
+    }
+  }
 
   ngOnInit() {
     this.adminForm = new FormGroup({
