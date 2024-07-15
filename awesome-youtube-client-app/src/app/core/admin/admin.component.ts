@@ -42,7 +42,6 @@ export class AdminComponent implements OnInit {
       this.adminForm.value.linkVideo?.trim() &&
       this.adminForm.controls['tags'].valid
     ) {
-      console.log(this.adminForm.controls['tags']);
       this.router.navigate(['/main']);
     }
   }
