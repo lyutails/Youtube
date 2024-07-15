@@ -93,10 +93,13 @@
               type="text"
               [formControlName]="index"
               placeholder="tag..." />
-            <button class="admin_button tag" (click)="addTag()">
+            <button type="button" class="admin_button tag" (click)="addTag()">
               {{ addButtonName | uppercase }}
             </button>
-            <button class="admin_button tag" (click)="removeTag()">
+            <button
+              type="button"
+              class="admin_button tag"
+              (click)="removeTag()">
               {{ deleteButtonName | uppercase }}
             </button>
           </div>
@@ -113,7 +116,7 @@
     <div class="required">
       <span class="required_sign">{{ requiredSign }}</span> required
     </div>
-    <button class="admin_button reset" (click)="reset()">
+    <button type="button" class="admin_button reset" (click)="reset()">
       {{ resetButtonName | uppercase }}
     </button>
     <button
