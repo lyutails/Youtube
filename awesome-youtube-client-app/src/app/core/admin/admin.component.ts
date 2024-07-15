@@ -37,6 +37,10 @@ export class AdminComponent implements OnInit {
 
   onSubmit() {
     if (
+      this.adminForm.value.title?.trim() &&
+      this.adminForm.value.img?.trim() &&
+      this.adminForm.value.linkVideo?.trim() &&
+      this.adminForm.controls['tags'].valid &&
       this.adminForm.valid
     ) {
       this.router.navigate(['/main']);
