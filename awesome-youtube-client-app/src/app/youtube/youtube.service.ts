@@ -51,7 +51,8 @@ export class YoutubeService {
   }
 
   getCards(value: SearchItem[]) {
-    return (this.cards = value);
+    this.cards = value;
+    return this.cards;
   }
 
   setDetailedCard(value: SearchItem) {

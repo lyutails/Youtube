@@ -90,12 +90,14 @@ export class AdminComponent implements OnInit {
       const tag = new FormControl('', Validators.required);
       return this.tags.push(tag);
     }
+    return this.tags;
   }
 
   removeTag() {
     if (this.tags.length > 1) {
       return this.tags.removeAt(this.index);
     }
+    return this.tags;
   }
 
   reset() {

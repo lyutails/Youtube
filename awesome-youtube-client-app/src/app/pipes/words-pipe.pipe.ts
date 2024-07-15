@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { SearchItem } from '../youtube/search/search-item.model';
-// import { YoutubeService } from '../youtube/youtube.service';
 
 @Pipe({
   name: 'wordsPipe',
   standalone: true,
 })
 export class WordsPipePipe implements PipeTransform {
+  // eslint-disable-next-line class-methods-use-this
   transform(responseCards: SearchItem[], inputValue: string): SearchItem[] {
     if (inputValue === '') {
       return [...responseCards];

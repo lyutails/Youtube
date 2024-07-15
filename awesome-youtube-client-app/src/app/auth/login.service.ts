@@ -11,6 +11,8 @@ export interface Credentials {
 })
 export class LoginService {
   data!: Credentials;
+  fakeAuthToken = '';
+  token!: string | null;
 
   public login = new BehaviorSubject<boolean>(false);
   login$ = this.login.asObservable();
@@ -20,8 +22,8 @@ export class LoginService {
   }
 
   generateToken() {
-    const fakeAuthToken = Math.random().toString(36).substring(2);
-    return fakeAuthToken;
+    this.fakeAuthToken = Math.random().toString(36).substring(2);
+    return this.fakeAuthToken;
   }
 
   saveCredentials(data: Credentials) {
@@ -29,12 +31,13 @@ export class LoginService {
     return localStorage.setItem('credentials', JSON.stringify(data));
   }
 
+  // eslint-disable-next-line class-methods-use-this
   removeCredentials() {
     return localStorage.clear();
   }
 
   getToken() {
-    const token = localStorage.getItem('token');
-    return token;
+    this.token = localStorage.getItem('token');
+    return this.token;
   }
 }

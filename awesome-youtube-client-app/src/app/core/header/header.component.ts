@@ -46,6 +46,7 @@ export class HeaderComponent {
     return value;
   }
 
+  // eslint-disable-next-line consistent-return
   public toggleIsAuth() {
     this.loginService.toggleLoginLogout();
     if (

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -14,7 +15,6 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { YoutubeService } from '../../youtube/youtube.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-filters',

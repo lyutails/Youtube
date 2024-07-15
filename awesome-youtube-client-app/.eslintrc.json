@@ -3,7 +3,9 @@
   "ignorePatterns": ["projects/**/*"],
   "plugins": ["unused-imports", "simple-import-sort"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "overrides": [
     {
@@ -36,6 +38,7 @@
         ],
         "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/class-methods-use-this": "off",
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-explicit-any": 0,
         "@angular-eslint/directive-selector": [
@@ -58,9 +61,7 @@
     },
     {
       "files": ["*.html"],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {
         "@angular-eslint/template/button-has-type": ["error"]
       }

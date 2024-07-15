@@ -48,7 +48,8 @@ export class CardDetailsComponent implements OnInit {
     setTimeout(() => {
       this.youtubeService.getRealDetailedCard(cardId).subscribe(data => {
         if (data.items[0]) {
-          this.card = data.items[0];
+          // this.card = data.items[0];
+          [this.card] = data.items;
         } else {
           this.router.navigate(['/404']);
         }
