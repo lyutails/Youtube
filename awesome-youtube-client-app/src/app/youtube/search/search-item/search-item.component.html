@@ -21,6 +21,7 @@
     <mat-icon class="header_icon">comment</mat-icon>
   </div>
   <button
+    type="button"
     id="{{ card.id }}"
     (click)="countFavourites()"
     class="card_stat favourite"
@@ -35,7 +36,7 @@
 <div class="card_title">
   {{ card.snippet.title }}
 </div>
-<button class="card_button" (click)="goToCard(card.id)">
+<button type="button" class="card_button" (click)="goToCard(card.id)">
   <app-custom-button class="card_app-custom-button">
     {{ buttonName | uppercase }}
   </app-custom-button>

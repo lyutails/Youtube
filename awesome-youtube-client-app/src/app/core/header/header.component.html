@@ -26,6 +26,7 @@
     </div>
     <div class="header_login">
       <button
+        type="button"
         (click)="toggleIsAuth()"
         class="header_login-button"
         [disabled]="this.loginService.getToken() === null">

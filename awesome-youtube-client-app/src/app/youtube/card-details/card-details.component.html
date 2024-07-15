@@ -33,6 +33,7 @@
       <mat-icon class="header_icon">comment</mat-icon>
     </div>
     <button
+      type="button"
       id="{{ card.id }}"
       class="card_stat favourite"
       [ngStyle]="{
@@ -49,7 +50,7 @@
   <div class="card_public-date">
     {{ card.snippet.publishedAt | cutDate }}
   </div>
-  <button (click)="navigateToMain()" class="card_come-back">
+  <button type="button" (click)="navigateToMain()" class="card_come-back">
     {{ returnBackButtonName | uppercase }}
   </button>
 }

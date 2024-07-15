@@ -6,6 +6,7 @@
   }">
   <div class="filters_item title">Sorting by:</div>
   <button
+    type="button"
     mat-button
     matTooltip="date sort"
     class="filters_item button"
@@ -22,6 +23,7 @@
     date ASC
   </button>
   <button
+    type="button"
     mat-button
     matTooltip="date sort"
     class="filters_item button"
@@ -40,6 +42,7 @@
     date DESC
   </button>
   <button
+    type="button"
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderAsc()"
@@ -57,6 +60,7 @@
     views' count ASC
   </button>
   <button
+    type="button"
     mat-button
     class="filters_item button"
     (click)="viewsSortOrderDesc()"
@@ -73,7 +77,11 @@
     }">
     views' count DESC
   </button>
-  <button mat-button class="filters_item button" [disabled]="true">
+  <button
+    type="button"
+    mat-button
+    class="filters_item button"
+    [disabled]="true">
     favourite
   </button>
   <div class="filters_item">
