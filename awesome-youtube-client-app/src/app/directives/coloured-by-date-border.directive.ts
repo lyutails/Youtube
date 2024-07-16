@@ -8,9 +8,9 @@ import { Colour } from './dateColoursEnum.model';
 })
 export class ColouredByDateBorderDirective implements OnInit {
   today = new Date();
-  @Input() appColouredByDateBorder = '';
-
   borderStyleParams = '10px solid ';
+
+  @Input() appColouredByDateBorder = '';
 
   constructor(public elem: ElementRef) {}
 
