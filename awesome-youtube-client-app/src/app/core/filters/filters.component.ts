@@ -40,6 +40,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   public screenWidth!: number;
   public screenHeight!: number;
 
+  buttonColourInactive = 'oklch(75.93% 0.15 14.33 / 10%)';
+
   constructor(public youtubeService: YoutubeService) {}
 
   ngOnInit() {

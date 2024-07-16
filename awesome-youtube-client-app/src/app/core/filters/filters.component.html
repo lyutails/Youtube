@@ -18,7 +18,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isDateAsc ? 'oklch(75.93% 0.15 14.33 / 10%)' : 'transparent',
+      background: !isDateAsc ? buttonColourInactive : 'transparent',
     }">
     date ASC
   </button>
@@ -35,9 +35,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isDateDesc
-        ? 'oklch(75.93% 0.15 14.33 / 10%)'
-        : 'transparent',
+      background: !isDateDesc ? buttonColourInactive : 'transparent',
     }">
     date DESC
   </button>
@@ -53,9 +51,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isViewsCountAsc
-        ? 'oklch(75.93% 0.15 14.33 / 10%)'
-        : 'transparent',
+      background: !isViewsCountAsc ? buttonColourInactive : 'transparent',
     }">
     views' count ASC
   </button>
@@ -71,9 +67,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isViewsCountDesc
-        ? 'oklch(75.93% 0.15 14.33 / 10%)'
-        : 'transparent',
+      background: !isViewsCountDesc ? buttonColourInactive : 'transparent',
     }">
     views' count DESC
   </button>
