@@ -14,6 +14,11 @@ export class ColouredByDateBorderDirective implements OnInit {
 
   constructor(public elem: ElementRef) {}
 
+  ngOnInit(): string {
+    this.elem.nativeElement.style.borderBottom = `${this.borderStyleParams + this.getColor()}`;
+    return this.elem.nativeElement.style.borderBottom;
+  }
+
   getDifferenceInTime(dateOne: Date, dateTwo: string) {
     return Math.round(
       (dateOne.getTime() - new Date(dateTwo).getTime()) / (1000 * 3600 * 24)
@@ -35,10 +40,5 @@ export class ColouredByDateBorderDirective implements OnInit {
       return Colour.GREEN;
     }
     return Colour.BLUE;
-  }
-
-  ngOnInit(): string {
-    this.elem.nativeElement.style.borderBottom = `${this.borderStyleParams + this.getColor()}`;
-    return this.elem.nativeElement.style.borderBottom;
   }
 }
