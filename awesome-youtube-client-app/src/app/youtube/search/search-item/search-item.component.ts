@@ -26,11 +26,12 @@ import { SearchItem } from '../search-item.model';
   styleUrl: './search-item.component.scss',
 })
 export class SearchItemComponent {
-  @Input() card!: SearchItem;
   protected isFavourite = false;
   buttonName = 'more...';
-  @Input() filterByWordSearchResults = '';
   youtubeCard!: SearchItem;
+
+  @Input() filterByWordSearchResults = '';
+  @Input() card!: SearchItem;
 
   constructor(
     private router: Router,

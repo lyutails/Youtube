@@ -25,20 +25,21 @@ import { YoutubeService } from '../../youtube/youtube.service';
 })
 export class FiltersComponent implements OnInit, OnDestroy {
   showHideFilters = true;
-  @Output() filterByWordValue = new EventEmitter<string>();
   inputValue = '';
   private SearchSubject = new Subject<string>();
   private readonly debounceTimeMs = 500;
   isViewsCountAsc = true;
-  @Output() viewsCountAsc = new EventEmitter<boolean>();
   isViewsCountDesc = true;
-  @Output() viewsCountDesc = new EventEmitter<boolean>();
   isDateAsc = true;
-  @Output() dateAsc = new EventEmitter<boolean>();
   isDateDesc = true;
-  @Output() dateDesc = new EventEmitter<boolean>();
   public screenWidth!: number;
   public screenHeight!: number;
+
+  @Output() filterByWordValue = new EventEmitter<string>();
+  @Output() viewsCountAsc = new EventEmitter<boolean>();
+  @Output() viewsCountDesc = new EventEmitter<boolean>();
+  @Output() dateAsc = new EventEmitter<boolean>();
+  @Output() dateDesc = new EventEmitter<boolean>();
 
   buttonColourInactive = 'oklch(75.93% 0.15 14.33 / 10%)';
 

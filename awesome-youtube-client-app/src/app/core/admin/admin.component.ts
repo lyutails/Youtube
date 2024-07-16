@@ -27,6 +27,23 @@ export class AdminComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  ngOnInit() {
+    this.adminForm = new FormGroup({
+      title: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20),
+      ]),
+      description: new FormControl('', [Validators.maxLength(255)]),
+      img: new FormControl('', [Validators.required]),
+      linkVideo: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+      tags: new FormArray([new FormControl('', Validators.required)]),
+    });
+  }
+
   adminForm = new FormGroup({
     title: new FormControl(''),
     description: new FormControl(''),
@@ -45,23 +62,6 @@ export class AdminComponent implements OnInit {
     ) {
       this.router.navigate(['/main']);
     }
-  }
-
-  ngOnInit() {
-    this.adminForm = new FormGroup({
-      title: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
-      ]),
-      description: new FormControl('', [Validators.maxLength(255)]),
-      img: new FormControl('', [Validators.required]),
-      linkVideo: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4),
-      ]),
-      tags: new FormArray([new FormControl('', Validators.required)]),
-    });
   }
 
   get title() {

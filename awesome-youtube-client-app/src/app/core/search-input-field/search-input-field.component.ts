@@ -50,9 +50,11 @@ import { YoutubeService } from '../../youtube/youtube.service';
 export class SearchInputFieldComponent implements AfterViewInit {
   isBackgroundRecoloured = true;
   inputValue = '';
-  @ViewChild('input') inputElement!: ElementRef;
-  @Output() search = new EventEmitter<string>();
   realAPICards: SearchItem[] = [];
+
+  @Output() search = new EventEmitter<string>();
+
+  @ViewChild('input') inputElement!: ElementRef;
 
   constructor(private youtubeService: YoutubeService) {}
 

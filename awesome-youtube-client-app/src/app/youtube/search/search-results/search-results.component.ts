@@ -31,17 +31,19 @@ import { SearchItemComponent } from '../search-item/search-item.component';
   styleUrl: './search-results.component.scss',
 })
 export class SearchResultsComponent {
-  @Input() filterValueDownFromApp = '';
   gotFilterValue = '';
+  responseCardsOnRequest: SearchItem[] = [];
+  realAPICards: SearchItem[] = [];
+
+  public http = inject(HttpClient);
+
+  @Input() filterValueDownFromApp = '';
   @Input() fakeSearchDownFromApp = '';
   @Input() getFakeSearchValue = '';
-  responseCardsOnRequest: SearchItem[] = [];
   @Input() gotViewsCountAcsOrder = true;
   @Input() gotViewsCountDescOrder = true;
   @Input() gotDateAsc = true;
   @Input() gotDateDesc = true;
-  public http = inject(HttpClient);
-  realAPICards: SearchItem[] = [];
 
   constructor(public youtubeService: YoutubeService) {}
 
