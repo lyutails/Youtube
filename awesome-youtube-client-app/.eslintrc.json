@@ -38,7 +38,7 @@
         ],
         "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/lines-between-class-members": "off",
-        "@typescript-eslint/class-methods-use-this": "off",
+        "class-methods-use-this": "off",
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-explicit-any": 0,
         "@angular-eslint/directive-selector": [

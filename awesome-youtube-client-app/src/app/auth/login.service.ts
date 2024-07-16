@@ -31,7 +31,6 @@ export class LoginService {
     return localStorage.setItem('credentials', JSON.stringify(data));
   }
 
-  // eslint-disable-next-line class-methods-use-this
   removeCredentials() {
     return localStorage.clear();
   }

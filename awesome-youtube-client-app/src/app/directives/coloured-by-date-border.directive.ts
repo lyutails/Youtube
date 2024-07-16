@@ -14,7 +14,6 @@ export class ColouredByDateBorderDirective implements OnInit {
 
   constructor(public elem: ElementRef) {}
 
-  // eslint-disable-next-line class-methods-use-this
   getDifferenceInTime(dateOne: Date, dateTwo: string) {
     return Math.round(
       (dateOne.getTime() - new Date(dateTwo).getTime()) / (1000 * 3600 * 24)

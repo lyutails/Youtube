@@ -7,7 +7,6 @@ import { SearchItem } from '../youtube/search/search-item.model';
   standalone: true,
 })
 export class WordsPipePipe implements PipeTransform {
-  // eslint-disable-next-line class-methods-use-this
   transform(responseCards: SearchItem[], inputValue: string): SearchItem[] {
     if (inputValue === '') {
       return [...responseCards];
