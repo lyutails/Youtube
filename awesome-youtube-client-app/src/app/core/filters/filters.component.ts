@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -34,6 +35,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
   isDateDesc = true;
   public screenWidth!: number;
   public screenHeight!: number;
+  buttonColourActive = 'oklch(75.93% 0.15 14.33 / 10%)';
 
   @Output() filterByWordValue = new EventEmitter<string>();
   @Output() viewsCountAsc = new EventEmitter<boolean>();
@@ -41,9 +43,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
   @Output() dateAsc = new EventEmitter<boolean>();
   @Output() dateDesc = new EventEmitter<boolean>();
 
-  buttonColourInactive = 'oklch(75.93% 0.15 14.33 / 10%)';
-
-  constructor(public youtubeService: YoutubeService) {}
+  constructor(
+    public youtubeService: YoutubeService,
+    public router: Router
+  ) {}
 
   ngOnInit() {
     this.SearchSubject.pipe(debounceTime(this.debounceTimeMs)).subscribe(
@@ -102,5 +105,9 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   isFiltersPanelPresent() {
     return this.screenWidth > 1000 || this.youtubeService.isFiltersVisible;
+  }
+
+  goToFavouritesPate() {
+    this.router.navigate(['./favourite']);
   }
 }

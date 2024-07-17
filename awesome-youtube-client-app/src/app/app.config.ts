@@ -1,5 +1,9 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  isDevMode,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
   PreloadAllModules,
@@ -7,8 +11,10 @@ import {
   withPreloading,
 } from '@angular/router';
 import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
+// import { heartsReducer, youtubeReducer } from './app/store/youtube.reducer';
 import { loadingSpinnerInterceptor } from './interceptors/loading-spinner.interceptor';
 import { shortenUrlInterceptor } from './interceptors/shorten-url.interceptor';
 
@@ -21,5 +27,15 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([shortenUrlInterceptor, loadingSpinnerInterceptor])
     ),
     provideStore(),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+      trace: false,
+      traceLimit: 75,
+      connectInZone: true,
+    }),
   ],
 };
+
+/* { items: youtubeReducer, hearts: heartsReducer } */

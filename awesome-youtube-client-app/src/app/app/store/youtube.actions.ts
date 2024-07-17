@@ -1,10 +1,18 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { createActionGroup, props } from '@ngrx/store';
+
+import { SearchItem } from '../../youtube/search/search-item.model';
 
 export const YoutubeActions = createActionGroup({
+  source: 'Youtube API',
+  events: {
+    'Retrieved Cards List': props<{ items: SearchItem[] }>(),
+  },
+});
+
+export const HeartsActions = createActionGroup({
   source: 'Youtube',
   events: {
-    'Load Youtubes': emptyProps(),
-    'Load Youtubes Success': props<{ data: unknown }>(),
-    'Load Youtubes Failure': props<{ error: unknown }>(),
+    'Add Heart': props<{ cardId: string }>(),
+    'Delete Heart': props<{ cardId: string }>(),
   },
 });

@@ -18,7 +18,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isDateAsc ? buttonColourInactive : 'transparent',
+      background: !isDateAsc ? buttonColourActive : 'transparent',
     }">
     date ASC
   </button>
@@ -35,7 +35,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isDateDesc ? buttonColourInactive : 'transparent',
+      background: !isDateDesc ? buttonColourActive : 'transparent',
     }">
     date DESC
   </button>
@@ -51,7 +51,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isViewsCountAsc ? buttonColourInactive : 'transparent',
+      background: !isViewsCountAsc ? buttonColourActive : 'transparent',
     }">
     views' count ASC
   </button>
@@ -67,7 +67,7 @@
       youtubeService.filterSearchInputValue !== ''
     "
     [ngStyle]="{
-      background: !isViewsCountDesc ? buttonColourInactive : 'transparent',
+      background: !isViewsCountDesc ? buttonColourActive : 'transparent',
     }">
     views' count DESC
   </button>
@@ -75,7 +75,7 @@
     type="button"
     mat-button
     class="filters_item button"
-    [disabled]="true">
+    (click)="goToFavouritesPate()">
     favourite
   </button>
   <div class="filters_item">
