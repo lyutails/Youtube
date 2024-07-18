@@ -1,5 +1,5 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -27,12 +27,12 @@ import { SearchItem } from '../search-item.model';
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
 })
-export class SearchItemComponent {
-  protected isFavourite = false;
-  buttonName = 'more...';
-
-  @Input() filterByWordSearchResults = '';
+export class SearchItemComponent implements OnInit {
+  @Input() isFavouritePage!: boolean;
   @Input() card!: SearchItem;
+
+  buttonName = 'more...';
+  protected isFavourite = false;
 
   constructor(
     private router: Router,
@@ -40,12 +40,21 @@ export class SearchItemComponent {
     public store: Store
   ) {}
 
+  ngOnInit(): void {
+    this.isFavourite = this.isFavouritePage;
+    console.log(this.isFavouritePage);
+  }
+
   goToCard(id: string) {
     this.router.navigate(['/card', id]);
   }
 
   countFavourites() {
     this.isFavourite = !this.isFavourite;
-    this.store.dispatch(HeartsActions.addHeart({ card: this.card }));
+    if (this.isFavourite) {
+      this.store.dispatch(HeartsActions.addHeart({ card: this.card }));
+    } else {
+      this.store.dispatch(HeartsActions.deleteHeart({ cardId: this.card.id }));
+    }
   }
 }

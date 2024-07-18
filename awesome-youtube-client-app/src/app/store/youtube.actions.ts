@@ -16,6 +16,7 @@ export const CustomCardActions = createActionGroup({
   source: 'Custom Card',
   events: {
     'Create Card': props<{ item: CustomCard }>(),
+    'Delete Card': props<{ id: string }>(),
   },
 });
 

@@ -25,6 +25,9 @@ export const customCardReducer = createReducer(
   initialStateCustomCard,
   on(CustomCardActions.createCard, (state, { item }): CustomCard[] => {
     return [...state, item];
+  }),
+  on(CustomCardActions.deleteCard, (state, { id }): CustomCard[] => {
+    return state.filter(card => card.customId !== id);
   })
 );
 
@@ -33,10 +36,9 @@ export const initialStateHearts: SearchItem[] = [];
 export const heartsReducer = createReducer(
   initialStateHearts,
   on(HeartsActions.addHeart, (state, { card }): SearchItem[] => {
-    // if (state.indexOf(card) > -1) return state;
     return [...state, card];
   }),
   on(HeartsActions.deleteHeart, (state, { cardId }) =>
-    state.filter(card => card.id === cardId)
+    state.filter(card => card.id !== cardId)
   )
 );

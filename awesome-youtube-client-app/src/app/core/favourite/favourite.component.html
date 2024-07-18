@@ -1,5 +1,10 @@
-@for (card of cards; track card.id) {
-  <div>
-    <p>{{ card.snippet.title }}</p>
-  </div>
+@if (hearts$ | async; as hearts) {
+  @for (heartCard of hearts; track heartCard.id) {
+    <app-search-item
+      class="card_wrapper"
+      [card]="heartCard"
+      [isFavouritePage]="true"
+      [appColouredByDateBorder]="heartCard.snippet.publishedAt"
+      [ngStyle]="{ display: 'block' }" />
+  }
 }
