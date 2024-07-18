@@ -1,8 +1,9 @@
-<div class="custom-card_wrapper">
-  <div>{{ customCard.customId }}</div>
-  <div>{{ customCard.title }}</div>
-  <div>{{ customCard.description }}</div>
-  <div>{{ customCard.img }}</div>
-  <div>{{ customCard.linkVideo }}</div>
-  <div>{{ customCard.tags }}</div>
-</div>
+<div
+  class="custom-card_pic"
+  [ngStyle]="{
+    'background-image': 'url(' + customCard.img + ')',
+  }"></div>
+<div class="custom-card_title">{{ customCard.title }}</div>
+<div>{{ customCard.linkVideo }}</div>
+<div>{{ customCard.description }}</div>
+<div>#{{ customCard.tags }}</div>
