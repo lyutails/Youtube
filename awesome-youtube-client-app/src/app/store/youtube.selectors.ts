@@ -10,11 +10,3 @@ export const selectCustomCard =
 
 export const selectHeartsState =
   createFeatureSelector<ReadonlyArray<SearchItem>>('hearts');
-
-/* export const selectHearts = createSelector(
-  selectCards,
-  selectHeartsState,
-  (items, hearts) => {
-    return hearts.map(id => items.find(heart => heart.id === id)!);
-  }
-); */

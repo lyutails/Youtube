@@ -28,7 +28,7 @@ import { SearchItem } from '../search-item.model';
   styleUrl: './search-item.component.scss',
 })
 export class SearchItemComponent implements OnInit {
-  @Input() isFavouritePage!: boolean;
+  @Input() initialFavoriteValue = false;
   @Input() card!: SearchItem;
 
   buttonName = 'more...';
@@ -41,8 +41,7 @@ export class SearchItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isFavourite = this.isFavouritePage;
-    console.log(this.isFavouritePage);
+    this.isFavourite = this.initialFavoriteValue;
   }
 
   goToCard(id: string) {
