@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
 
+import { selectCards } from '../../../app/store/youtube.selectors';
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { DateAscPipe } from '../../../pipes/date-asc.pipe';
 import { DateDescPipe } from '../../../pipes/date-desc.pipe';
@@ -34,8 +35,7 @@ export class SearchResultsComponent {
   gotFilterValue = '';
   responseCardsOnRequest: SearchItem[] = [];
   realAPICards: SearchItem[] = [];
-
-  public http = inject(HttpClient);
+  items$ = this.store.select(selectCards)!;
 
   @Input() filterValueDownFromApp = '';
   @Input() fakeSearchDownFromApp = '';
@@ -45,7 +45,16 @@ export class SearchResultsComponent {
   @Input() gotDateAsc = true;
   @Input() gotDateDesc = true;
 
-  constructor(public youtubeService: YoutubeService) {}
+  constructor(
+    public youtubeService: YoutubeService,
+    public store: Store
+  ) {}
+
+  /* ngOnInit() {
+    if (!this.items$) {
+      this.items$ = this.store.select(selectCards);
+    }
+  } */
 
   getCardsBasedOnHeaderInputValue(): SearchItem[] {
     return this.realAPICards;

@@ -10,11 +10,13 @@ import {
   provideRouter,
   withPreloading,
 } from '@angular/router';
-import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-// import { heartsReducer, youtubeReducer } from './app/store/youtube.reducer';
+import { YoutubeEffects } from './app/store/youtube.effects';
+import { heartsReducer, youtubeReducer } from './app/store/youtube.reducer';
 import { loadingSpinnerInterceptor } from './interceptors/loading-spinner.interceptor';
 import { shortenUrlInterceptor } from './interceptors/shorten-url.interceptor';
 
@@ -27,6 +29,14 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([shortenUrlInterceptor, loadingSpinnerInterceptor])
     ),
     provideStore(),
+    provideState({
+      name: 'items',
+      reducer: youtubeReducer,
+    }),
+    provideState({
+      name: 'hearts',
+      reducer: heartsReducer,
+    }),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -35,7 +45,7 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75,
       connectInZone: true,
     }),
+    provideEffects([YoutubeEffects]),
   ],
 };
-
-/* { items: youtubeReducer, hearts: heartsReducer } */
+/* provideStore({ items: youtubeReducer, hearts: heartsReducer }); */

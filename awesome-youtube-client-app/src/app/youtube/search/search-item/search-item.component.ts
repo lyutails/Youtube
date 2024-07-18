@@ -2,7 +2,9 @@ import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
 
+import { HeartsActions } from '../../../app/store/youtube.actions';
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
@@ -28,14 +30,14 @@ import { SearchItem } from '../search-item.model';
 export class SearchItemComponent {
   protected isFavourite = false;
   buttonName = 'more...';
-  youtubeCard!: SearchItem;
 
   @Input() filterByWordSearchResults = '';
   @Input() card!: SearchItem;
 
   constructor(
     private router: Router,
-    public youtubeService: YoutubeService
+    public youtubeService: YoutubeService,
+    public store: Store
   ) {}
 
   goToCard(id: string) {
@@ -44,5 +46,6 @@ export class SearchItemComponent {
 
   countFavourites() {
     this.isFavourite = !this.isFavourite;
+    this.store.dispatch(HeartsActions.addHeart({ card: this.card }));
   }
 }

@@ -15,8 +15,11 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
 
+import { YoutubeActions } from '../../app/store/youtube.actions';
+import { selectCards } from '../../app/store/youtube.selectors';
 import { SearchItem } from '../../youtube/search/search-item.model';
 import { YoutubeService } from '../../youtube/youtube.service';
 
@@ -51,12 +54,16 @@ export class SearchInputFieldComponent implements AfterViewInit {
   isBackgroundRecoloured = true;
   inputValue = '';
   realAPICards: SearchItem[] = [];
+  items$ = this.store.select(selectCards);
 
   @Output() search = new EventEmitter<string>();
 
   @ViewChild('input') inputElement!: ElementRef;
 
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(
+    private youtubeService: YoutubeService,
+    private store: Store
+  ) {}
 
   ngAfterViewInit() {
     fromEvent<KeyboardEvent>(this.inputElement.nativeElement, 'keyup')
@@ -73,9 +80,11 @@ export class SearchInputFieldComponent implements AfterViewInit {
       .subscribe(value => {
         return (
           value !== undefined &&
-          this.youtubeService.getRealAPICards(value).subscribe(data => {
-            this.youtubeService.getCards(data.items);
-          })
+          /* this.youtubeService.getCards(data.items); */
+          this.store.dispatch(YoutubeActions.getCards({ value }))
+          /* this.store.dispatch(
+              YoutubeActions.retrievedCards({ items: data.items })
+            ); */
         );
       });
   }

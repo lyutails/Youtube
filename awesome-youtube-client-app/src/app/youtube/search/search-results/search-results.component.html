@@ -1,15 +1,17 @@
-@for (
-  responseCard of youtubeService.cards
-    | dateAsc: youtubeService.dateAscSort
-    | dateDesc: youtubeService.dateDescSort
-    | viewsCountAsc: youtubeService.viewsAscSort
-    | viewsCountDesc: youtubeService.viewsDescSort
-    | wordsPipe: youtubeService.filterSearchInputValue;
-  track responseCard.id
-) {
-  <app-search-item
-    class="card_wrapper"
-    [card]="responseCard"
-    [appColouredByDateBorder]="responseCard.snippet.publishedAt"
-    [ngStyle]="{ display: 'block' }"></app-search-item>
+@if (items$ | async; as items) {
+  @for (
+    responseCard of items
+      | dateAsc: youtubeService.dateAscSort
+      | dateDesc: youtubeService.dateDescSort
+      | viewsCountAsc: youtubeService.viewsAscSort
+      | viewsCountDesc: youtubeService.viewsDescSort
+      | wordsPipe: youtubeService.filterSearchInputValue;
+    track responseCard.id
+  ) {
+    <app-search-item
+      class="card_wrapper"
+      [card]="responseCard"
+      [appColouredByDateBorder]="responseCard.snippet.publishedAt"
+      [ngStyle]="{ display: 'block' }" />
+  }
 }
