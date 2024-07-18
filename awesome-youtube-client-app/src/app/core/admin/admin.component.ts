@@ -8,6 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import { CustomCardActions } from '../../store/youtube.actions';
 
 @Component({
   selector: 'app-admin',
@@ -24,8 +27,12 @@ export class AdminComponent implements OnInit {
   index!: number;
   initialValue = '';
   requiredSign = '*';
+  customId!: string;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public store: Store
+  ) {}
 
   ngOnInit() {
     this.adminForm = new FormGroup({
@@ -60,8 +67,25 @@ export class AdminComponent implements OnInit {
       this.adminForm.controls.tags.valid &&
       this.adminForm.valid
     ) {
-      this.router.navigate(['/main']);
+      this.store.dispatch(
+        CustomCardActions.createCard({
+          item: {
+            customId: this.createCustomId(),
+            title: this.adminForm.value.title,
+            description: this.adminForm.value.description,
+            img: this.adminForm.value.img,
+            linkVideo: this.adminForm.value.linkVideo,
+            tags: this.adminForm.value.tags,
+          },
+        })
+      );
+      // this.router.navigate(['/main']);
     }
+  }
+
+  createCustomId() {
+    this.customId = Math.random().toString(36).substring(2);
+    return this.customId;
   }
 
   get title() {

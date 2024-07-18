@@ -18,8 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
 
-import { YoutubeActions } from '../../app/store/youtube.actions';
-import { selectCards } from '../../app/store/youtube.selectors';
+import { YoutubeActions } from '../../store/youtube.actions';
+import { selectCards } from '../../store/youtube.selectors';
 import { SearchItem } from '../../youtube/search/search-item.model';
 import { YoutubeService } from '../../youtube/youtube.service';
 

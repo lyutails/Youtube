@@ -1,3 +1,6 @@
+@for (customCard of customCards$ | async; track customCard.customId) {
+  <app-custom-card [customCard]="customCard"></app-custom-card>
+}
 @if (items$ | async; as items) {
   @for (
     responseCard of items

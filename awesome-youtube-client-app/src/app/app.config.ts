@@ -15,10 +15,14 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { YoutubeEffects } from './app/store/youtube.effects';
-import { heartsReducer, youtubeReducer } from './app/store/youtube.reducer';
 import { loadingSpinnerInterceptor } from './interceptors/loading-spinner.interceptor';
 import { shortenUrlInterceptor } from './interceptors/shorten-url.interceptor';
+import { YoutubeEffects } from './store/youtube.effects';
+import {
+  customCardReducer,
+  heartsReducer,
+  youtubeReducer,
+} from './store/youtube.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,6 +36,10 @@ export const appConfig: ApplicationConfig = {
     provideState({
       name: 'items',
       reducer: youtubeReducer,
+    }),
+    provideState({
+      name: 'custom cards',
+      reducer: customCardReducer,
     }),
     provideState({
       name: 'hearts',

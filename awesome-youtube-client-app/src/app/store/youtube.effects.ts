@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, EMPTY, exhaustMap, map } from 'rxjs';
 
-import { YoutubeService } from '../../youtube/youtube.service';
+import { YoutubeService } from '../youtube/youtube.service';
 import { YoutubeActions } from './youtube.actions';
 
 @Injectable()

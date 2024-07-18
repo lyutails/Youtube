@@ -4,9 +4,9 @@ import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { HeartsActions } from '../../../app/store/youtube.actions';
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
+import { HeartsActions } from '../../../store/youtube.actions';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
 import { YoutubeService } from '../../youtube.service';
 import { SearchItem } from '../search-item.model';
