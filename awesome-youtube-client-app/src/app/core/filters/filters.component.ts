@@ -106,8 +106,4 @@ export class FiltersComponent implements OnInit, OnDestroy {
   isFiltersPanelPresent() {
     return this.screenWidth > 1000 || this.youtubeService.isFiltersVisible;
   }
-
-  goToFavouritesPate() {
-    this.router.navigate(['./favourite']);
-  }
 }

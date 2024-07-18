@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Router, RouterModule } from '@angular/router';
@@ -20,6 +21,7 @@ import { SearchInputFieldComponent } from '../search-input-field/search-input-fi
     RouterModule,
     CommonModule,
     FormsModule,
+    MatButton,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -60,5 +62,9 @@ export class HeaderComponent {
 
   changeTheme() {
     this.themeService.switchTheme();
+  }
+
+  goToFavouritesPage() {
+    this.router.navigate(['./favourite']);
   }
 }

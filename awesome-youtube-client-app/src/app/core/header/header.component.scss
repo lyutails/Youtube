@@ -135,6 +135,15 @@ a {
   &_settings-toggle {
     pointer-events: none;
   }
+
+  &_favourite.button {
+    font-size: 0.8rem;
+    // padding: 2px 5px;
+    // border-radius: 5px;
+    // border: solid 1px;
+    // background-color: mat-color($_palettes, P70);
+    transition: all 0.4s ease-in-out;
+  }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 650px) {
