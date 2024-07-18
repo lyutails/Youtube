@@ -67,4 +67,8 @@ export class HeaderComponent {
   goToFavouritesPage() {
     this.router.navigate(['./favourite']);
   }
+
+  goToAdminPage() {
+    this.router.navigate(['./admin']);
+  }
 }

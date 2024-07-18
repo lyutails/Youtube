@@ -24,13 +24,10 @@
       <mat-slide-toggle
         [(ngModel)]="youtubeService.isFiltersVisible"></mat-slide-toggle>
     </div>
-    <button
-      type="button"
-      mat-button
-      class="header_favourite button"
-      (click)="goToFavouritesPage()">
+    <button type="button" mat-button (click)="goToFavouritesPage()">
       favourite
     </button>
+    <button type="button" mat-button (click)="goToAdminPage()">admin</button>
     <div class="header_login">
       <button
         type="button"

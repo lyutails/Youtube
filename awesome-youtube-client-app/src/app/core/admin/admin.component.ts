@@ -76,6 +76,7 @@ export class AdminComponent implements OnInit {
             img: this.adminForm.value.img,
             linkVideo: this.adminForm.value.linkVideo,
             tags: this.adminForm.value.tags,
+            date: new Date().toString(),
           },
         })
       );

@@ -1,5 +1,9 @@
 @for (customCard of customCards$ | async; track customCard.customId) {
-  <app-custom-card [customCard]="customCard"></app-custom-card>
+  <app-custom-card
+    class="card_wrapper"
+    [ngStyle]="{ display: 'block' }"
+    [customCard]="customCard"
+    [appColouredByDateBorder]="customCard.date"></app-custom-card>
 }
 @if (items$ | async; as items) {
   @for (

@@ -5,4 +5,5 @@ export interface CustomCard {
   img: string;
   linkVideo: string;
   tags?: string[];
+  date: string;
 }
