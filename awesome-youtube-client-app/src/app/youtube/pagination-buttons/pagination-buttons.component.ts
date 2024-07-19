@@ -28,9 +28,10 @@ export class PaginationButtonsComponent {
   currentPageNumber$ = this.store.select(selectPageNumber);
 
   turnNextPage() {
-    /* this.nextPageToken += 1;
-    this.currentPage = this.nextPageToken;
-    return this.currentPage; */
     this.store.dispatch(PaginationButtonsActions.nextPage());
+  }
+
+  turnPreviousPage() {
+    this.store.dispatch(PaginationButtonsActions.previousPage());
   }
 }
