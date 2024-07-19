@@ -1,0 +1,22 @@
+.pagination-buttons {
+  &_wrapper {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_item {
+    width: 18%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.number {
+      font-weight: bold;
+    }
+  }
+}

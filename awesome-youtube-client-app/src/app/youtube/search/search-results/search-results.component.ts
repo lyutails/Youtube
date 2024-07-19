@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
 
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { DateAscPipe } from '../../../pipes/date-asc.pipe';
@@ -15,6 +16,7 @@ import {
   selectHeartsIds,
 } from '../../../store/youtube.selectors';
 import { CustomCardComponent } from '../../custom-card/custom-card.component';
+import { PaginationButtonsComponent } from '../../pagination-buttons/pagination-buttons.component';
 import { YoutubeService } from '../../youtube.service';
 import { SearchItem } from '../search-item.model';
 import { SearchItemComponent } from '../search-item/search-item.component';
@@ -33,11 +35,12 @@ import { SearchItemComponent } from '../search-item/search-item.component';
     DateAscPipe,
     DateDescPipe,
     CustomCardComponent,
+    PaginationButtonsComponent,
   ],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
-export class SearchResultsComponent {
+export class SearchResultsComponent implements OnInit {
   @Input() filterValueDownFromApp = '';
   @Input() fakeSearchDownFromApp = '';
   @Input() getFakeSearchValue = '';
@@ -52,11 +55,20 @@ export class SearchResultsComponent {
   items$ = this.store.select(selectCards);
   customCards$ = this.store.select(selectCustomCard);
   heartsIds$ = this.store.select(selectHeartsIds);
+  heartsIds!: string[];
 
   constructor(
     public youtubeService: YoutubeService,
     public store: Store
   ) {}
+
+  ngOnInit() {
+    this.heartsIds$.pipe(map(data => data)).subscribe(data => {
+      console.log(data);
+      // eslint-disable-next-line no-return-assign
+      return (this.heartsIds = data);
+    });
+  }
 
   getCardsBasedOnHeaderInputValue(): SearchItem[] {
     return this.realAPICards;

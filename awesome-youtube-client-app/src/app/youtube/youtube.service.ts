@@ -22,7 +22,7 @@ export class YoutubeService {
 
   public http = inject(HttpClient);
 
-  maxResults = 10;
+  maxResults = 20;
   searchInput = '';
 
   getRealAPICards(value: string): Observable<VideosResponse> {

@@ -15,11 +15,7 @@
       | wordsPipe: youtubeService.filterSearchInputValue;
     track responseCard.id
   ) {
-    @if (
-      heartsIds$ | async;
-      as heartsIds && heartsIds !== [] &&
-    heartsIds.filter(heart => heart = responseCard.id)
-    ) {
+    @if (heartsIds.length !== 0) {
       <app-search-item
         class="card_wrapper"
         [card]="responseCard"
@@ -36,5 +32,6 @@
     }
   }
 }
-<!-- responseCard.snippet.title === 'Angular Tutorial for Beginners: Learn Angular &
-TypeScript' -->
+<app-pagination-buttons></app-pagination-buttons>
+<!-- heartsIds$ | async;
+      as heartsIds && heartsIds.filter(heartId => heartId === responseCard.id) -->
