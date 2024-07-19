@@ -56,5 +56,11 @@ export const paginationButtonsReducer = createReducer(
       return initialPageNumber;
     }
     return state - 1;
+  }),
+  on(PaginationButtonsActions.firstPage, (): number => {
+    return initialPageNumber;
+  }),
+  on(PaginationButtonsActions.lastPage, (): number => {
+    return initialPageNumber;
   })
 );

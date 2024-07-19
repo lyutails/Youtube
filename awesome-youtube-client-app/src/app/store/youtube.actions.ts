@@ -33,5 +33,7 @@ export const PaginationButtonsActions = createActionGroup({
   events: {
     'Next Page': emptyProps(),
     'Previous Page': emptyProps(),
+    'First Page': emptyProps(),
+    'Last Page': emptyProps(),
   },
 });

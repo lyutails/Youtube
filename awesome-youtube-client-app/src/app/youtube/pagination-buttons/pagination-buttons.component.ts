@@ -34,4 +34,12 @@ export class PaginationButtonsComponent {
   turnPreviousPage() {
     this.store.dispatch(PaginationButtonsActions.previousPage());
   }
+
+  turnFirstPage() {
+    this.store.dispatch(PaginationButtonsActions.firstPage());
+  }
+
+  turnLastPage() {
+    this.store.dispatch(PaginationButtonsActions.lastPage());
+  }
 }

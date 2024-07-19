@@ -1,5 +1,8 @@
 <div class="pagination-buttons_wrapper">
-  <button type="button" class="pagination-buttons_item">
+  <button
+    type="button"
+    class="pagination-buttons_item"
+    (click)="turnFirstPage()">
     <mat-icon class="pagination-buttons_icon">
       {{ paginationButtonSymbols.first }}</mat-icon
     >
@@ -23,7 +26,10 @@
       {{ paginationButtonSymbols.next }}</mat-icon
     >
   </button>
-  <button type="button" class="pagination-buttons_item">
+  <button
+    type="button"
+    class="pagination-buttons_item"
+    (click)="turnLastPage()">
     <mat-icon class="pagination-buttons_icon">
       {{ paginationButtonSymbols.last }}</mat-icon
     >
