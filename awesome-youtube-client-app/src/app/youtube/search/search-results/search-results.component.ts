@@ -12,6 +12,7 @@ import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import {
   selectCards,
   selectCustomCard,
+  selectHeartsIds,
 } from '../../../store/youtube.selectors';
 import { CustomCardComponent } from '../../custom-card/custom-card.component';
 import { YoutubeService } from '../../youtube.service';
@@ -37,12 +38,6 @@ import { SearchItemComponent } from '../search-item/search-item.component';
   styleUrl: './search-results.component.scss',
 })
 export class SearchResultsComponent {
-  gotFilterValue = '';
-  responseCardsOnRequest: SearchItem[] = [];
-  realAPICards: SearchItem[] = [];
-  items$ = this.store.select(selectCards);
-  customCards$ = this.store.select(selectCustomCard);
-
   @Input() filterValueDownFromApp = '';
   @Input() fakeSearchDownFromApp = '';
   @Input() getFakeSearchValue = '';
@@ -51,16 +46,17 @@ export class SearchResultsComponent {
   @Input() gotDateAsc = true;
   @Input() gotDateDesc = true;
 
+  gotFilterValue = '';
+  responseCardsOnRequest: SearchItem[] = [];
+  realAPICards: SearchItem[] = [];
+  items$ = this.store.select(selectCards);
+  customCards$ = this.store.select(selectCustomCard);
+  heartsIds$ = this.store.select(selectHeartsIds);
+
   constructor(
     public youtubeService: YoutubeService,
     public store: Store
   ) {}
-
-  /* ngOnInit() {
-    if (!this.items$) {
-      this.items$ = this.store.select(selectCards);
-    }
-  } */
 
   getCardsBasedOnHeaderInputValue(): SearchItem[] {
     return this.realAPICards;

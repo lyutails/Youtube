@@ -80,6 +80,9 @@ export class AdminComponent implements OnInit {
           },
         })
       );
+      this.adminForm.reset();
+      this.tags.clear();
+      this.addTag();
     }
   }
 

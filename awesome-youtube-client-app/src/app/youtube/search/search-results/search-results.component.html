@@ -15,10 +15,26 @@
       | wordsPipe: youtubeService.filterSearchInputValue;
     track responseCard.id
   ) {
-    <app-search-item
-      class="card_wrapper"
-      [card]="responseCard"
-      [appColouredByDateBorder]="responseCard.snippet.publishedAt"
-      [ngStyle]="{ display: 'block' }" />
+    @if (
+      heartsIds$ | async;
+      as heartsIds && heartsIds !== [] &&
+    heartsIds.filter(heart => heart = responseCard.id)
+    ) {
+      <app-search-item
+        class="card_wrapper"
+        [card]="responseCard"
+        [initialFavoriteValue]="true"
+        [appColouredByDateBorder]="responseCard.snippet.publishedAt"
+        [ngStyle]="{ display: 'block' }" />
+    } @else {
+      <app-search-item
+        class="card_wrapper"
+        [card]="responseCard"
+        [initialFavoriteValue]="false"
+        [appColouredByDateBorder]="responseCard.snippet.publishedAt"
+        [ngStyle]="{ display: 'block' }" />
+    }
   }
 }
+<!-- responseCard.snippet.title === 'Angular Tutorial for Beginners: Learn Angular &
+TypeScript' -->

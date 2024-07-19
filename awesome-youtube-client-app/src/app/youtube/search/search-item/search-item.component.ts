@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import { HeartsActions } from '../../../store/youtube.actions';
+import { selectCards } from '../../../store/youtube.selectors';
 import { CustomButtonComponent } from '../../custom-button/custom-button.component';
 import { YoutubeService } from '../../youtube.service';
 import { SearchItem } from '../search-item.model';
@@ -28,8 +29,10 @@ import { SearchItem } from '../search-item.model';
   styleUrl: './search-item.component.scss',
 })
 export class SearchItemComponent implements OnInit {
-  @Input() initialFavoriteValue = false;
   @Input() card!: SearchItem;
+  @Input() initialFavoriteValue = false;
+
+  items$ = this.store.select(selectCards);
 
   buttonName = 'more...';
   protected isFavourite = false;
@@ -42,6 +45,7 @@ export class SearchItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.isFavourite = this.initialFavoriteValue;
+    // if(this.items$.pipe((filter(cards => cards.find((card) => card.id === heartsIds$.)))))
   }
 
   goToCard(id: string) {
