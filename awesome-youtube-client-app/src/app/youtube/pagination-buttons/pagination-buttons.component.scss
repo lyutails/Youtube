@@ -10,13 +10,19 @@
     width: 18%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    background-color: pink;
+    background-color: oklch(91.96% 0.041 16.08);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.2s ease-in-out;
 
     &.number {
       font-weight: bold;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: oklch(83.8% 0.09 14.04);
     }
   }
 }

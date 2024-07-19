@@ -96,7 +96,7 @@ app-favourite {
   padding: 20px 0px;
 }
 
-app-card-details  {
+app-card-details {
   width: 90vw;
   margin: 0 auto;
   display: flex;
@@ -105,6 +105,16 @@ app-card-details  {
   row-gap: 10px;
   position: relative;
   flex: 1 0 auto;
+  padding: 20px 0px;
+}
+
+app-pagination-buttons {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
   padding: 20px 0px;
 }
 
