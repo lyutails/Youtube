@@ -27,3 +27,11 @@ export const HeartsActions = createActionGroup({
     'Delete Heart': props<{ cardId: string }>(),
   },
 });
+
+export const PaginationButtonsActions = createActionGroup({
+  source: 'Pagination Buttons',
+  events: {
+    'Next Page': emptyProps(),
+    'Previous Page': emptyProps(),
+  },
+});

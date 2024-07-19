@@ -13,3 +13,5 @@ export const selectHearts = createFeatureSelector<SearchItem[]>('hearts');
 export const selectHeartsIds = createSelector(selectHearts, hearts => {
   return hearts.map(heart => heart.id);
 });
+
+export const selectPageNumber = createFeatureSelector<number>('page number');

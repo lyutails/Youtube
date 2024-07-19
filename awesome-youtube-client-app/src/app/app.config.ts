@@ -21,6 +21,7 @@ import { YoutubeEffects } from './store/youtube.effects';
 import {
   customCardReducer,
   heartsReducer,
+  paginationButtonsReducer,
   youtubeReducer,
 } from './store/youtube.reducer';
 
@@ -44,6 +45,10 @@ export const appConfig: ApplicationConfig = {
     provideState({
       name: 'hearts',
       reducer: heartsReducer,
+    }),
+    provideState({
+      name: 'page number',
+      reducer: paginationButtonsReducer,
     }),
     provideStoreDevtools({
       maxAge: 25,

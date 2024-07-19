@@ -17,9 +17,10 @@ export class YoutubeEffects {
       ofType(YoutubeActions.getCards),
       exhaustMap(action => {
         return this.youtubeService.getRealAPICards(action.value).pipe(
-          map(response =>
-            YoutubeActions.retrievedCards({ items: response.items })
-          ),
+          map(response => {
+            console.log(response);
+            return YoutubeActions.retrievedCards({ items: response.items });
+          }),
           catchError(() => EMPTY)
         );
       })

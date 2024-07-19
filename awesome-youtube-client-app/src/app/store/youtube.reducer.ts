@@ -5,6 +5,7 @@ import { CustomCard } from './custom-card.model';
 import {
   CustomCardActions,
   HeartsActions,
+  PaginationButtonsActions,
   YoutubeActions,
 } from './youtube.actions';
 
@@ -41,4 +42,16 @@ export const heartsReducer = createReducer(
   on(HeartsActions.deleteHeart, (state, { cardId }) =>
     state.filter(card => card.id !== cardId)
   )
+);
+
+export const initialPageNumber = 1;
+
+export const paginationButtonsReducer = createReducer(
+  initialPageNumber,
+  on(PaginationButtonsActions.nextPage, (state): number => {
+    return state + 1;
+  }),
+  on(PaginationButtonsActions.previousPage, (state): number => {
+    return state - 1;
+  })
 );

@@ -1,25 +1,28 @@
 <div class="pagination-buttons_wrapper">
-  <div class="pagination-buttons_item">
+  <button type="button" class="pagination-buttons_item">
     <mat-icon class="pagination-buttons_icon">
       {{ paginationButtonSymbols.first }}</mat-icon
     >
-  </div>
-  <div class="pagination-buttons_item">
+  </button>
+  <button type="button" class="pagination-buttons_item">
     <mat-icon class="pagination-buttons_icon">
       {{ paginationButtonSymbols.previous }}</mat-icon
     >
-  </div>
-  <div class="pagination-buttons_item number">
-    {{ paginationButtonSymbols.current }}
-  </div>
-  <div class="pagination-buttons_item">
+  </button>
+  <button type="button" class="pagination-buttons_item number">
+    {{ currentPageNumber$ | async }}
+  </button>
+  <button
+    type="button"
+    class="pagination-buttons_item"
+    (click)="turnNextPage()">
     <mat-icon class="pagination-buttons_icon">
       {{ paginationButtonSymbols.next }}</mat-icon
     >
-  </div>
-  <div class="pagination-buttons_item">
+  </button>
+  <button type="button" class="pagination-buttons_item">
     <mat-icon class="pagination-buttons_icon">
       {{ paginationButtonSymbols.last }}</mat-icon
     >
-  </div>
+  </button>
 </div>
