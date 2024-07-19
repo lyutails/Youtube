@@ -52,6 +52,9 @@ export const paginationButtonsReducer = createReducer(
     return state + 1;
   }),
   on(PaginationButtonsActions.previousPage, (state): number => {
+    if (state === 1) {
+      return initialPageNumber;
+    }
     return state - 1;
   })
 );
