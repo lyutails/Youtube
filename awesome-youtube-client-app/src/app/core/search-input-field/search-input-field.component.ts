@@ -82,9 +82,6 @@ export class SearchInputFieldComponent implements AfterViewInit {
           value !== undefined &&
           /* this.youtubeService.getCards(data.items); */
           this.store.dispatch(YoutubeActions.getCards({ value }))
-          /* this.store.dispatch(
-              YoutubeActions.retrievedCards({ items: data.items })
-            ); */
         );
       });
   }

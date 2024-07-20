@@ -8,6 +8,7 @@ export const YoutubeActions = createActionGroup({
   events: {
     'Get Cards': props<{ value: string }>(),
     'Retrieved Cards': props<{ items: SearchItem[] }>(),
+    'Retrieved Initial Cards': props<{ items: SearchItem[] }>(),
     'Cards Loaded Error': emptyProps(),
   },
 });
@@ -33,7 +34,6 @@ export const PaginationButtonsActions = createActionGroup({
   events: {
     'Next Page': emptyProps(),
     'Previous Page': emptyProps(),
-    'First Page': emptyProps(),
-    'Last Page': emptyProps(),
+    'Initial Page': emptyProps(),
   },
 });

@@ -21,7 +21,7 @@
       font-weight: bold;
     }
 
-    &:hover {
+    &.turn:hover {
       cursor: pointer;
       background-color: oklch(83.8% 0.09 14.04);
     }

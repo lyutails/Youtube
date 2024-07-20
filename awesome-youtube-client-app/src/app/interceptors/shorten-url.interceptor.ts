@@ -7,7 +7,9 @@ export const shortenUrlInterceptor: HttpInterceptorFn = (request, next) => {
 
   const authReq = request.clone({
     url: `${API_URL}${request.url}`,
-    setParams: { key: `${environment.API_KEY}` },
+    setParams: {
+      key: `${environment.API_KEY}`,
+    },
   });
 
   return next(authReq);

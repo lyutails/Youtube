@@ -16,6 +16,8 @@ export class YoutubeService {
   viewsDescSort = true;
   dateAscSort = true;
   dateDescSort = true;
+  nextPageToken = '';
+  prevPageToken = '';
 
   cards: SearchItem[] = [];
   card!: SearchItem;
@@ -25,13 +27,16 @@ export class YoutubeService {
   maxResults = 20;
   searchInput = '';
 
-  getRealAPICards(value: string): Observable<VideosResponse> {
+  getRealAPICards(value: string, token?: string): Observable<VideosResponse> {
+    this.searchInput = value;
     return this.http
       .get<SearchResponse>(
-        `search?type=video&part=snippet&maxResults=${this.maxResults}&q=${value}`
+        `search?type=video&part=snippet&maxResults=${this.maxResults}&q=${value}${!token ? '' : `&pageToken=${token}`}`
       )
       .pipe(
         map(data => {
+          this.setNextPageToken(data.nextPageToken!);
+          this.setPrevPageToken(data.prevPageToken!);
           return data.items.map(item => item.id.videoId);
         })
       )
@@ -42,6 +47,22 @@ export class YoutubeService {
           );
         })
       );
+  }
+
+  getPaginationRealAPICards(direction: 'next' | 'prev') {
+    const token =
+      direction === 'next' ? this.nextPageToken : this.prevPageToken;
+    return this.getRealAPICards(this.searchInput, token);
+  }
+
+  setNextPageToken(value: string) {
+    console.log(value);
+    this.nextPageToken = value;
+  }
+
+  setPrevPageToken(value: string) {
+    console.log(value);
+    this.prevPageToken = value;
   }
 
   getRealDetailedCard(id: string) {

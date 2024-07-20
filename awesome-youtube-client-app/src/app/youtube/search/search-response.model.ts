@@ -15,6 +15,8 @@ interface PageInfo {
 export interface SearchResponse {
   kind: string;
   etag: string;
+  nextPageToken?: string;
+  prevPageToken?: string;
   pageInfo: PageInfo;
   items: Omit<SearchItem, 'id' | 'statistics'> & { id: FullID }[];
 }

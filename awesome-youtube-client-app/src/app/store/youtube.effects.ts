@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, EMPTY, exhaustMap, map } from 'rxjs';
 
 import { YoutubeService } from '../youtube/youtube.service';
-import { YoutubeActions } from './youtube.actions';
+import { PaginationButtonsActions, YoutubeActions } from './youtube.actions';
 
 @Injectable()
 export class YoutubeEffects {
@@ -18,7 +18,56 @@ export class YoutubeEffects {
       exhaustMap(action => {
         return this.youtubeService.getRealAPICards(action.value).pipe(
           map(response => {
-            console.log(response);
+            return YoutubeActions.retrievedInitialCards({
+              items: response.items,
+            });
+          }),
+          catchError(() => EMPTY)
+        );
+      })
+    );
+  });
+
+  setInitalCards$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(YoutubeActions.retrievedInitialCards),
+      map(action => {
+        return YoutubeActions.retrievedCards({ items: action.items });
+      })
+    );
+  });
+
+  setInitalPage$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(YoutubeActions.retrievedInitialCards),
+      map(() => {
+        return PaginationButtonsActions.initialPage();
+      })
+    );
+  });
+
+  // PaginationButtonsActions.initialPage
+
+  loadNextCards$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PaginationButtonsActions.nextPage),
+      exhaustMap(() => {
+        return this.youtubeService.getPaginationRealAPICards('next').pipe(
+          map(response => {
+            return YoutubeActions.retrievedCards({ items: response.items });
+          }),
+          catchError(() => EMPTY)
+        );
+      })
+    );
+  });
+
+  loadPrevCards$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PaginationButtonsActions.previousPage),
+      exhaustMap(() => {
+        return this.youtubeService.getPaginationRealAPICards('prev').pipe(
+          map(response => {
             return YoutubeActions.retrievedCards({ items: response.items });
           }),
           catchError(() => EMPTY)
@@ -27,5 +76,3 @@ export class YoutubeEffects {
     );
   });
 }
-
-/* catchError(() => of({ type: '[Youtube API] Cards Loaded Error' })) */

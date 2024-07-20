@@ -1,37 +1,25 @@
-<div class="pagination-buttons_wrapper">
-  <button
-    type="button"
-    class="pagination-buttons_item"
-    (click)="turnFirstPage()">
-    <mat-icon class="pagination-buttons_icon">
-      {{ paginationButtonSymbols.first }}</mat-icon
-    >
-  </button>
-  <button
-    type="button"
-    class="pagination-buttons_item"
-    (click)="turnPreviousPage()">
-    <mat-icon class="pagination-buttons_icon">
-      {{ paginationButtonSymbols.previous }}</mat-icon
-    >
-  </button>
-  <button type="button" class="pagination-buttons_item number">
-    {{ currentPageNumber$ | async }}
-  </button>
-  <button
-    type="button"
-    class="pagination-buttons_item"
-    (click)="turnNextPage()">
-    <mat-icon class="pagination-buttons_icon">
-      {{ paginationButtonSymbols.next }}</mat-icon
-    >
-  </button>
-  <button
-    type="button"
-    class="pagination-buttons_item"
-    (click)="turnLastPage()">
-    <mat-icon class="pagination-buttons_icon">
-      {{ paginationButtonSymbols.last }}</mat-icon
-    >
-  </button>
-</div>
+@if (currentPageNumber$ | async; as currentPage) {
+  <div class="pagination-buttons_wrapper">
+    <button
+      type="button"
+      class="pagination-buttons_item turn"
+      (click)="turnPreviousPage()"
+      [disabled]="currentPage === 1">
+      <mat-icon class="pagination-buttons_icon">
+        {{ paginationButtonSymbols.previous }}</mat-icon
+      >
+    </button>
+    <button type="button" class="pagination-buttons_item number">
+      {{ currentPage }}
+    </button>
+    <button
+      type="button"
+      class="pagination-buttons_item turn"
+      (click)="turnNextPage()"
+      [disabled]="!youtubeService.nextPageToken">
+      <mat-icon class="pagination-buttons_icon">
+        {{ paginationButtonSymbols.next }}</mat-icon
+      >
+    </button>
+  </div>
+}

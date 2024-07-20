@@ -44,7 +44,7 @@ export const heartsReducer = createReducer(
   )
 );
 
-export const initialPageNumber = 1;
+export const initialPageNumber = 0;
 
 export const paginationButtonsReducer = createReducer(
   initialPageNumber,
@@ -53,14 +53,11 @@ export const paginationButtonsReducer = createReducer(
   }),
   on(PaginationButtonsActions.previousPage, (state): number => {
     if (state === 1) {
-      return initialPageNumber;
+      return 1;
     }
     return state - 1;
   }),
-  on(PaginationButtonsActions.firstPage, (): number => {
-    return initialPageNumber;
-  }),
-  on(PaginationButtonsActions.lastPage, (): number => {
-    return initialPageNumber;
+  on(PaginationButtonsActions.initialPage, (): number => {
+    return 1;
   })
 );
