@@ -1,0 +1,1 @@
+import{ea as e}from"./chunk-MGU3A3HE.js";var c=(()=>{let t=class t{constructor(){this.isLightTheme=!0}switchTheme(){this.isLightTheme=!this.isLightTheme}};t.\u0275fac=function(r){return new(r||t)},t.\u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"});let i=t;return i})();export{c as a};
