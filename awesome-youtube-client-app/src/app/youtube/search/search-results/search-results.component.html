@@ -15,23 +15,12 @@
       | wordsPipe: youtubeService.filterSearchInputValue;
     track responseCard.id
   ) {
-    @if (heartsIds.length !== 0) {
-      <app-search-item
-        class="card_wrapper"
-        [card]="responseCard"
-        [initialFavoriteValue]="true"
-        [appColouredByDateBorder]="responseCard.snippet.publishedAt"
-        [ngStyle]="{ display: 'block' }" />
-    } @else {
-      <app-search-item
-        class="card_wrapper"
-        [card]="responseCard"
-        [initialFavoriteValue]="false"
-        [appColouredByDateBorder]="responseCard.snippet.publishedAt"
-        [ngStyle]="{ display: 'block' }" />
-    }
+    <app-search-item
+      class="card_wrapper"
+      [card]="responseCard"
+      [initialFavoriteValue]="heartsIds.includes(responseCard.id)"
+      [appColouredByDateBorder]="responseCard.snippet.publishedAt"
+      [ngStyle]="{ display: 'block' }" />
   }
 }
 <app-pagination-buttons class="pagination-buttons"></app-pagination-buttons>
-<!-- heartsIds$ | async;
-      as heartsIds && heartsIds.filter(heartId => heartId === responseCard.id) -->

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 
 import { ColouredByDateBorderDirective } from '../../../directives/coloured-by-date-border.directive';
 import { DateAscPipe } from '../../../pipes/date-asc.pipe';
@@ -40,7 +40,7 @@ import { SearchItemComponent } from '../search-item/search-item.component';
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   @Input() filterValueDownFromApp = '';
   @Input() fakeSearchDownFromApp = '';
   @Input() getFakeSearchValue = '';
@@ -57,20 +57,26 @@ export class SearchResultsComponent implements OnInit {
   heartsIds$ = this.store.select(selectHeartsIds);
   heartsIds!: string[];
 
+  subscriptions = new Subscription();
+
   constructor(
     public youtubeService: YoutubeService,
     public store: Store
   ) {}
 
   ngOnInit() {
-    this.heartsIds$.pipe(map(data => data)).subscribe(data => {
-      console.log(data);
-      // eslint-disable-next-line no-return-assign
-      return (this.heartsIds = data);
-    });
+    this.subscriptions.add(
+      this.heartsIds$.pipe(map(data => data)).subscribe(data => {
+        this.heartsIds = data;
+      })
+    );
   }
 
   getCardsBasedOnHeaderInputValue(): SearchItem[] {
     return this.realAPICards;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }
