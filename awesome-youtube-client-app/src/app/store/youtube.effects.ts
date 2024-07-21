@@ -42,8 +42,6 @@ export class YoutubeEffects {
     );
   });
 
-  // PaginationButtonsActions.initialPage
-
   loadNextCards$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(PaginationButtonsActions.nextPage),

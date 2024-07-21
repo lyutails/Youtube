@@ -56,12 +56,10 @@ export class YoutubeService {
   }
 
   setNextPageToken(value: string) {
-    console.log(value);
     this.nextPageToken = value;
   }
 
   setPrevPageToken(value: string) {
-    console.log(value);
     this.prevPageToken = value;
   }
 
