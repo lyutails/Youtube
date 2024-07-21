@@ -6,34 +6,34 @@ import { CustomCard } from './custom-card.model';
 export const YoutubeActions = createActionGroup({
   source: 'Youtube API',
   events: {
-    'Get Cards': props<{ value: string }>(),
-    'Get Cards Success': props<{ items: SearchItem[] }>(),
-    'Retrieved Cards': props<{ items: SearchItem[] }>(),
-    'Cards Loaded Error': emptyProps(),
+    getCards: props<{ value: string }>(),
+    getCardsSuccess: props<{ items: SearchItem[] }>(),
+    retrievedCards: props<{ items: SearchItem[] }>(),
+    cardsLoadedError: emptyProps(),
   },
 });
 
 export const CustomCardActions = createActionGroup({
   source: 'Custom Card',
   events: {
-    'Create Card': props<{ item: CustomCard }>(),
-    'Delete Card': props<{ id: string }>(),
+    createCard: props<{ item: CustomCard }>(),
+    deleteCard: props<{ id: string }>(),
   },
 });
 
 export const HeartsActions = createActionGroup({
   source: 'Favourite',
   events: {
-    'Add Heart': props<{ card: SearchItem }>(),
-    'Delete Heart': props<{ cardId: string }>(),
+    addHeart: props<{ card: SearchItem }>(),
+    deleteHeart: props<{ cardId: string }>(),
   },
 });
 
 export const PaginationButtonsActions = createActionGroup({
   source: 'Pagination Buttons',
   events: {
-    'Next Page': emptyProps(),
-    'Previous Page': emptyProps(),
-    'Initial Page': emptyProps(),
+    nextPage: emptyProps(),
+    previousPage: emptyProps(),
+    initialPage: emptyProps(),
   },
 });
