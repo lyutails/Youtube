@@ -11,9 +11,10 @@ import { ViewsCountAscPipe } from '../../../pipes/views-count-asc.pipe';
 import { ViewsCountDescPipe } from '../../../pipes/views-count-desc.pipe';
 import { WordsPipePipe } from '../../../pipes/words-pipe.pipe';
 import {
-  selectCards,
   selectCustomCard,
   selectHeartsIds,
+  selectIsLoading,
+  selectOnlyCards,
 } from '../../../store/youtube.selectors';
 import { CustomCardComponent } from '../../custom-card/custom-card.component';
 import { PaginationButtonsComponent } from '../../pagination-buttons/pagination-buttons.component';
@@ -52,12 +53,13 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   gotFilterValue = '';
   responseCardsOnRequest: SearchItem[] = [];
   realAPICards: SearchItem[] = [];
-  items$ = this.store.select(selectCards);
+  items$ = this.store.select(selectOnlyCards);
   customCards$ = this.store.select(selectCustomCard);
   heartsIds$ = this.store.select(selectHeartsIds);
   heartsIds!: string[];
-
   subscriptions = new Subscription();
+  isLoading$ = this.store.select(selectIsLoading);
+  isLoading!: boolean;
 
   constructor(
     public youtubeService: YoutubeService,
@@ -68,6 +70,11 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.heartsIds$.pipe(map(data => data)).subscribe(data => {
         this.heartsIds = data;
+      })
+    );
+    this.subscriptions.add(
+      this.isLoading$.pipe(map(response => response)).subscribe(response => {
+        this.isLoading = response;
       })
     );
   }

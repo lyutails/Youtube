@@ -7,9 +7,9 @@ export const YoutubeActions = createActionGroup({
   source: 'Youtube API',
   events: {
     getCards: props<{ value: string }>(),
-    getCardsSuccess: props<{ items: SearchItem[] }>(),
     retrievedCards: props<{ items: SearchItem[] }>(),
-    cardsLoadedError: emptyProps(),
+    getCardsSuccess: props<{ items: SearchItem[] }>(),
+    getCardsError: emptyProps(),
   },
 });
 

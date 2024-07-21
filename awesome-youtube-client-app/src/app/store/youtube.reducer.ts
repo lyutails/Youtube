@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 
 import { SearchItem } from '../youtube/search/search-item.model';
 import { CustomCard } from './custom-card.model';
+import { YoutubeState } from './store.model';
 import {
   CustomCardActions,
   HeartsActions,
@@ -11,12 +12,23 @@ import {
 
 export const youtubeFeatureKey = 'youtube';
 
-export const initialStateYoutube: SearchItem[] = [];
+export const initialStateYoutube: YoutubeState = {
+  isLoading: false,
+  isError: false,
+  cards: [],
+};
 
 export const youtubeReducer = createReducer(
   initialStateYoutube,
-  on(YoutubeActions.retrievedCards, (_state, { items }): SearchItem[] => {
-    return items;
+  on(
+    YoutubeActions.getCards,
+    (state): YoutubeState => ({ ...state, isLoading: true })
+  ),
+  on(YoutubeActions.retrievedCards, (state, { items }): YoutubeState => {
+    return { ...state, isLoading: false, cards: items };
+  }),
+  on(YoutubeActions.getCardsError, (state): YoutubeState => {
+    return { ...state, isLoading: false, isError: true };
   })
 );
 

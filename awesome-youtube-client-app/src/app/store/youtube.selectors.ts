@@ -2,8 +2,18 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { SearchItem } from '../youtube/search/search-item.model';
 import { CustomCard } from './custom-card.model';
+import { YoutubeState } from './store.model';
 
-export const selectCards = createFeatureSelector<SearchItem[]>('items');
+export const selectCards = createFeatureSelector<YoutubeState>('items');
+
+export const selectOnlyCards = createSelector(selectCards, ({ cards }) => {
+  return cards;
+});
+
+export const selectIsLoading = createSelector(
+  selectCards,
+  state => state.isLoading
+);
 
 export const selectCustomCard =
   createFeatureSelector<CustomCard[]>('custom cards');

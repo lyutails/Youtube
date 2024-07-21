@@ -5,22 +5,26 @@
     [customCard]="customCard"
     [appColouredByDateBorder]="customCard.date"></app-custom-card>
 }
-@if (items$ | async; as items) {
-  @for (
-    responseCard of items
-      | dateAsc: youtubeService.dateAscSort
-      | dateDesc: youtubeService.dateDescSort
-      | viewsCountAsc: youtubeService.viewsAscSort
-      | viewsCountDesc: youtubeService.viewsDescSort
-      | wordsPipe: youtubeService.filterSearchInputValue;
-    track responseCard.id
-  ) {
-    <app-search-item
-      class="card_wrapper"
-      [card]="responseCard"
-      [initialFavoriteValue]="heartsIds.includes(responseCard.id)"
-      [appColouredByDateBorder]="responseCard.snippet.publishedAt"
-      [ngStyle]="{ display: 'block' }" />
+@if (isLoading) {
+  <div>is Loading</div>
+} @else {
+  @if (items$ | async; as items) {
+    @for (
+      responseCard of items
+        | dateAsc: youtubeService.dateAscSort
+        | dateDesc: youtubeService.dateDescSort
+        | viewsCountAsc: youtubeService.viewsAscSort
+        | viewsCountDesc: youtubeService.viewsDescSort
+        | wordsPipe: youtubeService.filterSearchInputValue;
+      track responseCard.id
+    ) {
+      <app-search-item
+        class="card_wrapper"
+        [card]="responseCard"
+        [initialFavoriteValue]="heartsIds.includes(responseCard.id)"
+        [appColouredByDateBorder]="responseCard.snippet.publishedAt"
+        [ngStyle]="{ display: 'block' }" />
+    }
   }
 }
 <app-pagination-buttons class="pagination-buttons"></app-pagination-buttons>

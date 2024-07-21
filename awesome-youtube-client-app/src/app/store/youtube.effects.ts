@@ -18,9 +18,7 @@ export class YoutubeEffects {
       exhaustMap(action => {
         return this.youtubeService.getRealAPICards(action.value).pipe(
           map(response => {
-            return YoutubeActions.getCardsSuccess({
-              items: response.items,
-            });
+            return YoutubeActions.getCardsSuccess({ items: response.items });
           }),
           catchError(() => EMPTY)
         );
@@ -31,9 +29,7 @@ export class YoutubeEffects {
   setInitalCards$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(YoutubeActions.getCardsSuccess),
-      map(action => {
-        return YoutubeActions.retrievedCards({ items: action.items });
-      })
+      map(({ items }) => YoutubeActions.retrievedCards({ items }))
     );
   });
 
