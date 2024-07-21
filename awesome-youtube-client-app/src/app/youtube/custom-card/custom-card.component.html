@@ -8,14 +8,6 @@
 <div class="custom-card_description">{{ customCard.description }}</div>
 <div>#{{ customCard.tags }}</div>
 <div>{{ customCard.date | cutCustomDate }}</div>
-<button
-  type="button"
-  class="card_button"
-  (click)="goToCard(customCard.customId)">
-  <app-custom-button class="card_app-custom-button">
-    {{ buttonNameMore | uppercase }}
-  </app-custom-button>
-</button>
 <button type="button" class="card_button" (click)="deleteCard()">
   <app-custom-button class="card_app-custom-button">
     {{ buttonNameDelete | uppercase }}
