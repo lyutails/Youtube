@@ -6,7 +6,7 @@
     [appColouredByDateBorder]="customCard.date"></app-custom-card>
 }
 @if (isLoading) {
-  <div>is Loading</div>
+  <div class="is_loading">is Loading...</div>
 } @else {
   @if (items$ | async; as items) {
     @for (
