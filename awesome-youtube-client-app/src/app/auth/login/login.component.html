@@ -8,6 +8,7 @@
         type="text"
         formControlName="login"
         placeholder="your email..." />
+      <mat-icon>email</mat-icon>
     </div>
     @if (login?.invalid && login?.touched) {
       <div class="alert alert-danger">
@@ -27,9 +28,20 @@
       <input
         class="login_input"
         id="password"
-        type="text"
         formControlName="password"
-        placeholder="your password..." />
+        placeholder="your password..."
+        [type]="isPasswordVisible ? 'text' : 'password'" />
+      <button
+        matSuffix
+        mat-icon-button
+        type="button"
+        (click)="isPasswordVisible = !isPasswordVisible">
+        <mat-icon>{{
+          this.isPasswordVisible
+            ? passwordVisibilitySymbol.visible
+            : passwordVisibilitySymbol.invisible
+        }}</mat-icon>
+      </button>
     </div>
     @if (password?.invalid && password?.touched) {
       <div class="alert alert-danger">

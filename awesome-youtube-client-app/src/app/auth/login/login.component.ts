@@ -6,6 +6,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { MatIconButton } from '@angular/material/button';
+import { MatSuffix } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 import { Credentials, LoginService } from '../login.service';
@@ -13,7 +16,14 @@ import { Credentials, LoginService } from '../login.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, UpperCasePipe, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    UpperCasePipe,
+    CommonModule,
+    MatSuffix,
+    MatIcon,
+    MatIconButton,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -22,6 +32,9 @@ export class LoginComponent implements OnInit {
   loginData!: Credentials;
   emailSign = '@';
   passwordSpecialSymbols = 'e.g. ! @ # ?';
+  inputValue = '';
+  isPasswordVisible = true;
+  passwordVisibilitySymbol = { visible: 'key', invisible: 'key_off' };
 
   constructor(
     private loginService: LoginService,

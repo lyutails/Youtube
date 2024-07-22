@@ -16,7 +16,12 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import {
+  MatFormField,
+  MatInput,
+  MatLabel,
+  MatSuffix,
+} from '@angular/material/input';
 import { Store } from '@ngrx/store';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
 
@@ -35,6 +40,7 @@ import { YoutubeService } from '../../youtube/youtube.service';
     MatFormField,
     CommonModule,
     MatLabel,
+    MatSuffix,
   ],
   templateUrl: './search-input-field.component.html',
   styleUrl: './search-input-field.component.scss',
