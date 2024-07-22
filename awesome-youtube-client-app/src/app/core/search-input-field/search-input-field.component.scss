@@ -1,21 +1,16 @@
 @import '../../../variables.scss';
 
 .header-input {
-  // display: flex;
-  // align-items: center;
-
-  &:focus::placeholder {
-    color: transparent;
-  }
+  display: flex;
+  align-content: space-between;
+  min-width: 220px;
+  width: 220px;
 
   &_search-input {
-    // width: 280px;
     // height: 32px;
+    width: 80%;
     border-radius: 5px 5px 5px 5px;
-    // border: solid 1px;
-    // outline: none;
     font-size: 1rem;
-    // padding-left: 10px;
 
     &::placeholder {
       font-size: 1rem;
@@ -40,6 +35,15 @@
       background-color: $electric-violet;
       color: oklch(51.44% 0.232 332.5);
       border-color: oklch(0% 0 0);
+    }
+  }
+
+  &_close-button {
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }

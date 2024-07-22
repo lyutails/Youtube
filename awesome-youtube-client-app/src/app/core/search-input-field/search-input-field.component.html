@@ -1,8 +1,19 @@
 <mat-form-field class="header-input">
+  <mat-label>Search...</mat-label>
   <input
     matInput
     #input
     type="text"
     class="header-input_search-input ng-touched"
-    placeholder="Search..." />
+    placeholder="Search..."
+    [(ngModel)]="inputValue" />
+  @if (inputValue) {
+    <button
+      mat-icon-button
+      class="header-input_close-button"
+      type="button"
+      (click)="inputValue = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
 </mat-form-field>

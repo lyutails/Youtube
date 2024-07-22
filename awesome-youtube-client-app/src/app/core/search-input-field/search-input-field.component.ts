@@ -15,8 +15,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormField, MatInput } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { Store } from '@ngrx/store';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
 
@@ -28,7 +28,14 @@ import { YoutubeService } from '../../youtube/youtube.service';
 @Component({
   selector: 'app-search-input-field',
   standalone: true,
-  imports: [MatIconModule, FormsModule, MatInput, MatFormField, CommonModule],
+  imports: [
+    MatIcon,
+    FormsModule,
+    MatInput,
+    MatFormField,
+    CommonModule,
+    MatLabel,
+  ],
   templateUrl: './search-input-field.component.html',
   styleUrl: './search-input-field.component.scss',
   animations: [
