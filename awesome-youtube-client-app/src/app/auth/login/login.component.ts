@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   emailSign = '@';
   passwordSpecialSymbols = 'e.g. ! @ # ?';
   inputValue = '';
-  isPasswordVisible = true;
+  isPasswordVisible = false;
   passwordVisibilitySymbol = { visible: 'key', invisible: 'key_off' };
 
   constructor(
