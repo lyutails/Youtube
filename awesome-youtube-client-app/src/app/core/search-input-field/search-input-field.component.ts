@@ -5,6 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -27,7 +28,7 @@ import { YoutubeService } from '../../youtube/youtube.service';
 @Component({
   selector: 'app-search-input-field',
   standalone: true,
-  imports: [MatIconModule, FormsModule, MatInput, MatFormField],
+  imports: [MatIconModule, FormsModule, MatInput, MatFormField, CommonModule],
   templateUrl: './search-input-field.component.html',
   styleUrl: './search-input-field.component.scss',
   animations: [
@@ -56,6 +57,7 @@ export class SearchInputFieldComponent implements AfterViewInit {
   inputValue = '';
   realAPICards: SearchItem[] = [];
   items$ = this.store.select(selectCards);
+  focused = false;
 
   @Output() search = new EventEmitter<string>();
 
