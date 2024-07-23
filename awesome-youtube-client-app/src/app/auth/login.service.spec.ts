@@ -1,7 +1,10 @@
+import { ComponentFixture } from '@angular/core/testing';
+
 import { LoginService } from './login.service';
 
 describe('LoginService', () => {
   let loginService: LoginService;
+  let fixture: ComponentFixture<LoginService>;
 
   beforeEach(() => {
     loginService = new LoginService();
@@ -36,5 +39,12 @@ describe('LoginService', () => {
 
   it('#removeCredentials should return undefined from ls', () => {
     expect(loginService.removeCredentials()).toBe(undefined);
+  });
+
+  it('#toggleLoginLogout should return login value', () => {
+    loginService.login$.subscribe(data => {
+      fixture.detectChanges();
+      expect(data).toBe(true || false);
+    });
   });
 });
