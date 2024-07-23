@@ -33,6 +33,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([shortenUrlInterceptor, loadingSpinnerInterceptor])
     ),
+    provideHttpClient(),
     provideStore(),
     provideState({
       name: 'items',
