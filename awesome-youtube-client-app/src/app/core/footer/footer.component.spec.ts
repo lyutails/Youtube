@@ -27,4 +27,11 @@ describe('FooterComponent', () => {
     const element: HTMLElement = fixture.nativeElement;
     expect(element.textContent).toContain('@lyutails');
   });
+
+  it('should render rs', async () => {
+    /* await render(FooterComponent);
+    await screen.getByText('@lyutails'); */
+    const element: HTMLElement = fixture.nativeElement;
+    expect(element.textContent).toContain('RS');
+  });
 });

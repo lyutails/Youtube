@@ -9,6 +9,8 @@ import { SearchResponse, VideosResponse } from './search/search-response.model';
   providedIn: 'root',
 })
 export class YoutubeService {
+  public http = inject(HttpClient);
+
   isFiltersVisible = false;
   headerSearchInputValue = '';
   filterSearchInputValue = '';
@@ -21,8 +23,6 @@ export class YoutubeService {
 
   cards: SearchItem[] = [];
   card!: SearchItem;
-
-  public http = inject(HttpClient);
 
   maxResults = 20;
   searchInput = '';
