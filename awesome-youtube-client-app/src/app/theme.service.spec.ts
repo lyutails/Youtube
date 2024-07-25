@@ -1,13 +1,13 @@
 import { ThemeService } from './theme.service';
 
-describe('LoginService', () => {
+describe('ThemeService', () => {
   let themeService: ThemeService;
 
   beforeEach(() => {
     themeService = new ThemeService();
   });
 
-  it('#removeCredentials should return undefined from ls', () => {
+  it('#switchTheme should return true or false value', () => {
     expect(themeService.switchTheme()).toBe(true || false);
   });
 });

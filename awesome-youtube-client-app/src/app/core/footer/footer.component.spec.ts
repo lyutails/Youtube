@@ -28,7 +28,7 @@ describe('FooterComponent', () => {
     expect(element.textContent).toContain('@lyutails');
   });
 
-  it('should render rs', async () => {
+  it('should render RS', async () => {
     /* await render(FooterComponent);
     await screen.getByText('@lyutails'); */
     const element: HTMLElement = fixture.nativeElement;
