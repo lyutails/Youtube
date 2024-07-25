@@ -4,6 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterModule } from '@angular/router';
 import { provideMockStore } from '@ngrx/store/testing';
+import { screen } from '@testing-library/angular';
 
 import { HeaderComponent } from './header.component';
 
@@ -36,9 +37,26 @@ describe('HeaderComponent', () => {
   });
 
   it('should render YouTube-client-app', async () => {
-    // await render(FooterComponent);
-    // await screen.getByText('@lyutails');
     const element: HTMLElement = fixture.nativeElement;
+    element.title = 'YouTube-client-app';
     expect(element.textContent).toContain('YouTube-client-app');
+  });
+
+  it('should see original YouTube-client-app title after element.title change', async () => {
+    const h1 = fixture.nativeElement.querySelector('h1');
+    const actualTitle = 'YouTube-client-app';
+    expect(h1.textContent).toBe(actualTitle);
+    component.title = 'Test title';
+    fixture.detectChanges();
+    expect(h1.textContent).toContain('Test title');
+  });
+
+  it('should render admin name in button', async () => {
+    screen.getByText('admin');
+  });
+
+  it('should render favourite name in button', async () => {
+    // await render(HeaderComponent);
+    screen.getByText('favourite');
   });
 });

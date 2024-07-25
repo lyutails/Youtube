@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { render, screen } from '@testing-library/angular';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
@@ -29,8 +28,6 @@ describe('FooterComponent', () => {
   });
 
   it('should render RS', async () => {
-    /* await render(FooterComponent);
-    await screen.getByText('@lyutails'); */
     const element: HTMLElement = fixture.nativeElement;
     expect(element.textContent).toContain('RS');
   });
