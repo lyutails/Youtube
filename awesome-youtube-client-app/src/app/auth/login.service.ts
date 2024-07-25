@@ -13,9 +13,22 @@ export class LoginService {
   data!: Credentials;
   fakeAuthToken = '';
   token!: string | null;
+  loginInput = '';
 
   public login = new BehaviorSubject<boolean>(false);
   login$ = this.login.asObservable();
+
+  public loginName = new BehaviorSubject<string>('');
+  loginName$ = this.loginName.asObservable();
+
+  getLogin(value: string) {
+    this.loginInput = value;
+    this.loginName.next(this.loginInput);
+  }
+
+  removeLogin() {
+    this.loginName.next('');
+  }
 
   toggleLoginLogout() {
     this.login.next(!this.login.value);

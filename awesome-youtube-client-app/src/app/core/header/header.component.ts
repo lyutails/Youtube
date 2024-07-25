@@ -59,6 +59,7 @@ export class HeaderComponent {
       this.loginService.login.value === false
     ) {
       this.router.navigate(['/login']);
+      this.loginService.removeLogin();
       return this.loginService.removeCredentials();
     }
   }
