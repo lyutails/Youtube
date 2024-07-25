@@ -76,30 +76,11 @@ describe('YoutubeService', () => {
       },
     ],
   };
-  // let youtubeService!: YoutubeService;
 
-  /* beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      providers: [
-        YoutubeService,
-        provideHttpClient(),
-        provideHttpClientTesting(),
-        {
-          provide: HttpClient,
-          useFactory: () => {
-            const http = inject(HttpClient);
-            return http;
-          },
-        },
-      ],
-    }).compileComponents();
-
-    youtubeService = new YoutubeService();
-  }); */
-
-  afterEach(() => {
+  /* afterEach(() => {
     TestBed.inject(HttpTestingController).verify();
   });
+ */
 
   it('#getCards should return mockResponse items', async () => {
     await TestBed.configureTestingModule({
@@ -171,7 +152,7 @@ describe('YoutubeService', () => {
     expect(youtubeService).toBeTruthy();
   });
 
-  it('http should perform GET method', async () => {
+  it('#toggleFilters should return true or false', async () => {
     await TestBed.configureTestingModule({
       providers: [
         YoutubeService,
@@ -185,91 +166,149 @@ describe('YoutubeService', () => {
     }).compileComponents();
 
     const youtubeService = TestBed.inject(YoutubeService);
-
-    const http = TestBed.inject(HttpClient);
-
-    const httpTesting = TestBed.inject(HttpTestingController);
-
-    const API_URL = 'https://www.googleapis.com/youtube/v3/';
-
-    http
-      .get(API_URL)
-      .subscribe(response => expect(response).toMatchObject(mockResponse));
-
-    youtubeService
-      .getRealAPICards('angular')
-      .pipe(first())
-      .subscribe(response => expect(response).toMatchObject(mockResponse));
-
-    /* const req = httpTesting.expectOne({
-      method: 'GET',
-      url: `localhost:4200`,
-    }); */
-
-    /* const req = httpTesting.expectOne(request => {
-      return (
-        request.url ===
-        `https://www.googleapis.com/youtube/v3/search?type=video&part=snippet&maxResults=20&q=lalala`
-      );
-    }); */
-
-    // const params = { question: 'q', value: 'angular', maxResults: 20 };
-
-    /* const req = httpTesting.expectOne(
-      `${API_URL}search?type=video&part=snippet&maxResults=20&q=angular&key=AIzaSyCQh1dEquQQKLFXiKe2a9nU06-k3_TRouQ`
-    ); */
-    youtubeService.getRealAPICards('angular');
-    const req = httpTesting.expectOne(`../../../public/assets/mock.json`);
-
-    /* expect(
-      req.request.url.endsWith(
-        '/search?type=video&part=snippet&maxResults=20&q=angular&key=lalala'
-      )
-    ).toEqual(mockResponse); */
-
-    expect(req.request.method).toBe('GET');
-    expect(req.request.params.get('q')).toBe('angular');
-
-    req.flush(mockResponse);
-
-    const logSpy = jest.spyOn(console, 'log');
-    console.log(req.request.url);
-    expect(logSpy).toHaveBeenCalledWith(req.request.url);
-
-    httpTesting.verify();
-    /* TestBed.runInInjectionContext(async () => {
-      const httpTesting = TestBed.inject(HttpTestingController);
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const service = TestBed.inject(YoutubeService);
-
-      const config$ = youtubeService.getRealAPICards('lalala', 'lalala');
-
-      const configPromise = firstValueFrom(config$);
-
-      const req = httpTesting.expectOne(
-        'https://www.googleapis.com/youtube/v3/'
-      );
-
-      expect(req.request.method).toBe('GET');
-
-      req.flush('https://www.googleapis.com/youtube/v3/');
-
-      expect(await configPromise).toEqual(
-        'https://www.googleapis.com/youtube/v3/'
-      );
-
-      httpTesting.verify();
-    }); */
-  });
-
-  /* it('#toggleFilters should return true or false', () => {
-    TestBed.configureTestingModule({
-      providers: [provideHttpClient(), provideHttpClientTesting()],
-    });
-    youtubeService = new YoutubeService();
     TestBed.runInInjectionContext(() => {
       expect(youtubeService.toggleFilters()).toBe(true || false);
     });
-  }); */
+  });
+
+  it('#setDetailedCard should return card details', async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        YoutubeService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        {
+          provide: HttpClient,
+          useValue: { get: () => of([]).pipe(delay(0)) },
+        },
+      ],
+    }).compileComponents();
+
+    const youtubeService = TestBed.inject(YoutubeService);
+    TestBed.runInInjectionContext(() => {
+      expect(
+        youtubeService.setDetailedCard(mockResponse.items[0])
+      ).toMatchObject(mockResponse.items[0]);
+    });
+  });
+
+  it('#sortDateAsc should return true or false', async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        YoutubeService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        {
+          provide: HttpClient,
+          useValue: { get: () => of([]).pipe(delay(0)) },
+        },
+      ],
+    }).compileComponents();
+
+    const youtubeService = TestBed.inject(YoutubeService);
+    TestBed.runInInjectionContext(() => {
+      expect(youtubeService.sortDateAsc(true)).toEqual(true);
+    });
+  });
+
+  it('#sortDateDesc should return true or false', async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        YoutubeService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        {
+          provide: HttpClient,
+          useValue: { get: () => of([]).pipe(delay(0)) },
+        },
+      ],
+    }).compileComponents();
+
+    const youtubeService = TestBed.inject(YoutubeService);
+    TestBed.runInInjectionContext(() => {
+      expect(youtubeService.sortDateDesc(false)).toEqual(false);
+    });
+  });
+
+  it('#catchFilterInputSearchValue should return string value', async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        YoutubeService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        {
+          provide: HttpClient,
+          useValue: { get: () => of([]).pipe(delay(0)) },
+        },
+      ],
+    }).compileComponents();
+
+    const youtubeService = TestBed.inject(YoutubeService);
+    TestBed.runInInjectionContext(() => {
+      expect(youtubeService.catchFilterInputSearchValue('lalala')).toBe(
+        'lalala'
+      );
+    });
+  });
+
+  it('#getRealDetailedCard http should perform GET method', async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        YoutubeService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
+    }).compileComponents();
+
+    const youtubeService = TestBed.inject(YoutubeService);
+
+    const httpTesting = TestBed.inject(HttpTestingController);
+
+    youtubeService
+      .getRealDetailedCard('YN8zNnV0sK8')
+      .subscribe(data => expect(data).toMatchObject(mockResponse));
+
+    // const id = 'lalala';
+    const id = 'YN8zNnV0sK8';
+
+    const req = httpTesting.expectOne(
+      `videos?&id=${id}&part=snippet,statistics`
+    );
+
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockResponse);
+
+    httpTesting.verify();
+  });
+
+  it('#getRealAPICards should perform GET request', async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        YoutubeService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
+    }).compileComponents();
+
+    const youtubeService = TestBed.inject(YoutubeService);
+
+    const httpTesting = TestBed.inject(HttpTestingController);
+
+    youtubeService
+      .getRealAPICards('lalala')
+      .subscribe(response => expect(response).toMatchObject(mockResponse));
+
+    const params = { q: 'lalala' };
+
+    httpTesting.expectNone(`search?type=video&part=snippet&maxResults=20`);
+
+    const req = httpTesting.expectOne(
+      `search?type=video&part=snippet&maxResults=20&q=${params.q}`
+    );
+
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockResponse);
+  });
 });

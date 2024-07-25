@@ -76,14 +76,17 @@ export class YoutubeService {
 
   setDetailedCard(value: SearchItem) {
     this.card = value;
+    return this.card;
   }
 
-  toggleFilters(): void {
+  toggleFilters(): boolean {
     this.isFiltersVisible = !this.isFiltersVisible;
+    return this.isFiltersVisible;
   }
 
   catchFilterInputSearchValue(value: string) {
     this.filterSearchInputValue = value;
+    return this.filterSearchInputValue;
   }
 
   public sortViewsAsc(value: boolean) {
