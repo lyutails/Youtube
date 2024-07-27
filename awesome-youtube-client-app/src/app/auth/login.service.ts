@@ -21,7 +21,7 @@ export class LoginService {
   public loginName = new BehaviorSubject<string>('');
   loginName$ = this.loginName.asObservable();
 
-  getLogin(value: string) {
+  setLogin(value: string) {
     this.loginInput = value;
     this.loginName.next(this.loginInput);
   }

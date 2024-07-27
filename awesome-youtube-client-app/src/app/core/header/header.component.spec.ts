@@ -3,6 +3,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterModule } from '@angular/router';
+// import { RouterTestingHarness } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { screen } from '@testing-library/angular';
 
@@ -58,5 +59,23 @@ describe('HeaderComponent', () => {
   it('should render favourite name in button', async () => {
     // await render(HeaderComponent);
     screen.getByText('favourite');
+  });
+
+  it('should get the search value', async () => {
+    /* const harness = await RouterTestingHarness.create();
+    harness.fixture.autoDetectChanges();
+    const hostElement: HTMLElement = harness.routeNativeElement!; */
+    const element: HTMLElement = fixture.nativeElement;
+    const loginInput: HTMLInputElement = element.querySelector(
+      'app-search-input-field'
+    )!;
+    /* const loginDisplay: HTMLElement = hostElement.querySelector(
+      'app-search-input-field'
+    )!; */
+    loginInput.value = 'lalala';
+    loginInput.dispatchEvent(new Event('app-search-input-field'));
+    // await harness.fixture.whenStable();
+
+    expect(loginInput.value).toBe('lalala');
   });
 });

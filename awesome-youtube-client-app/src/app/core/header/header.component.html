@@ -48,9 +48,10 @@
         [disabled]="this.loginService.getToken() === null">
         {{ this.loginService.getToken() !== null ? 'Logout' : 'Login' }}
       </button>
-      <mat-icon class="header_login-icon">person</mat-icon>
-      @if (loginService.loginName$ | async) {
-        <div class="header_login-name">{{ loginService.loginInput }}</div>
+      @if (loginService.loginName$ | async; as loginName) {
+        <div class="header_login-name">{{ loginName }}</div>
+      } @else {
+        <mat-icon class="header_login-icon">person</mat-icon>
       }
     </div>
   </div>

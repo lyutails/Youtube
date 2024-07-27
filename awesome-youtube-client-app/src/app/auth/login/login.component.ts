@@ -54,7 +54,9 @@ export class LoginComponent implements OnInit {
     ) {
       this.loginService.toggleLoginLogout();
       this.loginService.saveCredentials(data);
-      this.loginService.getLogin(this.loginForm.value.login?.trim());
+      this.loginService.setLogin(
+        this.loginForm.value.login?.trim().replace(/@(.*)$/, '')
+      );
       this.router.navigate(['/main']);
     }
   }

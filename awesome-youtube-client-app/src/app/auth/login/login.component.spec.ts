@@ -10,17 +10,15 @@ import { HeaderComponent } from '../../core/header/header.component';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
-  let headerComponent: HeaderComponent;
-  let loginComponent: LoginComponent;
-  let headerFixture: ComponentFixture<HeaderComponent>;
-  let loginFixture: ComponentFixture<LoginComponent>;
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         HeaderComponent,
         LoginComponent,
-        RouterModule.forRoot([{ path: '', component: HeaderComponent }]),
+        RouterModule.forRoot([{ path: '', component: LoginComponent }]),
       ],
       providers: [
         provideMockStore(),
@@ -30,23 +28,19 @@ describe('LoginComponent', () => {
       ],
     }).compileComponents();
 
-    headerFixture = TestBed.createComponent(HeaderComponent);
-    headerComponent = headerFixture.componentInstance;
-    headerFixture.detectChanges();
-
-    loginFixture = TestBed.createComponent(LoginComponent);
-    loginComponent = loginFixture.componentInstance;
-    loginFixture.detectChanges();
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
 
     TestBed.inject(HttpClient);
   });
 
   it('should create', () => {
-    expect(loginComponent).toBeDefined();
+    expect(component).toBeDefined();
   });
 
   it('should render Login', async () => {
-    const element: HTMLElement = loginFixture.nativeElement;
+    const element: HTMLElement = fixture.nativeElement;
     expect(element.textContent).toContain('Login');
   });
 
