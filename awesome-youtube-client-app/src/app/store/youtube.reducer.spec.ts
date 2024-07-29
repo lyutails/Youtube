@@ -1,6 +1,10 @@
 import { SearchItem } from '../youtube/search/search-item.model';
 import { YoutubeState } from './store.model';
-import { HeartsActions, PaginationButtonsActions, YoutubeActions } from './youtube.actions';
+import {
+  HeartsActions,
+  PaginationButtonsActions,
+  YoutubeActions,
+} from './youtube.actions';
 import {
   heartsReducer,
   paginationButtonsReducer,
