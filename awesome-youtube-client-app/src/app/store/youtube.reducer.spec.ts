@@ -1,6 +1,11 @@
+import { SearchItem } from '../youtube/search/search-item.model';
 import { YoutubeState } from './store.model';
-import { YoutubeActions } from './youtube.actions';
-import { youtubeReducer } from './youtube.reducer';
+import { HeartsActions, PaginationButtonsActions, YoutubeActions } from './youtube.actions';
+import {
+  heartsReducer,
+  paginationButtonsReducer,
+  youtubeReducer,
+} from './youtube.reducer';
 
 describe('YoutubeReducers', () => {
   const mockResponse = {
@@ -70,8 +75,10 @@ describe('YoutubeReducers', () => {
     ],
   };
   let initialState: YoutubeState;
+  let initialHeartsState: SearchItem[];
+  let initialPage: number;
 
-  beforeEach(() => {
+  /* beforeEach(() => {
     const initialCardsState = {
       isLoading: false,
       isError: false,
@@ -79,9 +86,17 @@ describe('YoutubeReducers', () => {
     };
 
     initialState = { ...initialCardsState };
-  });
+  }); */
 
   it('should change state when getCards', () => {
+    const initialCardsState = {
+      isLoading: false,
+      isError: false,
+      cards: [],
+    };
+
+    initialState = { ...initialCardsState };
+
     const result = youtubeReducer(
       initialState,
       YoutubeActions.getCards({ value: 'angular' })
@@ -95,6 +110,14 @@ describe('YoutubeReducers', () => {
   });
 
   it('should change state when retrievedCards', () => {
+    const initialCardsState = {
+      isLoading: false,
+      isError: false,
+      cards: [],
+    };
+
+    initialState = { ...initialCardsState };
+
     const result = youtubeReducer(
       initialState,
       YoutubeActions.retrievedCards({
@@ -107,5 +130,33 @@ describe('YoutubeReducers', () => {
       isError: false,
       cards: mockResponse.items,
     });
+  });
+
+  it('should change state when addHeart', () => {
+    const heartsState: SearchItem[] = [];
+
+    initialHeartsState = [...heartsState];
+
+    const result = heartsReducer(
+      initialHeartsState,
+      HeartsActions.addHeart({
+        card: mockResponse.items[0],
+      })
+    );
+
+    expect(result).toMatchObject([mockResponse.items[0]]);
+  });
+
+  it('should change state when nextPage', () => {
+    const pageState: number = 0;
+
+    initialPage = pageState;
+
+    const result = paginationButtonsReducer(
+      initialPage,
+      PaginationButtonsActions.nextPage()
+    );
+
+    expect(result).toBe(1);
   });
 });
