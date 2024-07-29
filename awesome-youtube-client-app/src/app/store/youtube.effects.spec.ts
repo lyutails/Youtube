@@ -7,7 +7,6 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { Observable, of, take } from 'rxjs';
 
 import { SearchItem } from '../youtube/search/search-item.model';
-// import { VideosResponse } from '../youtube/search/search-response.model';
 import { YoutubeService } from '../youtube/youtube.service';
 import { YoutubeActions } from './youtube.actions';
 import { YoutubeEffects } from './youtube.effects';
