@@ -4,12 +4,12 @@ import { effect } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-import { Observable, of } from 'rxjs';
+import { Observable, of, take } from 'rxjs';
 
-// import * as TypeMoq from 'typemoq';
+import { SearchItem } from '../youtube/search/search-item.model';
 // import { VideosResponse } from '../youtube/search/search-response.model';
 import { YoutubeService } from '../youtube/youtube.service';
-// import { YoutubeActions } from './youtube.actions';
+import { YoutubeActions } from './youtube.actions';
 import { YoutubeEffects } from './youtube.effects';
 
 describe('Get Cards Effects', () => {
@@ -79,9 +79,8 @@ describe('Get Cards Effects', () => {
       },
     ],
   };
-  let actions$: Observable<{ value: string }>;
-  // let effects: YoutubeEffects;
-  // let mockYoutubeService: TypeMoq.IMock<YoutubeService>;
+  let actions$: Observable<{ items: SearchItem[] }>;
+  let effects: YoutubeEffects;
   // let youtubeService: YoutubeService;
 
   beforeEach(async () => {
@@ -91,9 +90,10 @@ describe('Get Cards Effects', () => {
         YoutubeEffects,
         provideHttpClient(),
         provideHttpClientTesting(),
+        provideMockActions(() => actions$),
         provideMockStore({
           initialState: {
-            cards: null,
+            cards: [],
           },
         }),
         {
@@ -102,48 +102,42 @@ describe('Get Cards Effects', () => {
             getRealAPICards: jest.fn(() => of(mockResponse)),
           },
         },
-        /* {
-          provide: YoutubeService,
-          useFactory: () => mockYoutubeService.object,
-        }, */
         provideMockActions(() => actions$),
       ],
     });
 
-    /* effects = TestBed.inject(YoutubeEffects);
-    youtubeService = TestBed.inject(YoutubeService); */
+    effects = TestBed.inject(YoutubeEffects);
+    // youtubeService = TestBed.inject(YoutubeService);
+    actions$ = new Observable<{ items: SearchItem[] }>();
   });
 
   it('should be created', () => {
     expect(effect).toBeTruthy();
   });
 
-  /* it('loadCards$ should get cards', async () => {
+  it('setInitalCards$ should get cards', async () => {
     const cards = mockResponse;
-
-    mockYoutubeService
-      .setup(x => x.getRealAPICards('angular'))
-      .returns(() => of(cards))
-      .verifiable();
 
     const expectedAction = YoutubeActions.getCardsSuccess({
       items: mockResponse.items,
     });
 
-    actions$ = of(YoutubeActions.getCards({ value: 'angular' }));
-
-    effects.loadCards$.subscribe(x => expect(x).toEqual(expectedAction));
-
-    const result = effects.loadCards$
-      .pipe(take(1))
-      .subscribe(data => expect(data).toMatchObject(mockResponse));
-
-    // expect(youtubeService.getRealAPICards).toHaveBeenCalledWith();
-
-    expect(result).toMatchObject(
+    actions$ = of(
       YoutubeActions.getCardsSuccess({ items: mockResponse.items })
     );
 
+    effects.setInitalCards$.subscribe(x => expect(x).toEqual(expectedAction));
+
+    effects.setInitalCards$
+      .pipe(take(1))
+      .subscribe(data => expect(data).toMatchObject(cards));
+
+    // expect(youtubeService.getRealAPICards).toHaveBeenCalledWith();
+
+    /* expect(result).toMatchObject(
+      YoutubeActions.getCardsSuccess({ items: mockResponse.items })
+    ); */
+
     // youtubeService.verifyAll();
-  }); */
+  });
 });
