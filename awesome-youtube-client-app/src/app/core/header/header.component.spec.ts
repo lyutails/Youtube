@@ -43,7 +43,7 @@ describe('HeaderComponent', () => {
     expect(element.textContent).toContain('YouTube-client-app');
   });
 
-  it('should see original YouTube-client-app title after element.title change', async () => {
+  it('should see original YouTube-client-app and new title after change', async () => {
     const h1 = fixture.nativeElement.querySelector('h1');
     const actualTitle = 'YouTube-client-app';
     expect(h1.textContent).toBe(actualTitle);
