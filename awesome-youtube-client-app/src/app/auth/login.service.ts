@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject } from 'rxjs';
 
 export interface Credentials {
@@ -20,6 +21,9 @@ export class LoginService {
 
   public loginName = new BehaviorSubject<string>('');
   loginName$ = this.loginName.asObservable();
+  signalLoginName = toSignal(this.loginName.asObservable(), {
+    initialValue: '',
+  });
 
   setLogin(value: string) {
     this.loginInput = value;
