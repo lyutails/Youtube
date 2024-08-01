@@ -1,5 +1,5 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   FormArray,
   FormControl,
@@ -27,6 +27,7 @@ export class AdminComponent implements OnInit {
   index!: number;
   initialValue = '';
   requiredSign = '*';
+  requiredSignColor = 'oklch(59.98% 0.236 15.45)';
   customId!: string;
 
   constructor(
@@ -50,6 +51,8 @@ export class AdminComponent implements OnInit {
       tags: new FormArray([new FormControl('', Validators.required)]),
     });
   }
+
+  color = signal(this.requiredSignColor);
 
   adminForm = new FormGroup({
     title: new FormControl(''),
