@@ -1,5 +1,5 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -35,6 +35,15 @@ export class LoginComponent implements OnInit {
   inputValue = '';
   isPasswordVisible = false;
   passwordVisibilitySymbol = { visible: 'key', invisible: 'key_off' };
+  requiredSign = '*';
+  requiredSignColor = 'oklch(59.98% 0.236 15.45)';
+  validSignColor = 'oklch(59.92% 0.255 298.77)';
+
+  colorRequired = signal(this.requiredSignColor);
+  colorValid = signal(this.validSignColor);
+  isValid = signal(false);
+  validSign = signal('verified_user');
+  requiredSignSignal = signal('lock');
 
   constructor(
     private loginService: LoginService,
@@ -85,4 +94,19 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password');
   }
+
+  /*   if (this.adminForm.valid) {
+      this.isValid.set(true);
+    } */
+
+  setRequiredSignColor(value: boolean) {
+    this.isValid = signal(value);
+  }
+
+  color = computed(() => {
+    if (this.isValid()) {
+      return this.colorValid();
+    }
+    return this.colorRequired();
+  });
 }

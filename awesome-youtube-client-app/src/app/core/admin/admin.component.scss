@@ -99,10 +99,17 @@ input.ng-invalid.ng-touched {
   margin-top: 10px;
 }
 
-.required {
+.required, .passed {
   width: 80%;
   display: flex;
   align-items: flex-start;
+
+  &_sign {
+    font-size: 1rem;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+  }
 }
 
 /* .required_sign {

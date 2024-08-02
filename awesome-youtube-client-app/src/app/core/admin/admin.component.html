@@ -4,10 +4,16 @@
     <div class="admin_item">
       <label class="admin_label" for="title"
         >Title
-        <span [style.color]="color()" class="required_sign">{{
-          requiredSign
-        }}</span></label
-      >
+        @if (title?.invalid) {
+          <mat-icon [style.color]="colorRequired()" class="required_sign">{{
+            requiredSignSignal()
+          }}</mat-icon>
+        } @else {
+          <mat-icon [style.color]="colorValid()" class="required_sign">{{
+            validSign()
+          }}</mat-icon>
+        }
+      </label>
       <input
         class="admin_input"
         id="title"
@@ -47,10 +53,16 @@
     <div class="admin_item">
       <label class="admin_label" for="img"
         >Image
-        <span [style.color]="color()" class="required_sign">{{
-          requiredSign
-        }}</span></label
-      >
+        @if (img?.invalid) {
+          <mat-icon [style.color]="colorRequired()" class="required_sign">{{
+            requiredSignSignal()
+          }}</mat-icon>
+        } @else {
+          <mat-icon [style.color]="colorValid()" class="required_sign">{{
+            validSign()
+          }}</mat-icon>
+        }
+      </label>
       <input
         class="admin_input"
         id="img"
@@ -68,10 +80,16 @@
     <div class="admin_item">
       <label class="admin_label" for="link"
         >Link video
-        <span [style.color]="color()" class="required_sign">{{
-          requiredSign
-        }}</span></label
-      >
+        @if (linkVideo?.invalid) {
+          <mat-icon [style.color]="colorRequired()" class="required_sign">{{
+            requiredSignSignal()
+          }}</mat-icon>
+        } @else {
+          <mat-icon [style.color]="colorValid()" class="required_sign">{{
+            validSign()
+          }}</mat-icon>
+        }
+      </label>
       <input
         class="admin_input"
         id="link"
@@ -95,10 +113,18 @@
           <div class="admin_item tag">
             <label class="admin_label" for="tag"
               >Tag
-              <span [style.color]="color()" class="required_sign">{{
-                requiredSign
-              }}</span></label
-            >
+              @if (tag?.invalid) {
+                <mat-icon
+                  [style.color]="colorRequired()"
+                  class="required_sign"
+                  >{{ requiredSignSignal() }}</mat-icon
+                >
+              } @else {
+                <mat-icon [style.color]="colorValid()" class="required_sign">{{
+                  validSign()
+                }}</mat-icon>
+              }
+            </label>
             <input
               class="admin_input"
               id="tag"
@@ -126,10 +152,16 @@
       }
     </div>
     <div class="required">
-      <span [style.color]="color()" class="required_sign">{{
-        requiredSign
-      }}</span>
+      <mat-icon [style.color]="colorRequired()" class="required_sign">{{
+        requiredSignSignal()
+      }}</mat-icon>
       required
+    </div>
+    <div class="passed">
+      <mat-icon [style.color]="colorValid()" class="passed_sign">{{
+        validSign()
+      }}</mat-icon>
+      passed
     </div>
     <button type="reset" class="admin_button reset" (click)="reset()">
       {{ resetButtonName | uppercase }}

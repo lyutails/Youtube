@@ -1,5 +1,5 @@
 import { CommonModule, UpperCasePipe } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import {
   FormArray,
   FormControl,
@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
@@ -15,7 +16,7 @@ import { CustomCardActions } from '../../store/youtube.actions';
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [ReactiveFormsModule, UpperCasePipe, CommonModule],
+  imports: [ReactiveFormsModule, UpperCasePipe, CommonModule, MatIcon],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })
@@ -28,7 +29,14 @@ export class AdminComponent implements OnInit {
   initialValue = '';
   requiredSign = '*';
   requiredSignColor = 'oklch(59.98% 0.236 15.45)';
+  validSignColor = 'oklch(59.92% 0.255 298.77)';
   customId!: string;
+
+  colorRequired = signal(this.requiredSignColor);
+  colorValid = signal(this.validSignColor);
+  isValid = signal(false);
+  validSign = signal('verified_user');
+  requiredSignSignal = signal('lock');
 
   constructor(
     private router: Router,
@@ -51,8 +59,6 @@ export class AdminComponent implements OnInit {
       tags: new FormArray([new FormControl('', Validators.required)]),
     });
   }
-
-  color = signal(this.requiredSignColor);
 
   adminForm = new FormGroup({
     title: new FormControl(''),
@@ -150,4 +156,19 @@ export class AdminComponent implements OnInit {
     this.tags.clear();
     this.addTag();
   }
+
+  /*   if (this.adminForm.valid) {
+      this.isValid.set(true);
+    } */
+
+  setRequiredSignColor(value: boolean) {
+    this.isValid.set(value);
+  }
+
+  color = computed(() => {
+    if (this.isValid()) {
+      return this.colorValid();
+    }
+    return this.colorRequired();
+  });
 }
