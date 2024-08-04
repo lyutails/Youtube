@@ -28,15 +28,16 @@ export class AdminComponent implements OnInit {
   addButtonName = 'add';
   index!: number;
   initialValue = '';
-  requiredSignColor = 'oklch(59.98% 0.236 15.45)';
-  validSignColor = 'oklch(59.92% 0.255 298.77)';
   customId!: string;
 
-  isValid = signal(false);
+  requiredSignColor = 'oklch(59.98% 0.236 15.45)';
+  validSignColor = 'oklch(59.92% 0.255 298.77)';
   colorRequired = signal(this.requiredSignColor);
   colorValid = signal(this.validSignColor);
   validSign = signal('verified_user');
   requiredSign = signal('lock');
+
+  isValid = signal(false);
   validationSign = signal('lock');
 
   constructor(
