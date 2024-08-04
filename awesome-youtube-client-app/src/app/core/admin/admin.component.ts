@@ -37,6 +37,7 @@ export class AdminComponent implements OnInit {
   colorValid = signal(this.validSignColor);
   validSign = signal('verified_user');
   requiredSign = signal('lock');
+  validationSign = signal('lock');
 
   constructor(
     private router: Router,
@@ -65,8 +66,10 @@ export class AdminComponent implements OnInit {
       .subscribe(status => {
         if (status === 'INVALID') {
           this.isValid.set(false);
+          this.validationSign.set('lock');
         } else {
           this.isValid.set(true);
+          this.validationSign.set('verified_user');
         }
       });
   }

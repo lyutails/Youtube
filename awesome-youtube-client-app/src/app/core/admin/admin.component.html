@@ -80,15 +80,9 @@
     <div class="admin_item">
       <label class="admin_label" for="link"
         >Link video
-        @if (adminForm.get('linkVideo')?.invalid) {
-          <mat-icon [style.color]="color()" class="required_sign">{{
-            requiredSign()
-          }}</mat-icon>
-        } @else {
-          <mat-icon [style.color]="color()" class="required_sign">{{
-            validSign()
-          }}</mat-icon>
-        }
+        <mat-icon [style.color]="color()" class="required_sign">{{
+          validationSign()
+        }}</mat-icon>
       </label>
       <input
         class="admin_input"
