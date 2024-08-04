@@ -6,7 +6,7 @@
         >Title
         @if (title?.invalid) {
           <mat-icon [style.color]="colorRequired()" class="required_sign">{{
-            requiredSignSignal()
+            requiredSign()
           }}</mat-icon>
         } @else {
           <mat-icon [style.color]="colorValid()" class="required_sign">{{
@@ -55,7 +55,7 @@
         >Image
         @if (img?.invalid) {
           <mat-icon [style.color]="colorRequired()" class="required_sign">{{
-            requiredSignSignal()
+            requiredSign()
           }}</mat-icon>
         } @else {
           <mat-icon [style.color]="colorValid()" class="required_sign">{{
@@ -80,12 +80,12 @@
     <div class="admin_item">
       <label class="admin_label" for="link"
         >Link video
-        @if (linkVideo?.invalid) {
-          <mat-icon [style.color]="colorRequired()" class="required_sign">{{
-            requiredSignSignal()
+        @if (adminForm.get('linkVideo')?.invalid) {
+          <mat-icon [style.color]="color()" class="required_sign">{{
+            requiredSign()
           }}</mat-icon>
         } @else {
-          <mat-icon [style.color]="colorValid()" class="required_sign">{{
+          <mat-icon [style.color]="color()" class="required_sign">{{
             validSign()
           }}</mat-icon>
         }
@@ -117,7 +117,7 @@
                 <mat-icon
                   [style.color]="colorRequired()"
                   class="required_sign"
-                  >{{ requiredSignSignal() }}</mat-icon
+                  >{{ requiredSign() }}</mat-icon
                 >
               } @else {
                 <mat-icon [style.color]="colorValid()" class="required_sign">{{
@@ -153,7 +153,7 @@
     </div>
     <div class="required">
       <mat-icon [style.color]="colorRequired()" class="required_sign">{{
-        requiredSignSignal()
+        requiredSign()
       }}</mat-icon>
       required
     </div>

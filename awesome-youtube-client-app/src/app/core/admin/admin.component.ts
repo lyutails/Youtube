@@ -10,6 +10,7 @@ import {
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { distinctUntilChanged } from 'rxjs';
 
 import { CustomCardActions } from '../../store/youtube.actions';
 
@@ -27,16 +28,15 @@ export class AdminComponent implements OnInit {
   addButtonName = 'add';
   index!: number;
   initialValue = '';
-  requiredSign = '*';
   requiredSignColor = 'oklch(59.98% 0.236 15.45)';
   validSignColor = 'oklch(59.92% 0.255 298.77)';
   customId!: string;
 
+  isValid = signal(false);
   colorRequired = signal(this.requiredSignColor);
   colorValid = signal(this.validSignColor);
-  isValid = signal(false);
   validSign = signal('verified_user');
-  requiredSignSignal = signal('lock');
+  requiredSign = signal('lock');
 
   constructor(
     private router: Router,
@@ -58,6 +58,17 @@ export class AdminComponent implements OnInit {
       ]),
       tags: new FormArray([new FormControl('', Validators.required)]),
     });
+
+    this.adminForm
+      .get('linkVideo')
+      ?.statusChanges.pipe(distinctUntilChanged())
+      .subscribe(status => {
+        if (status === 'INVALID') {
+          this.isValid.set(false);
+        } else {
+          this.isValid.set(true);
+        }
+      });
   }
 
   adminForm = new FormGroup({
@@ -155,14 +166,6 @@ export class AdminComponent implements OnInit {
     this.adminForm.reset();
     this.tags.clear();
     this.addTag();
-  }
-
-  /*   if (this.adminForm.valid) {
-      this.isValid.set(true);
-    } */
-
-  setRequiredSignColor(value: boolean) {
-    this.isValid.set(value);
   }
 
   color = computed(() => {
