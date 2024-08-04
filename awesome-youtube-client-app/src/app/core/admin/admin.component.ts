@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component, computed, OnInit, signal } from '@angular/core';
 import {
@@ -20,6 +27,25 @@ import { CustomCardActions } from '../../store/youtube.actions';
   imports: [ReactiveFormsModule, UpperCasePipe, CommonModule, MatIcon],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
+  animations: [
+    trigger('changeResetButtonColour', [
+      state(
+        'initial',
+        style({
+          backgroundColor: 'white',
+        })
+      ),
+      state(
+        'coloured',
+        style({
+          backgroundColor: '#ff79e9',
+          border: '1px solid',
+        })
+      ),
+      transition('initial => coloured', [animate('0.4s')]),
+      transition('coloured => initial', [animate('0.4s')]),
+    ]),
+  ],
 })
 export class AdminComponent implements OnInit {
   submitButtonName = 'Submit';
@@ -39,6 +65,8 @@ export class AdminComponent implements OnInit {
 
   isValid = signal(false);
   validationSign = signal('lock');
+
+  isReset = signal(false);
 
   constructor(
     private router: Router,
@@ -177,5 +205,18 @@ export class AdminComponent implements OnInit {
       return this.colorValid();
     }
     return this.colorRequired();
+  });
+
+  toggleReset() {
+    this.isReset.update(value => {
+      return !value;
+    });
+  }
+
+  colorReset = computed(() => {
+    if (this.isReset()) {
+      return 'oklch(60.59% 0.273 332.27)';
+    }
+    return 'oklch(52.17% 0.281 296.83)';
   });
 }

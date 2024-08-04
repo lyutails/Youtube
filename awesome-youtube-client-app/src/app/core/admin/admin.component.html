@@ -157,7 +157,13 @@
       }}</mat-icon>
       passed
     </div>
-    <button type="reset" class="admin_button reset" (click)="reset()">
+    <button
+      type="reset"
+      class="admin_button reset"
+      (click)="reset()"
+      [style.color]="colorReset()"
+      (click)="toggleReset()"
+      [@changeResetButtonColour]="isReset() ? 'initial' : 'coloured'">
       {{ resetButtonName | uppercase }}
     </button>
     <button
