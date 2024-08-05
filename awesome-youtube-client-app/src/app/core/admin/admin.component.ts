@@ -34,7 +34,7 @@ import { CustomCardActions } from '../../store/youtube.actions';
         style({
           backgroundColor: 'transparent',
           border: '1px solid',
-          filter: 'drop-shadow(0 0 1rem #d600c7)',
+          /* filter: 'drop-shadow(0 0 1rem #d600c7)', */
         })
       ),
       state(
@@ -42,7 +42,7 @@ import { CustomCardActions } from '../../store/youtube.actions';
         style({
           backgroundColor: '#ff79e9',
           border: '1px solid',
-          filter: 'drop-shadow(0 0 1rem #ae71ff)',
+          /* filter: 'drop-shadow(0 0 1rem #ae71ff)', */
         })
       ),
       transition('initial => coloured', [animate('0.2s')]),
