@@ -3,3 +3,5 @@
 Deploy: https://rolling-scopes-school.github.io/lyutails-ANGULAR2024Q3/main
 
 <img src="./youtube_screenshot.JPG">
+
+[Tasks' PRs](https://github.com/lyutails/youtube/pulls?q=is%3Apr+is%3Aclosed)
